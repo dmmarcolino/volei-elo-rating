@@ -13,12 +13,15 @@ from elo_engine import EloEngine, Match, DEFAULT_CONFIG
 def main():
     engine = EloEngine(config=DEFAULT_CONFIG)
 
-    teams = ["BRA", "RUS", "RWA", "LUX"]  # top tier, top tier, tier baixo, tier baixo
-    engine.load_initial_ratings(teams)
+    # Carrega o seed REAL de 2011 (163 selecoes, valores continentais
+    # conforme confirmado com o Daniel -- nao os valores da lista "Mundial",
+    # que estava desatualizada no documento original).
+    n = engine.load_seed_from_csv("../data/seed_ratings_2011.csv")
+    print(f"Seed de 2011 carregado: {n} selecoes\n")
 
-    print("Ratings iniciais (seed por tier):")
-    for team, rating in engine.current_ranking():
-        print(f"  {team}: {rating:.1f}")
+    print("Alguns ratings de exemplo (seed 2011):")
+    for team in ("BRA", "RUS", "ITA", "RWA", "LUX"):
+        print(f"  {team}: {engine.ratings.get(team, 'NAO ENCONTRADO')}")
     print()
 
     matches = [

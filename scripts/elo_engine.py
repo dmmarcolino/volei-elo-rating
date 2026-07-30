@@ -21,6 +21,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import date
 from typing import Optional
+import csv
 import math
 
 
@@ -134,6 +135,14 @@ class EloEngine:
     ratings: dict[str, float] = field(default_factory=dict)
     history: list[RatingSnapshot] = field(default_factory=list)
 
+    # Copia imutavel do rating de SEED (antes de qualquer partida), separada
+    # de `ratings` (que muda a cada partida processada). Necessaria para
+    # reconstruir corretamente o ranking "como estava em uma data X" --
+    # sem isso, uma selecao cujas partidas so acontecem DEPOIS da data
+    # consultada apareceria com o rating atual (contaminado pelo futuro)
+    # em vez do rating que ela realmente tinha naquele momento.
+    _seed_ratings: dict[str, float] = field(default_factory=dict)
+
     # Contagem de partidas por (temporada, selecao), excluindo finais.
     # Usada para determinar o fator K de cada selecao naquela temporada.
     _match_counts: dict[tuple[int, str], int] = field(default_factory=dict)
@@ -155,10 +164,39 @@ class EloEngine:
         return c.rating_default
 
     def load_initial_ratings(self, teams: list[str]) -> None:
-        """Define o rating inicial (seed por tier) para cada selecao.
-        Nao sobrescreve times ja carregados (idempotente)."""
+        """Define o rating inicial (seed por tier padrao) para cada selecao.
+        Nao sobrescreve times ja carregados (idempotente).
+
+        ATENCAO: este metodo usa o seed GENERICO por tier (EloConfig).
+        Para o projeto real, o correto e usar load_seed_from_csv() com o
+        rating real calculado ate 2011 -- este metodo aqui serve como
+        fallback para selecoes que nunca tiveram rating antes (ex: pais
+        recem-filiado a FIVB depois de 2011) ou para testes/demos."""
         for team in teams:
-            self.ratings.setdefault(team, self.initial_rating_for(team))
+            rating = self.initial_rating_for(team)
+            self.ratings.setdefault(team, rating)
+            self._seed_ratings.setdefault(team, rating)
+
+    def load_seed_from_csv(self, csv_path: str, code_column: str = "codigo",
+                            rating_column: str = "rating_2011") -> int:
+        """Carrega o rating inicial REAL (calculado ate 2011) a partir de
+        um CSV com pelo menos as colunas `codigo` e `rating_2011`.
+
+        Nao sobrescreve times ja carregados (idempotente) -- rode isso
+        ANTES de processar qualquer partida de 2012 em diante.
+
+        Devolve o numero de selecoes carregadas, para conferencia rapida
+        (ex: assert engine.load_seed_from_csv(...) == 163).
+        """
+        count = 0
+        with open(csv_path, encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                code = row[code_column].strip()
+                rating = float(row[rating_column])
+                self.ratings.setdefault(code, rating)
+                self._seed_ratings.setdefault(code, rating)
+                count += 1
+        return count
 
     # -- fator K --------------------------------------------------------
 
@@ -253,8 +291,14 @@ class EloEngine:
         for snap in self.history:
             if snap.match_date > as_of:
                 continue
+            # Mantem sempre o snapshot mais RECENTE ate a data (a lista de
+            # historico pode ter multiplas entradas por selecao).
             latest_by_team[snap.team] = snap.rating_after
-        # Times que nunca jogaram ate essa data mas ja tem rating inicial
-        for team, rating in self.ratings.items():
-            latest_by_team.setdefault(team, self.initial_rating_for(team))
+        # Selecoes sem nenhum snapshot valido ate essa data (seja porque
+        # nunca jogaram, seja porque so jogaram DEPOIS de as_of) ficam com
+        # o rating de SEED -- o valor real anterior a qualquer partida,
+        # nao o rating atual (que pode estar contaminado por jogos
+        # futuros) nem um tier generico recalculado.
+        for team, seed_rating in self._seed_ratings.items():
+            latest_by_team.setdefault(team, seed_rating)
         return sorted(latest_by_team.items(), key=lambda kv: kv[1], reverse=True)
