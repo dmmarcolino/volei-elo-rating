@@ -72,6 +72,4 @@ def passo_2_listar_partidas_do_torneio(tournament_no: int) -> None:
 
 
 if __name__ == "__main__":
-    # Ja confirmamos que o torneio No=382 e o Campeonato NORCECA 2013.
-    # Vamos buscar as partidas dele agora.
-    passo_2_listar_partidas_do_torneio(382)
+    passo_2_listar_partidas_do_torneio(657)
