@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Saidas geradas localmente que nao precisam ir pro repositorio
+*.xlsx
