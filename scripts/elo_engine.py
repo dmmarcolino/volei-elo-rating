@@ -48,7 +48,7 @@ class EloConfig:
 
     # Tabela de rating inicial por tier de selecao (do documento original).
     # Times fora dessas listas caem no tier_default.
-    tier_2800: tuple[str, ...] = ("BRA", "ITA", "RUS", "SCG")
+    tier_2800: tuple[str, ...] = ("BRA", "ITA", "RUS", "SRB")
     tier_2700: tuple[str, ...] = ("ARG", "CUB", "FRA", "GRE", "NED", "USA")
     tier_2600: tuple[str, ...] = (
         "BUL", "CAN", "CHN", "CZE", "ESP", "GER", "JPN", "KOR", "POL", "POR",

@@ -38,7 +38,7 @@ from elo_engine import Match
 
 COUNTRY_NAME_TO_CODE: dict[str, str] = {
     # Tiers originais do modelo (2800/2700/2600/2500)
-    "brazil": "BRA", "italy": "ITA", "russia": "RUS", "serbia": "SCG",
+    "brazil": "BRA", "italy": "ITA", "russia": "RUS", "serbia": "SRB",
     "argentina": "ARG", "cuba": "CUB", "france": "FRA", "greece": "GRE",
     "netherlands": "NED", "usa": "USA", "united states": "USA",
     "bulgaria": "BUL", "canada": "CAN", "china": "CHN", "czech republic": "CZE",
