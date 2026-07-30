@@ -1,0 +1,164 @@
+nome_pt,codigo,confederacao,rating_2011
+Egito,EGY,Africa,2588
+Camarões,CMR,Africa,2563
+Argélia,ALG,Africa,2479
+Tunísia,TUN,Africa,2477
+Quênia,KEN,Africa,2354
+RD Congo,COD,Africa,2353
+Marrocos,MAR,Africa,2334
+Líbia,LBA,Africa,2327
+Seicheles,SEY,Africa,2323
+Ilhas Maurício,MRI,Africa,2306
+Nigéria,NGR,Africa,2300
+Ruanda,RWA,Africa,2295
+Uganda,UGA,Africa,2285
+Gana,GHA,Africa,2281
+Senegal,SEN,Africa,2279
+África do Sul,RSA,Africa,2277
+Sudão,SUD,Africa,2270
+Gabão,GAB,Africa,2261
+Eritrea,ERI,Africa,2255
+Malawi,MAW,Africa,2251
+Zimbabwe,ZIM,Africa,2244
+Reunião,REU,Africa,2226
+Madagascar,MAD,Africa,2203
+Comores,COM,Africa,2175
+Maiote,MAY,Africa,2168
+Moçambique,MOZ,Africa,2165
+Botsuana,BOT,Africa,2146
+Irã,IRI,Asia,2727
+Coréia do Sul,KOR,Asia,2648
+China,CHN,Asia,2613
+Japão,JPN,Asia,2581
+Austrália,AUS,Asia,2575
+Índia,IND,Asia,2542
+Cazaquistão,KAZ,Asia,2511
+Paquistão,PAK,Asia,2446
+Tailândia,THA,Asia,2429
+Indonésia,INA,Asia,2428
+Arábia Saudita,KSA,Asia,2412
+Bahrain,BRN,Asia,2395
+Taiwan,TPE,Asia,2367
+Nova Caledônia,NCL,Asia,2337
+Wallis e Futuna,WLF,Asia,2334
+Papua Nova Guiné,PNG,Asia,2327
+Catar,QAT,Asia,2323
+Mianmar,MYA,Asia,2316
+Líbano,LBN,Asia,2313
+Jordânia,JOR,Asia,2305
+Laos,LAO,Asia,2290
+Bangladesh,BAN,Asia,2276
+Sri Lanka,SRI,Asia,2272
+Mongólia,MGL,Asia,2269
+Fiji,FIJ,Asia,2265
+Omã,OMA,Asia,2262
+Malásia,MAS,Asia,2259
+Nova Zelândia,NZL,Asia,2259
+Emirados Árabes,UAE,Asia,2258
+Kuwait,KUW,Asia,2258
+Filipinas,PHI,Asia,2255
+Tahiti,PYF,Asia,2252
+Turcomenistão,TKM,Asia,2250
+Afeganistão,AFG,Asia,2241
+Tonga,TGA,Asia,2236
+Samoa,SAM,Asia,2235
+Vietnã,VIE,Asia,2218
+Hong Kong,HKG,Asia,2203
+Macau,MAC,Asia,2197
+Samoa Americana,ASA,Asia,2197
+Uzbequistão,UZB,Asia,2182
+Guam,GUM,Asia,2158
+Tuvalu,TUV,Asia,2157
+Maldivas,MDV,Asia,2144
+Brasil,BRA,America,3056
+Cuba,CUB,America,2917
+EUA,USA,America,2876
+Argentina,ARG,America,2802
+Canadá,CAN,America,2732
+Porto Rico,PUR,America,2604
+México,MEX,America,2599
+Venezuela,VEN,America,2522
+Colômbia,COL,America,2491
+R. Dominicana,DOM,America,2444
+Chile,CHI,America,2432
+Paraguai,PAR,America,2408
+Trinidad & Tobago,TTO,America,2390
+Costa Rica,CRC,America,2380
+Santa Lúcia,LCA,America,2374
+Guatemala,GUA,America,2373
+El Salvador,ESA,America,2369
+Dominica,DMA,America,2349
+Jamaica,JAM,America,2348
+Bahamas,BAH,America,2345
+São Cristóvão e Névis,SKN,America,2334
+Peru,PER,America,2333
+Equador,ECU,America,2329
+Barbados,BAR,America,2324
+Antígua e Barbuda,ANT,America,2290
+Aruba,ARU,America,2288
+Uruguai,URU,America,2288
+Honduras,HON,America,2281
+Bolívia,BOL,America,2280
+Haiti,HAI,America,2276
+I. Virgens Americanas,ISV,America,2274
+Panamá,PAN,America,2274
+Guadalupe,GUD,America,2272
+Bermuda,BER,America,2270
+Suriname,SUR,America,2260
+Antilhas Holandesas,AHO,America,2259
+S. Vicente e Granadinas,VIN,America,2256
+Anguilla,AIA,America,2243
+Ilhas Virgens Britânicas,IVB,America,2236
+Montserrat,MNT,America,2233
+Ilhas Cayman,CAY,America,2210
+Granada,GRN,America,2202
+Belize,BIZ,America,2193
+Nicarágua,NCA,America,2183
+Rússia,RUS,Europa,3050
+Itália,ITA,Europa,2947
+Polônia,POL,Europa,2885
+Sérvia,SRB,Europa,2873
+Bulgária,BUL,Europa,2848
+Alemanha,GER,Europa,2747
+Finlândia,FIN,Europa,2735
+França,FRA,Europa,2728
+R. Tcheca,CZE,Europa,2701
+Espanha,ESP,Europa,2693
+Eslováquia,SVK,Europa,2676
+Holanda,NED,Europa,2657
+Eslovênia,SLO,Europa,2619
+Bélgica,BEL,Europa,2599
+Portugal,POR,Europa,2586
+Estônia,EST,Europa,2536
+Chipre,CYP,Europa,2533
+Bielorrússia,BLR,Europa,2516
+Romênia,ROU,Europa,2498
+Montenegro,MNE,Europa,2492
+Ucrânia,UKR,Europa,2488
+Turquia,TUR,Europa,2486
+Grécia,GRE,Europa,2457
+Croácia,CRO,Europa,2404
+Letônia,LAT,Europa,2402
+Macedônia,MKD,Europa,2386
+Hungria,HUN,Europa,2385
+Luxemburgo,LUX,Europa,2359
+Inglaterra,ENG,Europa,2347
+Albânia,ALB,Europa,2338
+Dinamarca,DEN,Europa,2337
+Israel,ISR,Europa,2331
+Áustria,AUT,Europa,2322
+Moldávia,MDA,Europa,2320
+Suécia,SWE,Europa,2320
+Islândia,ISL,Europa,2285
+Bósnia-Herzegovina,BIH,Europa,2281
+Ilhas Faroe,FAI,Europa,2278
+Escócia,SCO,Europa,2274
+Groenlândia,GRL,Europa,2254
+Noruega,NOR,Europa,2253
+Irlanda do Norte,NIR,Europa,2240
+San Marino,SMR,Europa,2238
+Andorra,AND,Europa,2235
+Azerbaijão,AZE,Europa,2215
+Geórgia,GEO,Europa,2213
+Irlanda,IRL,Europa,2174
+Malta,MLT,Europa,2162
