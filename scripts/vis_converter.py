@@ -86,6 +86,12 @@ COUNTRY_NAME_TO_CODE: dict[str, str] = {
     "iraq": "IRQ", "kosovo": "KOS", "martinique": "MTQ", "niger": "NIG",
     "switzerland": "SUI", "gambia": "GAM", "mali": "MLI", "senegal": "SEN",
     "tanzania": "TAN",
+
+    # Mais adicoes -- Macedonia mudou de nome oficialmente em 2019 (Macedonia
+    # do Norte), entao paginas antigas da Wikipedia ainda usam "Macedonia"
+    # sozinho -- aceitamos as duas formas apontando pro mesmo codigo.
+    "antigua and barbuda": "ANT", "cyprus": "CYP", "faroe islands": "FAI",
+    "macedonia": "MKD", "north macedonia": "MKD",
 }
 
 

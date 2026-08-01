@@ -45,10 +45,12 @@ def parse_score(raw: str) -> tuple[int, int] | None:
 def parse_wiki_date(raw: str, season: int) -> date | None:
     """Datas na Wikipedia costumam vir sem ano (ex: '22 Sep'), porque o
     ano esta implicito no titulo da pagina/torneio. Usamos `season` para
-    completar. Formato tolerante a 'Sep'/'September' etc via %b."""
+    completar. Formato tolerante a 'Sep'/'September' etc via %b.
+    Tambem remove marcacoes de nota de rodape (ex: '11 Jun*') pelo mesmo
+    motivo que fazemos com nomes de time."""
     if not isinstance(raw, str):
         return None
-    raw = raw.strip()
+    raw = raw.strip().rstrip("*").strip()
     for fmt in ("%d %b", "%d %B"):
         try:
             parsed = datetime.strptime(f"{raw} {season}", f"{fmt} %Y")

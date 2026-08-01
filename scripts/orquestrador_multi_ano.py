@@ -97,6 +97,21 @@ def paginas_wikipedia_continentais(ano: int) -> list[tuple[list[str], str]]:
     ]
 
 
+def paginas_wikipedia_anuais(ano: int) -> list[tuple[list[str], str]]:
+    """Eventos anuais que o VIS raramente cobre bem (Liga Europeia, Copa
+    Pan-Americana -- confirmado empiricamente), buscados direto na
+    Wikipedia todo ano. Tambem cobre a Liga Mundial/Nations League nos
+    anos especificos em que confirmamos que o VIS veio vazio (2014-2016),
+    como fonte alternativa -- sem duplicar quando o VIS ja funcionou."""
+    paginas = [
+        ([f"{ano} Men's European Volleyball League"], f"Liga Europeia {ano}"),
+        ([f"{ano} Men's Pan-American Volleyball Cup"], f"Copa Pan-Americana {ano}"),
+    ]
+    if ano in (2014, 2015, 2016):
+        paginas.append(([f"{ano} FIVB Volleyball World League"], f"Liga Mundial {ano}"))
+    return paginas
+
+
 def get_com_retry(url: str, params: dict, headers: dict | None = None,
                    max_tentativas: int = 4) -> requests.Response:
     """GET com espera entre chamadas (para nao martelar a API) e retry com
@@ -180,7 +195,7 @@ def main():
         print(f"\n--- Temporada {ano} ---")
 
         if ano == 2013:
-            torneios_vis = TORNEIOS_2013_CONFIRMADOS
+            torneios_vis = [(no, nome, None) for no, nome in TORNEIOS_2013_CONFIRMADOS]
         else:
             torneios_vis = []
             for keyword, nome_evento in palavras_chave_vis(ano):
@@ -195,11 +210,16 @@ def main():
                 candidatos_m = [e for e in encontrados if "women" not in e[1].lower()]
                 if candidatos_m:
                     no, nome_real = candidatos_m[0]
-                    torneios_vis.append((no, nome_evento))
+                    torneios_vis.append((no, nome_evento, keyword))
                 else:
                     torneios_vazios.append(f"{ano}: nenhum torneio encontrado para '{keyword}'")
 
-        for tournament_no, event_name in torneios_vis:
+        # Rastreia quais palavras-chave ja tiveram sucesso via VIS nesta
+        # temporada, para NAO buscar de novo na Wikipedia e duplicar
+        # partidas (bug real que aconteceu com Liga Europeia 2026).
+        cobertos_pelo_vis: set[str] = set()
+
+        for tournament_no, event_name, keyword_origem in torneios_vis:
             try:
                 raw_xml = fetch_tournament_matches_xml(tournament_no)
                 partidas = convert_vis_matches_xml(raw_xml, season=ano, event_name=event_name, log=log)
@@ -210,9 +230,22 @@ def main():
                 torneios_vazios.append(f"{event_name} (No={tournament_no}): 0 partidas no VIS")
             else:
                 print(f"  VIS: {event_name} -- {len(partidas)} partidas")
+                if keyword_origem:
+                    cobertos_pelo_vis.add(keyword_origem)
             todas_as_partidas.extend(partidas)
 
-        for candidate_titles, event_name in paginas_wikipedia_continentais(ano):
+        paginas_a_buscar = paginas_wikipedia_continentais(ano) + paginas_wikipedia_anuais(ano)
+        for candidate_titles, event_name in paginas_a_buscar:
+            # Pula Liga Europeia / Copa Pan-Americana / Liga Mundial se o
+            # VIS ja trouxe essa mesma competicao nesta temporada -- evita
+            # contar a mesma partida duas vezes.
+            if "Liga Europeia" in event_name and "European League" in cobertos_pelo_vis:
+                continue
+            if "Copa Pan-Americana" in event_name and "Pan-American Cup" in cobertos_pelo_vis:
+                continue
+            if "Liga Mundial" in event_name and ("World League" in cobertos_pelo_vis
+                                                  or "Nations League" in cobertos_pelo_vis):
+                continue
             html = None
             titulo_usado = None
             for page_title in candidate_titles:
