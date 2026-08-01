@@ -43,6 +43,9 @@ SEASON = 2013
 VIS_TOURNAMENTS: list[tuple[int, str]] = [
     (382, "Campeonato NORCECA 2013"),
     (616, "Liga Mundial 2013"),
+    (618, "Grand Champions Cup 2013"),
+    (541, "Liga Europeia 2013"),
+    (375, "Copa Pan-Americana 2013"),
 ]
 
 SEED_CSV = "../data/seed_ratings_2011.csv"

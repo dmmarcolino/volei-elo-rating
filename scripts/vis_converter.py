@@ -59,7 +59,7 @@ COUNTRY_NAME_TO_CODE: dict[str, str] = {
     "algeria": "ALG", "cameroon": "CMR", "morocco": "MAR", "libya": "LBA",
     "colombia": "COL", "chile": "CHI", "peru": "PER", "uruguay": "URU",
     "denmark": "DEN", "sweden": "SWE", "great britain": "GBR",
-    "israel": "ISR", "romania": "ROU", "estonia": "EST",
+    "israel": "ISR", "romania": "ROU", "estonia": "EST", "belarus": "BLR",
 }
 
 
