@@ -3,2248 +3,1072 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elo Vôlei &mdash; Resultados</title>
+<title>Ranking atual &mdash; Elo Vôlei</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #F7F7F4;
-    --ink: #14181F;
-    --ink-soft: #5A6270;
-    --gold: #C98A00;
-    --gold-bg: #FBEFD2;
-    --blue: #1C4E80;
-    --card: #FFFFFF;
-    --border: #E4E2DA;
-    --pos: #1F7A45;
-    --pos-bg: #E3F3E9;
-    --neg: #A5342A;
-    --neg-bg: #FBE7E4;
-    --board: #14181F;
-    --board-text: #F2B705;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-  }
-  header {
-    padding: 2.5rem 1.5rem 1.5rem;
-    max-width: 720px;
-    margin: 0 auto;
-    border-bottom: 3px solid var(--gold);
-  }
-  header h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-  header p {
-    color: var(--ink-soft);
-    margin: 0.25rem 0 0;
-    font-size: 0.95rem;
-  }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 1.5rem;
-  }
-  .tournament {
-    margin-bottom: 2.5rem;
-  }
-  .tournament h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
-    color: var(--blue);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.4rem;
-    margin: 0 0 0.75rem;
-  }
-  .match-row {
-    display: grid;
-    grid-template-columns: 3.2rem 1fr auto 1fr;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.6rem 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-  .match-date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-  }
-  .match-team {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
-  .team-a { justify-content: flex-end; text-align: right; }
-  .team-b { justify-content: flex-start; text-align: left; }
-  .team-code {
-    font-weight: 500;
-  }
-  .scoreboard {
-    background: var(--board);
-    color: var(--board-text);
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 1.1rem;
-    font-variant-numeric: tabular-nums;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    min-width: 3.4rem;
-    text-align: center;
-  }
-  .delta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-  .delta-pos { color: var(--pos); background: var(--pos-bg); }
-  .delta-neg { color: var(--neg); background: var(--neg-bg); }
-  @media (max-width: 560px) {
-    .match-row { grid-template-columns: 2.6rem 1fr auto 1fr; gap: 0.4rem; padding: 0.5rem 0.6rem; }
-    .match-team { font-size: 0.85rem; }
-    .scoreboard { font-size: 0.95rem; min-width: 2.8rem; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>Elo Vôlei</h1>
-  <p>Rating histórico das seleções masculinas &mdash; resultados desde 2013</p>
-</header>
+<nav>
+      <a href="index.html" class="nav-home">Elo Vôlei</a>
+      <div class="nav-anos"><a href="anos/2013.html">2013</a><a href="anos/2015.html">2015</a><a href="anos/2016.html">2016</a><a href="anos/2017.html">2017</a><a href="anos/2018.html">2018</a><a href="anos/2019.html">2019</a><a href="anos/2020.html">2020</a><a href="anos/2021.html">2021</a><a href="anos/2022.html">2022</a><a href="anos/2023.html">2023</a><a href="anos/2024.html">2024</a><a href="anos/2025.html">2025</a><a href="anos/2026.html">2026</a></div>
+    </nav>
 <main>
 
-        <section class="tournament">
-          <h2>Liga Mundial 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">31 mai</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-pos">&#9650; +8.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">POR</span><span class="delta delta-neg">&#9660; -8.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">31 mai</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +11.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-neg">&#9660; -11.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">01 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +12.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -12.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">01 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -21.7</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">POR</span><span class="delta delta-pos">&#9650; +21.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">01 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-neg">&#9660; -19.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +19.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">02 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +11.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -11.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +4.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -4.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -8.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +8.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-neg">&#9660; -10.0</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +10.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +7.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-neg">&#9660; -7.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +9.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">POR</span><span class="delta delta-neg">&#9660; -9.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -18.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-pos">&#9650; +18.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -16.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +16.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -12.8</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FIN</span><span class="delta delta-pos">&#9650; +12.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +3.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -3.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +10.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -10.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +13.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -13.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-neg">&#9660; -20.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">POR</span><span class="delta delta-pos">&#9650; +20.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -15.4</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +15.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -11.7</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FIN</span><span class="delta delta-pos">&#9650; +11.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-neg">&#9660; -9.3</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +9.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +6.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-neg">&#9660; -6.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +9.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -9.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -7.6</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +7.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">14 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +8.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -8.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">14 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +11.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -11.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">14 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -5.4</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +5.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">14 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +8.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-neg">&#9660; -8.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">14 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +12.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -12.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">15 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-pos">&#9650; +23.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -23.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">15 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +8.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -8.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">15 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +7.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-neg">&#9660; -7.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">15 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +9.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -9.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">15 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -5.2</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +5.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">16 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-pos">&#9650; +18.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -18.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">16 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +10.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -10.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-neg">&#9660; -18.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +18.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +22.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -22.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -8.2</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +8.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +10.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -10.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +12.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -10.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +20.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -20.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">NED</span><span class="delta delta-neg">&#9660; -18.2</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">POR</span><span class="delta delta-pos">&#9650; +18.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +17.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -20.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +11.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -9.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +18.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -15.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +11.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">POR</span><span class="delta delta-neg">&#9660; -11.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +22.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -18.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +3.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-neg">&#9660; -2.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -11.4</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +11.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-pos">&#9650; +13.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -10.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -20.4</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +24.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -5.0</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +5.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +15.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -15.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -10.6</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +10.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-neg">&#9660; -22.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +22.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -10.6</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +10.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -16.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +19.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-pos">&#9650; +20.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-neg">&#9660; -20.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -13.5</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +13.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">POR</span><span class="delta delta-pos">&#9650; +11.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -11.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">30 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -9.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +9.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">30 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +5.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -5.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">30 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +10.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-neg">&#9660; -10.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">30 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-pos">&#9650; +10.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -10.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">30 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">POR</span><span class="delta delta-neg">&#9660; -14.7</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-pos">&#9650; +14.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +6.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -6.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -12.0</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +12.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-pos">&#9650; +13.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -13.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-neg">&#9660; -4.4</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +4.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -15.6</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +15.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -10.2</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +12.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -6.7</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +6.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +6.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -6.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-pos">&#9650; +11.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-neg">&#9660; -11.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -8.8</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +8.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +20.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-neg">&#9660; -16.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -11.7</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +14.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">POR</span><span class="delta delta-neg">&#9660; -12.8</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +12.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -5.1</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +5.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +13.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -13.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-pos">&#9650; +12.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -12.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -9.6</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +9.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">POR</span><span class="delta delta-neg">&#9660; -9.5</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +9.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">12 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +12.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -12.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">12 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +13.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-neg">&#9660; -13.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">13 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +5.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -5.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">13 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +9.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -9.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">13 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -10.3</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +10.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">14 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +4.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -4.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">17 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-neg">&#9660; -11.4</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +11.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">17 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -5.7</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +5.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">18 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-neg">&#9660; -16.7</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +16.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">18 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -8.0</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +8.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">19 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-neg">&#9660; -3.2</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +3.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">19 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +3.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -3.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -8.6</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +8.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +5.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -5.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +5.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -5.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 jul</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +8.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-neg">&#9660; -8.4</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Copa Pan-Americana 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">11 jun</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-pos">&#9650; +2.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">TTO</span><span class="delta delta-neg">&#9660; -2.5</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Campeonato Sul-Americano 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">06 ago</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-pos">&#9650; +2.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CHI</span><span class="delta delta-neg">&#9660; -4.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">07 ago</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +0.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">COL</span><span class="delta delta-neg">&#9660; -1.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">08 ago</div>
-              <div class="match-team team-a">
-                <span class="team-code">COL</span><span class="delta delta-pos">&#9650; +12.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">CHI</span><span class="delta delta-neg">&#9660; -12.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 ago</div>
-              <div class="match-team team-a">
-                <span class="team-code">ARG</span><span class="delta delta-pos">&#9650; +3.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">COL</span><span class="delta delta-neg">&#9660; -6.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">09 ago</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +0.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CHI</span><span class="delta delta-neg">&#9660; -0.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">10 ago</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +1.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ARG</span><span class="delta delta-neg">&#9660; -1.8</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Campeonato Europeu 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">BEL</span><span class="delta delta-pos">&#9650; +11.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">BLR</span><span class="delta delta-neg">&#9660; -11.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">DEN</span><span class="delta delta-neg">&#9660; -0.7</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +0.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +7.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">SVK</span><span class="delta delta-neg">&#9660; -10.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-pos">&#9650; +2.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">TUR</span><span class="delta delta-neg">&#9660; -3.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SLO</span><span class="delta delta-pos">&#9650; +24.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -16.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-pos">&#9650; +10.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-neg">&#9660; -10.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-neg">&#9660; -12.2</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +16.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CZE</span><span class="delta delta-neg">&#9660; -7.7</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +3.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">BLR</span><span class="delta delta-neg">&#9660; -1.8</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +0.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">BEL</span><span class="delta delta-pos">&#9650; +5.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">DEN</span><span class="delta delta-neg">&#9660; -5.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SVK</span><span class="delta delta-pos">&#9650; +7.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">TUR</span><span class="delta delta-neg">&#9660; -7.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +12.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -12.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +5.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-neg">&#9660; -5.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SLO</span><span class="delta delta-neg">&#9660; -12.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FIN</span><span class="delta delta-pos">&#9650; +8.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +12.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -9.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">21 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +1.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CZE</span><span class="delta delta-neg">&#9660; -3.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">BLR</span><span class="delta delta-neg">&#9660; -21.9</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">DEN</span><span class="delta delta-pos">&#9650; +21.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -13.4</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BEL</span><span class="delta delta-pos">&#9650; +26.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TUR</span><span class="delta delta-neg">&#9660; -4.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">FRA</span><span class="delta delta-pos">&#9650; +2.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SVK</span><span class="delta delta-neg">&#9660; -8.1</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">POL</span><span class="delta delta-pos">&#9650; +5.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">NED</span><span class="delta delta-pos">&#9650; +8.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">SLO</span><span class="delta delta-neg">&#9660; -12.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +5.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -5.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-pos">&#9650; +6.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CZE</span><span class="delta delta-neg">&#9660; -9.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -4.3</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +4.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +2.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">NED</span><span class="delta delta-neg">&#9660; -2.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +1.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">SVK</span><span class="delta delta-neg">&#9660; -3.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +0.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">DEN</span><span class="delta delta-neg">&#9660; -1.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">POL</span><span class="delta delta-neg">&#9660; -7.0</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +7.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">FRA</span><span class="delta delta-neg">&#9660; -2.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +1.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">FIN</span><span class="delta delta-neg">&#9660; -2.5</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +1.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">BEL</span><span class="delta delta-neg">&#9660; -6.3</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +3.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">GER</span><span class="delta delta-neg">&#9660; -6.4</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-pos">&#9650; +4.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-neg">&#9660; -4.0</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +2.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +3.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -3.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">SRB</span><span class="delta delta-pos">&#9650; +7.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">BUL</span><span class="delta delta-neg">&#9660; -5.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">29 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +4.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -4.0</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Campeonato Africano 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">EGY</span><span class="delta delta-pos">&#9650; +13.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CMR</span><span class="delta delta-neg">&#9660; -13.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">ALG</span><span class="delta delta-neg">&#9660; -20.9</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">MAR</span><span class="delta delta-pos">&#9650; +20.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TUN</span><span class="delta delta-pos">&#9650; +8.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">LBA</span><span class="delta delta-neg">&#9660; -8.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">MAR</span><span class="delta delta-pos">&#9650; +13.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">LBA</span><span class="delta delta-neg">&#9660; -13.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CMR</span><span class="delta delta-pos">&#9650; +11.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ALG</span><span class="delta delta-neg">&#9660; -11.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TUN</span><span class="delta delta-neg">&#9660; -10.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">EGY</span><span class="delta delta-pos">&#9650; +10.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">MAR</span><span class="delta delta-pos">&#9650; +22.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">CMR</span><span class="delta delta-neg">&#9660; -22.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">EGY</span><span class="delta delta-pos">&#9650; +4.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">LBA</span><span class="delta delta-neg">&#9660; -4.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TUN</span><span class="delta delta-pos">&#9650; +13.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ALG</span><span class="delta delta-neg">&#9660; -13.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">26 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">EGY</span><span class="delta delta-pos">&#9650; +7.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ALG</span><span class="delta delta-neg">&#9660; -7.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">26 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CMR</span><span class="delta delta-pos">&#9650; +6.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">LBA</span><span class="delta delta-neg">&#9660; -6.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">26 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TUN</span><span class="delta delta-pos">&#9650; +10.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">MAR</span><span class="delta delta-neg">&#9660; -10.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">27 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">LBA</span><span class="delta delta-neg">&#9660; -9.6</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">ALG</span><span class="delta delta-pos">&#9650; +9.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">27 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">MAR</span><span class="delta delta-neg">&#9660; -5.9</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">EGY</span><span class="delta delta-pos">&#9650; +5.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">27 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TUN</span><span class="delta delta-pos">&#9650; +16.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">CMR</span><span class="delta delta-neg">&#9660; -16.9</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Campeonato NORCECA 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">23 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +1.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">LCA</span><span class="delta delta-neg">&#9660; -1.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-pos">&#9650; +1.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">BAH</span><span class="delta delta-neg">&#9660; -1.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +1.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">GUA</span><span class="delta delta-neg">&#9660; -2.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">MEX</span><span class="delta delta-pos">&#9650; +6.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">GUA</span><span class="delta delta-neg">&#9660; -6.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-pos">&#9650; +4.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">PUR</span><span class="delta delta-neg">&#9660; -6.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +1.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">DOM</span><span class="delta delta-neg">&#9660; -2.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">PUR</span><span class="delta delta-pos">&#9650; +5.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">BAH</span><span class="delta delta-neg">&#9660; -5.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">DOM</span><span class="delta delta-pos">&#9650; +12.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">LCA</span><span class="delta delta-neg">&#9660; -12.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">25 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +3.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">MEX</span><span class="delta delta-neg">&#9660; -7.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">26 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">GUA</span><span class="delta delta-neg">&#9660; -16.2</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BAH</span><span class="delta delta-pos">&#9650; +16.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">26 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">PUR</span><span class="delta delta-pos">&#9650; +14.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">MEX</span><span class="delta delta-neg">&#9660; -14.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">26 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CUB</span><span class="delta delta-pos">&#9650; +2.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">DOM</span><span class="delta delta-neg">&#9660; -3.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">27 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">LCA</span><span class="delta delta-neg">&#9660; -15.3</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BAH</span><span class="delta delta-pos">&#9650; +15.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">27 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +4.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">PUR</span><span class="delta delta-neg">&#9660; -6.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">27 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">CAN</span><span class="delta delta-pos">&#9650; +8.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CUB</span><span class="delta delta-neg">&#9660; -8.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">MEX</span><span class="delta delta-pos">&#9650; +9.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">DOM</span><span class="delta delta-neg">&#9660; -9.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">PUR</span><span class="delta delta-neg">&#9660; -7.1</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CUB</span><span class="delta delta-pos">&#9650; +3.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">28 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +8.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">CAN</span><span class="delta delta-neg">&#9660; -6.1</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Campeonato Asiatico 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">28 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +3.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">KAZ</span><span class="delta delta-neg">&#9660; -5.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">30 set</div>
-              <div class="match-team team-a">
-                <span class="team-code">TPE</span><span class="delta delta-neg">&#9660; -5.9</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CHN</span><span class="delta delta-pos">&#9650; +5.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">01 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">AUS</span><span class="delta delta-neg">&#9660; -16.4</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IND</span><span class="delta delta-pos">&#9650; +16.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">01 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +6.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">KAZ</span><span class="delta delta-neg">&#9660; -10.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">01 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-pos">&#9650; +4.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">TPE</span><span class="delta delta-neg">&#9660; -6.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">02 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +5.8</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -5.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">02 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">CHN</span><span class="delta delta-pos">&#9650; +13.1</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -8.7</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">04 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">THA</span><span class="delta delta-neg">&#9660; -9.4</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-pos">&#9650; +6.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">04 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">CHN</span><span class="delta delta-pos">&#9650; +11.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">IND</span><span class="delta delta-neg">&#9660; -11.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">04 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">AUS</span><span class="delta delta-neg">&#9660; -12.0</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +8.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">AUS</span><span class="delta delta-pos">&#9650; +15.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">IND</span><span class="delta delta-neg">&#9660; -15.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -3.3</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +4.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">05 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">KOR</span><span class="delta delta-pos">&#9650; +7.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">CHN</span><span class="delta delta-neg">&#9660; -15.3</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">KAZ</span><span class="delta delta-neg">&#9660; -20.8</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">TPE</span><span class="delta delta-pos">&#9650; +20.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">THA</span><span class="delta delta-neg">&#9660; -9.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">AUS</span><span class="delta delta-pos">&#9650; +9.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -6.2</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">CHN</span><span class="delta delta-pos">&#9650; +12.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">06 out</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +4.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">KOR</span><span class="delta delta-neg">&#9660; -4.4</span>
-              </div>
-            </div></div>
-        </section>
-        <section class="tournament">
-          <h2>Grand Champions Cup 2013</h2>
-          <div class="matches">
-            <div class="match-row">
-              <div class="match-date">19 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +6.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-neg">&#9660; -6.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">19 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -2.6</span>
-              </div>
-              <div class="scoreboard">1&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +2.6</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">19 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +2.2</span>
-              </div>
-              <div class="scoreboard">3&ndash;1</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -2.2</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -7.4</span>
-              </div>
-              <div class="scoreboard">2&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +11.1</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +2.3</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -3.4</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">20 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +0.6</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -0.8</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-pos">&#9650; +9.7</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -6.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-neg">&#9660; -3.0</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +2.0</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">22 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -0.5</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +0.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +6.0</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -8.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +5.5</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">BRA</span><span class="delta delta-neg">&#9660; -5.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">23 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">ITA</span><span class="delta delta-pos">&#9650; +0.9</span>
-              </div>
-              <div class="scoreboard">3&ndash;0</div>
-              <div class="match-team team-b">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -0.9</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">BRA</span><span class="delta delta-pos">&#9650; +3.4</span>
-              </div>
-              <div class="scoreboard">3&ndash;2</div>
-              <div class="match-team team-b">
-                <span class="team-code">ITA</span><span class="delta delta-neg">&#9660; -3.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">USA</span><span class="delta delta-neg">&#9660; -2.5</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">RUS</span><span class="delta delta-pos">&#9650; +2.5</span>
-              </div>
-            </div>
-            <div class="match-row">
-              <div class="match-date">24 nov</div>
-              <div class="match-team team-a">
-                <span class="team-code">JPN</span><span class="delta delta-neg">&#9660; -1.9</span>
-              </div>
-              <div class="scoreboard">0&ndash;3</div>
-              <div class="match-team team-b">
-                <span class="team-code">IRI</span><span class="delta delta-pos">&#9650; +1.9</span>
-              </div>
-            </div></div>
+        <section>
+          <h1>Ranking atual</h1>
+          <p class="subtitulo">Clique numa seleção para ver o histórico completo desde 2013</p>
+          <div class="ranking">
+        <a class="rank-row" href="selecoes/POL.html">
+          <span class="rank-pos">1</span>
+          <span class="rank-nome">Polônia</span>
+          <span class="rank-codigo">POL</span>
+          <span class="rank-rating">3092</span>
+        </a>
+        <a class="rank-row" href="selecoes/JPN.html">
+          <span class="rank-pos">2</span>
+          <span class="rank-nome">Japão</span>
+          <span class="rank-codigo">JPN</span>
+          <span class="rank-rating">3055</span>
+        </a>
+        <a class="rank-row" href="selecoes/RUS.html">
+          <span class="rank-pos">3</span>
+          <span class="rank-nome">Rússia</span>
+          <span class="rank-codigo">RUS</span>
+          <span class="rank-rating">3008</span>
+        </a>
+        <a class="rank-row" href="selecoes/ITA.html">
+          <span class="rank-pos">4</span>
+          <span class="rank-nome">Itália</span>
+          <span class="rank-codigo">ITA</span>
+          <span class="rank-rating">2993</span>
+        </a>
+        <a class="rank-row" href="selecoes/SLO.html">
+          <span class="rank-pos">5</span>
+          <span class="rank-nome">Eslovênia</span>
+          <span class="rank-codigo">SLO</span>
+          <span class="rank-rating">2988</span>
+        </a>
+        <a class="rank-row" href="selecoes/BRA.html">
+          <span class="rank-pos">6</span>
+          <span class="rank-nome">Brasil</span>
+          <span class="rank-codigo">BRA</span>
+          <span class="rank-rating">2984</span>
+        </a>
+        <a class="rank-row" href="selecoes/USA.html">
+          <span class="rank-pos">7</span>
+          <span class="rank-nome">Estados Unidos</span>
+          <span class="rank-codigo">USA</span>
+          <span class="rank-rating">2960</span>
+        </a>
+        <a class="rank-row" href="selecoes/FRA.html">
+          <span class="rank-pos">8</span>
+          <span class="rank-nome">França</span>
+          <span class="rank-codigo">FRA</span>
+          <span class="rank-rating">2901</span>
+        </a>
+        <a class="rank-row" href="selecoes/ARG.html">
+          <span class="rank-pos">9</span>
+          <span class="rank-nome">Argentina</span>
+          <span class="rank-codigo">ARG</span>
+          <span class="rank-rating">2758</span>
+        </a>
+        <a class="rank-row" href="selecoes/SRB.html">
+          <span class="rank-pos">10</span>
+          <span class="rank-nome">Sérvia</span>
+          <span class="rank-codigo">SRB</span>
+          <span class="rank-rating">2750</span>
+        </a>
+        <a class="rank-row" href="selecoes/BUL.html">
+          <span class="rank-pos">11</span>
+          <span class="rank-nome">Bulgária</span>
+          <span class="rank-codigo">BUL</span>
+          <span class="rank-rating">2736</span>
+        </a>
+        <a class="rank-row" href="selecoes/CUB.html">
+          <span class="rank-pos">12</span>
+          <span class="rank-nome">Cuba</span>
+          <span class="rank-codigo">CUB</span>
+          <span class="rank-rating">2731</span>
+        </a>
+        <a class="rank-row" href="selecoes/GER.html">
+          <span class="rank-pos">13</span>
+          <span class="rank-nome">Alemanha</span>
+          <span class="rank-codigo">GER</span>
+          <span class="rank-rating">2728</span>
+        </a>
+        <a class="rank-row" href="selecoes/UKR.html">
+          <span class="rank-pos">14</span>
+          <span class="rank-nome">Ucrânia</span>
+          <span class="rank-codigo">UKR</span>
+          <span class="rank-rating">2720</span>
+        </a>
+        <a class="rank-row" href="selecoes/IRI.html">
+          <span class="rank-pos">15</span>
+          <span class="rank-nome">Irã</span>
+          <span class="rank-codigo">IRI</span>
+          <span class="rank-rating">2692</span>
+        </a>
+        <a class="rank-row" href="selecoes/FIN.html">
+          <span class="rank-pos">16</span>
+          <span class="rank-nome">Finlândia</span>
+          <span class="rank-codigo">FIN</span>
+          <span class="rank-rating">2677</span>
+        </a>
+        <a class="rank-row" href="selecoes/TUR.html">
+          <span class="rank-pos">17</span>
+          <span class="rank-nome">Turquia</span>
+          <span class="rank-codigo">TUR</span>
+          <span class="rank-rating">2672</span>
+        </a>
+        <a class="rank-row" href="selecoes/BEL.html">
+          <span class="rank-pos">18</span>
+          <span class="rank-nome">Bélgica</span>
+          <span class="rank-codigo">BEL</span>
+          <span class="rank-rating">2663</span>
+        </a>
+        <a class="rank-row" href="selecoes/NED.html">
+          <span class="rank-pos">19</span>
+          <span class="rank-nome">Países Baixos</span>
+          <span class="rank-codigo">NED</span>
+          <span class="rank-rating">2649</span>
+        </a>
+        <a class="rank-row" href="selecoes/CZE.html">
+          <span class="rank-pos">20</span>
+          <span class="rank-nome">Chéquia</span>
+          <span class="rank-codigo">CZE</span>
+          <span class="rank-rating">2645</span>
+        </a>
+        <a class="rank-row" href="selecoes/EGY.html">
+          <span class="rank-pos">21</span>
+          <span class="rank-nome">Egito</span>
+          <span class="rank-codigo">EGY</span>
+          <span class="rank-rating">2636</span>
+        </a>
+        <a class="rank-row" href="selecoes/MEX.html">
+          <span class="rank-pos">22</span>
+          <span class="rank-nome">México</span>
+          <span class="rank-codigo">MEX</span>
+          <span class="rank-rating">2636</span>
+        </a>
+        <a class="rank-row" href="selecoes/CAN.html">
+          <span class="rank-pos">23</span>
+          <span class="rank-nome">Canadá</span>
+          <span class="rank-codigo">CAN</span>
+          <span class="rank-rating">2636</span>
+        </a>
+        <a class="rank-row" href="selecoes/TUN.html">
+          <span class="rank-pos">24</span>
+          <span class="rank-nome">Tunísia</span>
+          <span class="rank-codigo">TUN</span>
+          <span class="rank-rating">2620</span>
+        </a>
+        <a class="rank-row" href="selecoes/KOR.html">
+          <span class="rank-pos">25</span>
+          <span class="rank-nome">Coreia do Sul</span>
+          <span class="rank-codigo">KOR</span>
+          <span class="rank-rating">2607</span>
+        </a>
+        <a class="rank-row" href="selecoes/PUR.html">
+          <span class="rank-pos">26</span>
+          <span class="rank-nome">Porto Rico</span>
+          <span class="rank-codigo">PUR</span>
+          <span class="rank-rating">2591</span>
+        </a>
+        <a class="rank-row" href="selecoes/VEN.html">
+          <span class="rank-pos">27</span>
+          <span class="rank-nome">Venezuela</span>
+          <span class="rank-codigo">VEN</span>
+          <span class="rank-rating">2587</span>
+        </a>
+        <a class="rank-row" href="selecoes/ESP.html">
+          <span class="rank-pos">28</span>
+          <span class="rank-nome">Espanha</span>
+          <span class="rank-codigo">ESP</span>
+          <span class="rank-rating">2580</span>
+        </a>
+        <a class="rank-row" href="selecoes/CHN.html">
+          <span class="rank-pos">29</span>
+          <span class="rank-nome">China</span>
+          <span class="rank-codigo">CHN</span>
+          <span class="rank-rating">2575</span>
+        </a>
+        <a class="rank-row" href="selecoes/CMR.html">
+          <span class="rank-pos">30</span>
+          <span class="rank-nome">Camarões</span>
+          <span class="rank-codigo">CMR</span>
+          <span class="rank-rating">2573</span>
+        </a>
+        <a class="rank-row" href="selecoes/POR.html">
+          <span class="rank-pos">31</span>
+          <span class="rank-nome">Portugal</span>
+          <span class="rank-codigo">POR</span>
+          <span class="rank-rating">2566</span>
+        </a>
+        <a class="rank-row" href="selecoes/TPE.html">
+          <span class="rank-pos">32</span>
+          <span class="rank-nome">Taiwan</span>
+          <span class="rank-codigo">TPE</span>
+          <span class="rank-rating">2551</span>
+        </a>
+        <a class="rank-row" href="selecoes/QAT.html">
+          <span class="rank-pos">33</span>
+          <span class="rank-nome">Catar</span>
+          <span class="rank-codigo">QAT</span>
+          <span class="rank-rating">2540</span>
+        </a>
+        <a class="rank-row" href="selecoes/SVK.html">
+          <span class="rank-pos">34</span>
+          <span class="rank-nome">Eslováquia</span>
+          <span class="rank-codigo">SVK</span>
+          <span class="rank-rating">2535</span>
+        </a>
+        <a class="rank-row" href="selecoes/CYP.html">
+          <span class="rank-pos">35</span>
+          <span class="rank-nome">Chipre</span>
+          <span class="rank-codigo">CYP</span>
+          <span class="rank-rating">2533</span>
+        </a>
+        <a class="rank-row" href="selecoes/AUS.html">
+          <span class="rank-pos">36</span>
+          <span class="rank-nome">Austrália</span>
+          <span class="rank-codigo">AUS</span>
+          <span class="rank-rating">2523</span>
+        </a>
+        <a class="rank-row" href="selecoes/COL.html">
+          <span class="rank-pos">37</span>
+          <span class="rank-nome">Colômbia</span>
+          <span class="rank-codigo">COL</span>
+          <span class="rank-rating">2520</span>
+        </a>
+        <a class="rank-row" href="selecoes/ALG.html">
+          <span class="rank-pos">38</span>
+          <span class="rank-nome">Argélia</span>
+          <span class="rank-codigo">ALG</span>
+          <span class="rank-rating">2509</span>
+        </a>
+        <a class="rank-row" href="selecoes/ROU.html">
+          <span class="rank-pos">39</span>
+          <span class="rank-nome">Romênia</span>
+          <span class="rank-codigo">ROU</span>
+          <span class="rank-rating">2502</span>
+        </a>
+        <a class="rank-row" href="selecoes/BLR.html">
+          <span class="rank-pos">40</span>
+          <span class="rank-nome">Bielorrússia</span>
+          <span class="rank-codigo">BLR</span>
+          <span class="rank-rating">2494</span>
+        </a>
+        <a class="rank-row" href="selecoes/EST.html">
+          <span class="rank-pos">41</span>
+          <span class="rank-nome">Estônia</span>
+          <span class="rank-codigo">EST</span>
+          <span class="rank-rating">2494</span>
+        </a>
+        <a class="rank-row" href="selecoes/PAK.html">
+          <span class="rank-pos">42</span>
+          <span class="rank-nome">Paquistão</span>
+          <span class="rank-codigo">PAK</span>
+          <span class="rank-rating">2466</span>
+        </a>
+        <a class="rank-row" href="selecoes/CRO.html">
+          <span class="rank-pos">43</span>
+          <span class="rank-nome">Croácia</span>
+          <span class="rank-codigo">CRO</span>
+          <span class="rank-rating">2461</span>
+        </a>
+        <a class="rank-row" href="selecoes/DOM.html">
+          <span class="rank-pos">44</span>
+          <span class="rank-nome">República Dominicana</span>
+          <span class="rank-codigo">DOM</span>
+          <span class="rank-rating">2460</span>
+        </a>
+        <a class="rank-row" href="selecoes/CHI.html">
+          <span class="rank-pos">45</span>
+          <span class="rank-nome">Chile</span>
+          <span class="rank-codigo">CHI</span>
+          <span class="rank-rating">2448</span>
+        </a>
+        <a class="rank-row" href="selecoes/KAZ.html">
+          <span class="rank-pos">46</span>
+          <span class="rank-nome">Cazaquistão</span>
+          <span class="rank-codigo">KAZ</span>
+          <span class="rank-rating">2445</span>
+        </a>
+        <a class="rank-row" href="selecoes/MAR.html">
+          <span class="rank-pos">47</span>
+          <span class="rank-nome">Marrocos</span>
+          <span class="rank-codigo">MAR</span>
+          <span class="rank-rating">2442</span>
+        </a>
+        <a class="rank-row" href="selecoes/GRE.html">
+          <span class="rank-pos">48</span>
+          <span class="rank-nome">Grécia</span>
+          <span class="rank-codigo">GRE</span>
+          <span class="rank-rating">2441</span>
+        </a>
+        <a class="rank-row" href="selecoes/SUI.html">
+          <span class="rank-pos">49</span>
+          <span class="rank-nome">Suíça</span>
+          <span class="rank-codigo">SUI</span>
+          <span class="rank-rating">2429</span>
+        </a>
+        <a class="rank-row" href="selecoes/IND.html">
+          <span class="rank-pos">50</span>
+          <span class="rank-nome">Índia</span>
+          <span class="rank-codigo">IND</span>
+          <span class="rank-rating">2425</span>
+        </a>
+        <a class="rank-row" href="selecoes/MNE.html">
+          <span class="rank-pos">51</span>
+          <span class="rank-nome">Montenegro</span>
+          <span class="rank-codigo">MNE</span>
+          <span class="rank-rating">2422</span>
+        </a>
+        <a class="rank-row" href="selecoes/ISR.html">
+          <span class="rank-pos">52</span>
+          <span class="rank-nome">Israel</span>
+          <span class="rank-codigo">ISR</span>
+          <span class="rank-rating">2421</span>
+        </a>
+        <a class="rank-row" href="selecoes/CGO.html">
+          <span class="rank-pos">53</span>
+          <span class="rank-nome">Congo</span>
+          <span class="rank-codigo">CGO</span>
+          <span class="rank-rating">2413</span>
+        </a>
+        <a class="rank-row" href="selecoes/HUN.html">
+          <span class="rank-pos">54</span>
+          <span class="rank-nome">Hungria</span>
+          <span class="rank-codigo">HUN</span>
+          <span class="rank-rating">2412</span>
+        </a>
+        <a class="rank-row" href="selecoes/DEN.html">
+          <span class="rank-pos">55</span>
+          <span class="rank-nome">Dinamarca</span>
+          <span class="rank-codigo">DEN</span>
+          <span class="rank-rating">2411</span>
+        </a>
+        <a class="rank-row" href="selecoes/INA.html">
+          <span class="rank-pos">56</span>
+          <span class="rank-nome">Indonésia</span>
+          <span class="rank-codigo">INA</span>
+          <span class="rank-rating">2407</span>
+        </a>
+        <a class="rank-row" href="selecoes/MKD.html">
+          <span class="rank-pos">57</span>
+          <span class="rank-nome">Macedônia do Norte</span>
+          <span class="rank-codigo">MKD</span>
+          <span class="rank-rating">2404</span>
+        </a>
+        <a class="rank-row" href="selecoes/LAT.html">
+          <span class="rank-pos">58</span>
+          <span class="rank-nome">Letônia</span>
+          <span class="rank-codigo">LAT</span>
+          <span class="rank-rating">2397</span>
+        </a>
+        <a class="rank-row" href="selecoes/BRN.html">
+          <span class="rank-pos">59</span>
+          <span class="rank-nome">Barein</span>
+          <span class="rank-codigo">BRN</span>
+          <span class="rank-rating">2394</span>
+        </a>
+        <a class="rank-row" href="selecoes/MTQ.html">
+          <span class="rank-pos">60</span>
+          <span class="rank-nome">Martinica</span>
+          <span class="rank-codigo">MTQ</span>
+          <span class="rank-rating">2392</span>
+        </a>
+        <a class="rank-row" href="selecoes/PER.html">
+          <span class="rank-pos">61</span>
+          <span class="rank-nome">Peru</span>
+          <span class="rank-codigo">PER</span>
+          <span class="rank-rating">2388</span>
+        </a>
+        <a class="rank-row" href="selecoes/SWE.html">
+          <span class="rank-pos">62</span>
+          <span class="rank-nome">Suécia</span>
+          <span class="rank-codigo">SWE</span>
+          <span class="rank-rating">2382</span>
+        </a>
+        <a class="rank-row" href="selecoes/CRC.html">
+          <span class="rank-pos">63</span>
+          <span class="rank-nome">Costa Rica</span>
+          <span class="rank-codigo">CRC</span>
+          <span class="rank-rating">2372</span>
+        </a>
+        <a class="rank-row" href="selecoes/ESA.html">
+          <span class="rank-pos">64</span>
+          <span class="rank-nome">El Salvador</span>
+          <span class="rank-codigo">ESA</span>
+          <span class="rank-rating">2369</span>
+        </a>
+        <a class="rank-row" href="selecoes/BAH.html">
+          <span class="rank-pos">65</span>
+          <span class="rank-nome">Bahamas</span>
+          <span class="rank-codigo">BAH</span>
+          <span class="rank-rating">2369</span>
+        </a>
+        <a class="rank-row" href="selecoes/TAN.html">
+          <span class="rank-pos">66</span>
+          <span class="rank-nome">TAN</span>
+          <span class="rank-codigo">TAN</span>
+          <span class="rank-rating">2365</span>
+        </a>
+        <a class="rank-row" href="selecoes/THA.html">
+          <span class="rank-pos">67</span>
+          <span class="rank-nome">Tailândia</span>
+          <span class="rank-codigo">THA</span>
+          <span class="rank-rating">2361</span>
+        </a>
+        <a class="rank-row" href="selecoes/LBA.html">
+          <span class="rank-pos">68</span>
+          <span class="rank-nome">Líbia</span>
+          <span class="rank-codigo">LBA</span>
+          <span class="rank-rating">2361</span>
+        </a>
+        <a class="rank-row" href="selecoes/GUA.html">
+          <span class="rank-pos">69</span>
+          <span class="rank-nome">Guatemala</span>
+          <span class="rank-codigo">GUA</span>
+          <span class="rank-rating">2360</span>
+        </a>
+        <a class="rank-row" href="selecoes/RWA.html">
+          <span class="rank-pos">70</span>
+          <span class="rank-nome">Ruanda</span>
+          <span class="rank-codigo">RWA</span>
+          <span class="rank-rating">2353</span>
+        </a>
+        <a class="rank-row" href="selecoes/GUY.html">
+          <span class="rank-pos">71</span>
+          <span class="rank-nome">Guiana</span>
+          <span class="rank-codigo">GUY</span>
+          <span class="rank-rating">2349</span>
+        </a>
+        <a class="rank-row" href="selecoes/DMA.html">
+          <span class="rank-pos">72</span>
+          <span class="rank-nome">Dominica</span>
+          <span class="rank-codigo">DMA</span>
+          <span class="rank-rating">2349</span>
+        </a>
+        <a class="rank-row" href="selecoes/JAM.html">
+          <span class="rank-pos">73</span>
+          <span class="rank-nome">Jamaica</span>
+          <span class="rank-codigo">JAM</span>
+          <span class="rank-rating">2348</span>
+        </a>
+        <a class="rank-row" href="selecoes/ENG.html">
+          <span class="rank-pos">74</span>
+          <span class="rank-nome">Inglaterra</span>
+          <span class="rank-codigo">ENG</span>
+          <span class="rank-rating">2347</span>
+        </a>
+        <a class="rank-row" href="selecoes/TTO.html">
+          <span class="rank-pos">75</span>
+          <span class="rank-nome">Trinidad e Tobago</span>
+          <span class="rank-codigo">TTO</span>
+          <span class="rank-rating">2343</span>
+        </a>
+        <a class="rank-row" href="selecoes/IRQ.html">
+          <span class="rank-pos">76</span>
+          <span class="rank-nome">Iraque</span>
+          <span class="rank-codigo">IRQ</span>
+          <span class="rank-rating">2343</span>
+        </a>
+        <a class="rank-row" href="selecoes/KEN.html">
+          <span class="rank-pos">77</span>
+          <span class="rank-nome">Quênia</span>
+          <span class="rank-codigo">KEN</span>
+          <span class="rank-rating">2343</span>
+        </a>
+        <a class="rank-row" href="selecoes/CHA.html">
+          <span class="rank-pos">78</span>
+          <span class="rank-nome">Chade</span>
+          <span class="rank-codigo">CHA</span>
+          <span class="rank-rating">2343</span>
+        </a>
+        <a class="rank-row" href="selecoes/NIG.html">
+          <span class="rank-pos">79</span>
+          <span class="rank-nome">Níger</span>
+          <span class="rank-codigo">NIG</span>
+          <span class="rank-rating">2342</span>
+        </a>
+        <a class="rank-row" href="selecoes/KSA.html">
+          <span class="rank-pos">80</span>
+          <span class="rank-nome">Arábia Saudita</span>
+          <span class="rank-codigo">KSA</span>
+          <span class="rank-rating">2342</span>
+        </a>
+        <a class="rank-row" href="selecoes/NCL.html">
+          <span class="rank-pos">81</span>
+          <span class="rank-nome">Nova Caledônia</span>
+          <span class="rank-codigo">NCL</span>
+          <span class="rank-rating">2337</span>
+        </a>
+        <a class="rank-row" href="selecoes/WLF.html">
+          <span class="rank-pos">82</span>
+          <span class="rank-nome">Wallis e Futuna</span>
+          <span class="rank-codigo">WLF</span>
+          <span class="rank-rating">2334</span>
+        </a>
+        <a class="rank-row" href="selecoes/SKN.html">
+          <span class="rank-pos">83</span>
+          <span class="rank-nome">São Cristóvão e Neves</span>
+          <span class="rank-codigo">SKN</span>
+          <span class="rank-rating">2334</span>
+        </a>
+        <a class="rank-row" href="selecoes/GAM.html">
+          <span class="rank-pos">84</span>
+          <span class="rank-nome">GAM</span>
+          <span class="rank-codigo">GAM</span>
+          <span class="rank-rating">2329</span>
+        </a>
+        <a class="rank-row" href="selecoes/PNG.html">
+          <span class="rank-pos">85</span>
+          <span class="rank-nome">Papua-Nova Guiné</span>
+          <span class="rank-codigo">PNG</span>
+          <span class="rank-rating">2327</span>
+        </a>
+        <a class="rank-row" href="selecoes/BDI.html">
+          <span class="rank-pos">86</span>
+          <span class="rank-nome">Burundi</span>
+          <span class="rank-codigo">BDI</span>
+          <span class="rank-rating">2327</span>
+        </a>
+        <a class="rank-row" href="selecoes/PAR.html">
+          <span class="rank-pos">87</span>
+          <span class="rank-nome">Paraguai</span>
+          <span class="rank-codigo">PAR</span>
+          <span class="rank-rating">2326</span>
+        </a>
+        <a class="rank-row" href="selecoes/KOS.html">
+          <span class="rank-pos">88</span>
+          <span class="rank-nome">Kosovo</span>
+          <span class="rank-codigo">KOS</span>
+          <span class="rank-rating">2325</span>
+        </a>
+        <a class="rank-row" href="selecoes/BAR.html">
+          <span class="rank-pos">89</span>
+          <span class="rank-nome">Barbados</span>
+          <span class="rank-codigo">BAR</span>
+          <span class="rank-rating">2324</span>
+        </a>
+        <a class="rank-row" href="selecoes/SEY.html">
+          <span class="rank-pos">90</span>
+          <span class="rank-nome">Seicheles</span>
+          <span class="rank-codigo">SEY</span>
+          <span class="rank-rating">2323</span>
+        </a>
+        <a class="rank-row" href="selecoes/MDA.html">
+          <span class="rank-pos">91</span>
+          <span class="rank-nome">Moldávia</span>
+          <span class="rank-codigo">MDA</span>
+          <span class="rank-rating">2320</span>
+        </a>
+        <a class="rank-row" href="selecoes/MLI.html">
+          <span class="rank-pos">92</span>
+          <span class="rank-nome">MLI</span>
+          <span class="rank-codigo">MLI</span>
+          <span class="rank-rating">2320</span>
+        </a>
+        <a class="rank-row" href="selecoes/ECU.html">
+          <span class="rank-pos">93</span>
+          <span class="rank-nome">Equador</span>
+          <span class="rank-codigo">ECU</span>
+          <span class="rank-rating">2317</span>
+        </a>
+        <a class="rank-row" href="selecoes/ALB.html">
+          <span class="rank-pos">94</span>
+          <span class="rank-nome">Albânia</span>
+          <span class="rank-codigo">ALB</span>
+          <span class="rank-rating">2316</span>
+        </a>
+        <a class="rank-row" href="selecoes/AUT.html">
+          <span class="rank-pos">95</span>
+          <span class="rank-nome">Áustria</span>
+          <span class="rank-codigo">AUT</span>
+          <span class="rank-rating">2310</span>
+        </a>
+        <a class="rank-row" href="selecoes/LBN.html">
+          <span class="rank-pos">96</span>
+          <span class="rank-nome">Líbano</span>
+          <span class="rank-codigo">LBN</span>
+          <span class="rank-rating">2308</span>
+        </a>
+        <a class="rank-row" href="selecoes/URU.html">
+          <span class="rank-pos">97</span>
+          <span class="rank-nome">Uruguai</span>
+          <span class="rank-codigo">URU</span>
+          <span class="rank-rating">2306</span>
+        </a>
+        <a class="rank-row" href="selecoes/COD.html">
+          <span class="rank-pos">98</span>
+          <span class="rank-nome">República Democrática do Congo</span>
+          <span class="rank-codigo">COD</span>
+          <span class="rank-rating">2306</span>
+        </a>
+        <a class="rank-row" href="selecoes/JOR.html">
+          <span class="rank-pos">99</span>
+          <span class="rank-nome">Jordânia</span>
+          <span class="rank-codigo">JOR</span>
+          <span class="rank-rating">2305</span>
+        </a>
+        <a class="rank-row" href="selecoes/LCA.html">
+          <span class="rank-pos">100</span>
+          <span class="rank-nome">Santa Lúcia</span>
+          <span class="rank-codigo">LCA</span>
+          <span class="rank-rating">2297</span>
+        </a>
+        <a class="rank-row" href="selecoes/MYA.html">
+          <span class="rank-pos">101</span>
+          <span class="rank-nome">Mianmar</span>
+          <span class="rank-codigo">MYA</span>
+          <span class="rank-rating">2294</span>
+        </a>
+        <a class="rank-row" href="selecoes/LUX.html">
+          <span class="rank-pos">102</span>
+          <span class="rank-nome">Luxemburgo</span>
+          <span class="rank-codigo">LUX</span>
+          <span class="rank-rating">2292</span>
+        </a>
+        <a class="rank-row" href="selecoes/LAO.html">
+          <span class="rank-pos">103</span>
+          <span class="rank-nome">Laos</span>
+          <span class="rank-codigo">LAO</span>
+          <span class="rank-rating">2290</span>
+        </a>
+        <a class="rank-row" href="selecoes/ANT.html">
+          <span class="rank-pos">104</span>
+          <span class="rank-nome">Antígua e Barbuda</span>
+          <span class="rank-codigo">ANT</span>
+          <span class="rank-rating">2290</span>
+        </a>
+        <a class="rank-row" href="selecoes/NGR.html">
+          <span class="rank-pos">105</span>
+          <span class="rank-nome">Nigéria</span>
+          <span class="rank-codigo">NGR</span>
+          <span class="rank-rating">2288</span>
+        </a>
+        <a class="rank-row" href="selecoes/ARU.html">
+          <span class="rank-pos">106</span>
+          <span class="rank-nome">Aruba</span>
+          <span class="rank-codigo">ARU</span>
+          <span class="rank-rating">2288</span>
+        </a>
+        <a class="rank-row" href="selecoes/GHA.html">
+          <span class="rank-pos">107</span>
+          <span class="rank-nome">Gana</span>
+          <span class="rank-codigo">GHA</span>
+          <span class="rank-rating">2285</span>
+        </a>
+        <a class="rank-row" href="selecoes/SRI.html">
+          <span class="rank-pos">108</span>
+          <span class="rank-nome">Sri Lanka</span>
+          <span class="rank-codigo">SRI</span>
+          <span class="rank-rating">2285</span>
+        </a>
+        <a class="rank-row" href="selecoes/UGA.html">
+          <span class="rank-pos">109</span>
+          <span class="rank-nome">Uganda</span>
+          <span class="rank-codigo">UGA</span>
+          <span class="rank-rating">2285</span>
+        </a>
+        <a class="rank-row" href="selecoes/FAI.html">
+          <span class="rank-pos">110</span>
+          <span class="rank-nome">Ilhas Faroé</span>
+          <span class="rank-codigo">FAI</span>
+          <span class="rank-rating">2278</span>
+        </a>
+        <a class="rank-row" href="selecoes/RSA.html">
+          <span class="rank-pos">111</span>
+          <span class="rank-nome">África do Sul</span>
+          <span class="rank-codigo">RSA</span>
+          <span class="rank-rating">2277</span>
+        </a>
+        <a class="rank-row" href="selecoes/HAI.html">
+          <span class="rank-pos">112</span>
+          <span class="rank-nome">Haiti</span>
+          <span class="rank-codigo">HAI</span>
+          <span class="rank-rating">2276</span>
+        </a>
+        <a class="rank-row" href="selecoes/ISV.html">
+          <span class="rank-pos">113</span>
+          <span class="rank-nome">Ilhas Virgens Americanas</span>
+          <span class="rank-codigo">ISV</span>
+          <span class="rank-rating">2274</span>
+        </a>
+        <a class="rank-row" href="selecoes/PAN.html">
+          <span class="rank-pos">114</span>
+          <span class="rank-nome">Panamá</span>
+          <span class="rank-codigo">PAN</span>
+          <span class="rank-rating">2274</span>
+        </a>
+        <a class="rank-row" href="selecoes/SCO.html">
+          <span class="rank-pos">115</span>
+          <span class="rank-nome">Escócia</span>
+          <span class="rank-codigo">SCO</span>
+          <span class="rank-rating">2274</span>
+        </a>
+        <a class="rank-row" href="selecoes/GUD.html">
+          <span class="rank-pos">116</span>
+          <span class="rank-nome">Guadalupe</span>
+          <span class="rank-codigo">GUD</span>
+          <span class="rank-rating">2272</span>
+        </a>
+        <a class="rank-row" href="selecoes/SUD.html">
+          <span class="rank-pos">117</span>
+          <span class="rank-nome">Sudão</span>
+          <span class="rank-codigo">SUD</span>
+          <span class="rank-rating">2270</span>
+        </a>
+        <a class="rank-row" href="selecoes/BER.html">
+          <span class="rank-pos">118</span>
+          <span class="rank-nome">Bermudas</span>
+          <span class="rank-codigo">BER</span>
+          <span class="rank-rating">2270</span>
+        </a>
+        <a class="rank-row" href="selecoes/MGL.html">
+          <span class="rank-pos">119</span>
+          <span class="rank-nome">Mongólia</span>
+          <span class="rank-codigo">MGL</span>
+          <span class="rank-rating">2269</span>
+        </a>
+        <a class="rank-row" href="selecoes/SEN.html">
+          <span class="rank-pos">120</span>
+          <span class="rank-nome">Senegal</span>
+          <span class="rank-codigo">SEN</span>
+          <span class="rank-rating">2269</span>
+        </a>
+        <a class="rank-row" href="selecoes/MRI.html">
+          <span class="rank-pos">121</span>
+          <span class="rank-nome">Maurícia</span>
+          <span class="rank-codigo">MRI</span>
+          <span class="rank-rating">2267</span>
+        </a>
+        <a class="rank-row" href="selecoes/FIJ.html">
+          <span class="rank-pos">122</span>
+          <span class="rank-nome">Fiji</span>
+          <span class="rank-codigo">FIJ</span>
+          <span class="rank-rating">2265</span>
+        </a>
+        <a class="rank-row" href="selecoes/GAB.html">
+          <span class="rank-pos">123</span>
+          <span class="rank-nome">Gabão</span>
+          <span class="rank-codigo">GAB</span>
+          <span class="rank-rating">2261</span>
+        </a>
+        <a class="rank-row" href="selecoes/MAS.html">
+          <span class="rank-pos">124</span>
+          <span class="rank-nome">Malásia</span>
+          <span class="rank-codigo">MAS</span>
+          <span class="rank-rating">2259</span>
+        </a>
+        <a class="rank-row" href="selecoes/NZL.html">
+          <span class="rank-pos">125</span>
+          <span class="rank-nome">Nova Zelândia</span>
+          <span class="rank-codigo">NZL</span>
+          <span class="rank-rating">2259</span>
+        </a>
+        <a class="rank-row" href="selecoes/AHO.html">
+          <span class="rank-pos">126</span>
+          <span class="rank-nome">Antilhas Holandesas</span>
+          <span class="rank-codigo">AHO</span>
+          <span class="rank-rating">2259</span>
+        </a>
+        <a class="rank-row" href="selecoes/BAN.html">
+          <span class="rank-pos">127</span>
+          <span class="rank-nome">Bangladesh</span>
+          <span class="rank-codigo">BAN</span>
+          <span class="rank-rating">2255</span>
+        </a>
+        <a class="rank-row" href="selecoes/ERI.html">
+          <span class="rank-pos">128</span>
+          <span class="rank-nome">Eritreia</span>
+          <span class="rank-codigo">ERI</span>
+          <span class="rank-rating">2255</span>
+        </a>
+        <a class="rank-row" href="selecoes/PHI.html">
+          <span class="rank-pos">129</span>
+          <span class="rank-nome">Filipinas</span>
+          <span class="rank-codigo">PHI</span>
+          <span class="rank-rating">2255</span>
+        </a>
+        <a class="rank-row" href="selecoes/GRL.html">
+          <span class="rank-pos">130</span>
+          <span class="rank-nome">Groenlândia</span>
+          <span class="rank-codigo">GRL</span>
+          <span class="rank-rating">2254</span>
+        </a>
+        <a class="rank-row" href="selecoes/PYF.html">
+          <span class="rank-pos">131</span>
+          <span class="rank-nome">Taiti</span>
+          <span class="rank-codigo">PYF</span>
+          <span class="rank-rating">2252</span>
+        </a>
+        <a class="rank-row" href="selecoes/VIE.html">
+          <span class="rank-pos">132</span>
+          <span class="rank-nome">Vietnã</span>
+          <span class="rank-codigo">VIE</span>
+          <span class="rank-rating">2251</span>
+        </a>
+        <a class="rank-row" href="selecoes/MAW.html">
+          <span class="rank-pos">133</span>
+          <span class="rank-nome">Malawi</span>
+          <span class="rank-codigo">MAW</span>
+          <span class="rank-rating">2251</span>
+        </a>
+        <a class="rank-row" href="selecoes/UAE.html">
+          <span class="rank-pos">134</span>
+          <span class="rank-nome">Emirados Árabes Unidos</span>
+          <span class="rank-codigo">UAE</span>
+          <span class="rank-rating">2245</span>
+        </a>
+        <a class="rank-row" href="selecoes/ZIM.html">
+          <span class="rank-pos">135</span>
+          <span class="rank-nome">Zimbábue</span>
+          <span class="rank-codigo">ZIM</span>
+          <span class="rank-rating">2244</span>
+        </a>
+        <a class="rank-row" href="selecoes/HON.html">
+          <span class="rank-pos">136</span>
+          <span class="rank-nome">Honduras</span>
+          <span class="rank-codigo">HON</span>
+          <span class="rank-rating">2244</span>
+        </a>
+        <a class="rank-row" href="selecoes/VIN.html">
+          <span class="rank-pos">137</span>
+          <span class="rank-nome">São Vicente e Granadinas</span>
+          <span class="rank-codigo">VIN</span>
+          <span class="rank-rating">2243</span>
+        </a>
+        <a class="rank-row" href="selecoes/AIA.html">
+          <span class="rank-pos">138</span>
+          <span class="rank-nome">Anguila</span>
+          <span class="rank-codigo">AIA</span>
+          <span class="rank-rating">2243</span>
+        </a>
+        <a class="rank-row" href="selecoes/BIH.html">
+          <span class="rank-pos">139</span>
+          <span class="rank-nome">Bósnia e Herzegovina</span>
+          <span class="rank-codigo">BIH</span>
+          <span class="rank-rating">2243</span>
+        </a>
+        <a class="rank-row" href="selecoes/ISL.html">
+          <span class="rank-pos">140</span>
+          <span class="rank-nome">Islândia</span>
+          <span class="rank-codigo">ISL</span>
+          <span class="rank-rating">2242</span>
+        </a>
+        <a class="rank-row" href="selecoes/NIR.html">
+          <span class="rank-pos">141</span>
+          <span class="rank-nome">Irlanda do Norte</span>
+          <span class="rank-codigo">NIR</span>
+          <span class="rank-rating">2240</span>
+        </a>
+        <a class="rank-row" href="selecoes/SMR.html">
+          <span class="rank-pos">142</span>
+          <span class="rank-nome">San Marino</span>
+          <span class="rank-codigo">SMR</span>
+          <span class="rank-rating">2238</span>
+        </a>
+        <a class="rank-row" href="selecoes/TGA.html">
+          <span class="rank-pos">143</span>
+          <span class="rank-nome">Tonga</span>
+          <span class="rank-codigo">TGA</span>
+          <span class="rank-rating">2236</span>
+        </a>
+        <a class="rank-row" href="selecoes/IVB.html">
+          <span class="rank-pos">144</span>
+          <span class="rank-nome">Ilhas Virgens Britânicas</span>
+          <span class="rank-codigo">IVB</span>
+          <span class="rank-rating">2236</span>
+        </a>
+        <a class="rank-row" href="selecoes/BOL.html">
+          <span class="rank-pos">145</span>
+          <span class="rank-nome">Bolívia</span>
+          <span class="rank-codigo">BOL</span>
+          <span class="rank-rating">2235</span>
+        </a>
+        <a class="rank-row" href="selecoes/SAM.html">
+          <span class="rank-pos">146</span>
+          <span class="rank-nome">Samoa</span>
+          <span class="rank-codigo">SAM</span>
+          <span class="rank-rating">2235</span>
+        </a>
+        <a class="rank-row" href="selecoes/AND.html">
+          <span class="rank-pos">147</span>
+          <span class="rank-nome">Andorra</span>
+          <span class="rank-codigo">AND</span>
+          <span class="rank-rating">2235</span>
+        </a>
+        <a class="rank-row" href="selecoes/MNT.html">
+          <span class="rank-pos">148</span>
+          <span class="rank-nome">Montserrat</span>
+          <span class="rank-codigo">MNT</span>
+          <span class="rank-rating">2233</span>
+        </a>
+        <a class="rank-row" href="selecoes/REU.html">
+          <span class="rank-pos">149</span>
+          <span class="rank-nome">Reunião</span>
+          <span class="rank-codigo">REU</span>
+          <span class="rank-rating">2226</span>
+        </a>
+        <a class="rank-row" href="selecoes/OMA.html">
+          <span class="rank-pos">150</span>
+          <span class="rank-nome">Omã</span>
+          <span class="rank-codigo">OMA</span>
+          <span class="rank-rating">2219</span>
+        </a>
+        <a class="rank-row" href="selecoes/CAY.html">
+          <span class="rank-pos">151</span>
+          <span class="rank-nome">Ilhas Cayman</span>
+          <span class="rank-codigo">CAY</span>
+          <span class="rank-rating">2210</span>
+        </a>
+        <a class="rank-row" href="selecoes/NCA.html">
+          <span class="rank-pos">152</span>
+          <span class="rank-nome">Nicarágua</span>
+          <span class="rank-codigo">NCA</span>
+          <span class="rank-rating">2210</span>
+        </a>
+        <a class="rank-row" href="selecoes/NOR.html">
+          <span class="rank-pos">153</span>
+          <span class="rank-nome">Noruega</span>
+          <span class="rank-codigo">NOR</span>
+          <span class="rank-rating">2208</span>
+        </a>
+        <a class="rank-row" href="selecoes/AFG.html">
+          <span class="rank-pos">154</span>
+          <span class="rank-nome">Afeganistão</span>
+          <span class="rank-codigo">AFG</span>
+          <span class="rank-rating">2205</span>
+        </a>
+        <a class="rank-row" href="selecoes/MAD.html">
+          <span class="rank-pos">155</span>
+          <span class="rank-nome">Madagascar</span>
+          <span class="rank-codigo">MAD</span>
+          <span class="rank-rating">2203</span>
+        </a>
+        <a class="rank-row" href="selecoes/GRN.html">
+          <span class="rank-pos">156</span>
+          <span class="rank-nome">Granada</span>
+          <span class="rank-codigo">GRN</span>
+          <span class="rank-rating">2202</span>
+        </a>
+        <a class="rank-row" href="selecoes/MAC.html">
+          <span class="rank-pos">157</span>
+          <span class="rank-nome">Macau</span>
+          <span class="rank-codigo">MAC</span>
+          <span class="rank-rating">2197</span>
+        </a>
+        <a class="rank-row" href="selecoes/ASA.html">
+          <span class="rank-pos">158</span>
+          <span class="rank-nome">Samoa Americana</span>
+          <span class="rank-codigo">ASA</span>
+          <span class="rank-rating">2197</span>
+        </a>
+        <a class="rank-row" href="selecoes/BIZ.html">
+          <span class="rank-pos">159</span>
+          <span class="rank-nome">Belize</span>
+          <span class="rank-codigo">BIZ</span>
+          <span class="rank-rating">2190</span>
+        </a>
+        <a class="rank-row" href="selecoes/GEO.html">
+          <span class="rank-pos">160</span>
+          <span class="rank-nome">Geórgia</span>
+          <span class="rank-codigo">GEO</span>
+          <span class="rank-rating">2189</span>
+        </a>
+        <a class="rank-row" href="selecoes/KUW.html">
+          <span class="rank-pos">161</span>
+          <span class="rank-nome">Kuwait</span>
+          <span class="rank-codigo">KUW</span>
+          <span class="rank-rating">2188</span>
+        </a>
+        <a class="rank-row" href="selecoes/TKM.html">
+          <span class="rank-pos">162</span>
+          <span class="rank-nome">Turcomenistão</span>
+          <span class="rank-codigo">TKM</span>
+          <span class="rank-rating">2186</span>
+        </a>
+        <a class="rank-row" href="selecoes/AZE.html">
+          <span class="rank-pos">163</span>
+          <span class="rank-nome">Azerbaijão</span>
+          <span class="rank-codigo">AZE</span>
+          <span class="rank-rating">2181</span>
+        </a>
+        <a class="rank-row" href="selecoes/SUR.html">
+          <span class="rank-pos">164</span>
+          <span class="rank-nome">Suriname</span>
+          <span class="rank-codigo">SUR</span>
+          <span class="rank-rating">2180</span>
+        </a>
+        <a class="rank-row" href="selecoes/COM.html">
+          <span class="rank-pos">165</span>
+          <span class="rank-nome">Comores</span>
+          <span class="rank-codigo">COM</span>
+          <span class="rank-rating">2175</span>
+        </a>
+        <a class="rank-row" href="selecoes/IRL.html">
+          <span class="rank-pos">166</span>
+          <span class="rank-nome">Irlanda</span>
+          <span class="rank-codigo">IRL</span>
+          <span class="rank-rating">2174</span>
+        </a>
+        <a class="rank-row" href="selecoes/MAY.html">
+          <span class="rank-pos">167</span>
+          <span class="rank-nome">Maiote</span>
+          <span class="rank-codigo">MAY</span>
+          <span class="rank-rating">2168</span>
+        </a>
+        <a class="rank-row" href="selecoes/MOZ.html">
+          <span class="rank-pos">168</span>
+          <span class="rank-nome">Moçambique</span>
+          <span class="rank-codigo">MOZ</span>
+          <span class="rank-rating">2165</span>
+        </a>
+        <a class="rank-row" href="selecoes/MLT.html">
+          <span class="rank-pos">169</span>
+          <span class="rank-nome">Malta</span>
+          <span class="rank-codigo">MLT</span>
+          <span class="rank-rating">2162</span>
+        </a>
+        <a class="rank-row" href="selecoes/GUM.html">
+          <span class="rank-pos">170</span>
+          <span class="rank-nome">Guam</span>
+          <span class="rank-codigo">GUM</span>
+          <span class="rank-rating">2158</span>
+        </a>
+        <a class="rank-row" href="selecoes/TUV.html">
+          <span class="rank-pos">171</span>
+          <span class="rank-nome">Tuvalu</span>
+          <span class="rank-codigo">TUV</span>
+          <span class="rank-rating">2157</span>
+        </a>
+        <a class="rank-row" href="selecoes/MDV.html">
+          <span class="rank-pos">172</span>
+          <span class="rank-nome">Maldivas</span>
+          <span class="rank-codigo">MDV</span>
+          <span class="rank-rating">2144</span>
+        </a>
+        <a class="rank-row" href="selecoes/BOT.html">
+          <span class="rank-pos">173</span>
+          <span class="rank-nome">Botsuana</span>
+          <span class="rank-codigo">BOT</span>
+          <span class="rank-rating">2143</span>
+        </a>
+        <a class="rank-row" href="selecoes/UZB.html">
+          <span class="rank-pos">174</span>
+          <span class="rank-nome">Usbequistão</span>
+          <span class="rank-codigo">UZB</span>
+          <span class="rank-rating">2125</span>
+        </a>
+        <a class="rank-row" href="selecoes/HKG.html">
+          <span class="rank-pos">175</span>
+          <span class="rank-nome">Hong Kong</span>
+          <span class="rank-codigo">HKG</span>
+          <span class="rank-rating">2103</span>
+        </a></div>
         </section>
 </main>
 </body>

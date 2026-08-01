@@ -20,6 +20,7 @@ Duas responsabilidades principais que a fonte de dados NAO resolve sozinha:
 
 from __future__ import annotations
 
+import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, date
 from dataclasses import dataclass, field
@@ -60,6 +61,31 @@ COUNTRY_NAME_TO_CODE: dict[str, str] = {
     "colombia": "COL", "chile": "CHI", "peru": "PER", "uruguay": "URU",
     "denmark": "DEN", "sweden": "SWE", "great britain": "GBR",
     "israel": "ISR", "romania": "ROU", "estonia": "EST", "belarus": "BLR",
+
+    # Adicionados apos o relatorio do orquestrador multi-ano (2013-2026) --
+    # maioria ja tinha rating de 2011 no seed, so faltava aqui a traducao
+    # do nome em ingles vindo do VIS/Wikipedia para o codigo.
+    "afghanistan": "AFG", "albania": "ALB", "austria": "AUT", "azerbaijan": "AZE",
+    "bahrain": "BRN", "bangladesh": "BAN", "belize": "BIZ", "bolivia": "BOL",
+    "bosnia and herzegovina": "BIH", "botswana": "BOT", "costa rica": "CRC",
+    "dr congo": "COD", "ecuador": "ECU", "georgia": "GEO", "ghana": "GHA",
+    "honduras": "HON", "hong kong": "HKG", "iceland": "ISL", "kenya": "KEN",
+    "kuwait": "KUW", "latvia": "LAT", "lebanon": "LBN", "luxembourg": "LUX",
+    "mauritius": "MRI", "montenegro": "MNE", "myanmar": "MYA", "nicaragua": "NCA",
+    "nigeria": "NGR", "north macedonia": "MKD", "norway": "NOR", "oman": "OMA",
+    "pakistan": "PAK", "paraguay": "PAR", "qatar": "QAT", "rwanda": "RWA",
+    "saint vincent and the grenadines": "VIN", "saudi arabia": "KSA",
+    "sri lanka": "SRI", "suriname": "SUR", "turkmenistan": "TKM",
+    "türkiye": "TUR", "turkiye": "TUR", "united arab emirates": "UAE",
+    "uzbekistan": "UZB",
+
+    # Paises genuinamente novos -- NAO estavam no seu seed de 2011 (o
+    # documento original nao os incluia). Vao receber o rating padrao
+    # por tier (2400) na primeira partida, ja que nao ha historico anterior.
+    "burundi": "BDI", "chad": "CHA", "congo": "CGO", "guyana": "GUY",
+    "iraq": "IRQ", "kosovo": "KOS", "martinique": "MTQ", "niger": "NIG",
+    "switzerland": "SUI", "gambia": "GAM", "mali": "MLI", "senegal": "SEN",
+    "tanzania": "TAN",
 }
 
 
@@ -74,11 +100,17 @@ class ConversionLog:
 def normalize_and_map_team(raw_name: str, log: ConversionLog) -> str | None:
     """Tenta mapear um nome de selecao (como vem do VIS) para um codigo
     de 3 letras. Se nao encontrar, registra no log e devolve None --
-    quem chama decide o que fazer (normalmente: pular a partida)."""
-    key = raw_name.strip().lower()
+    quem chama decide o que fazer (normalmente: pular a partida).
+
+    Remove marcacoes de nota de rodape que a Wikipedia as vezes gruda no
+    nome do time (ex: 'Morocco[a]', 'Kenya[1]') antes de tentar mapear --
+    sem isso, cada variacao de nota de rodape viraria um "pais" diferente
+    e nao mapeado."""
+    cleaned = re.sub(r"\[.*?\]\s*$", "", raw_name).strip()
+    key = cleaned.lower()
     code = COUNTRY_NAME_TO_CODE.get(key)
     if code is None:
-        log.unmapped_teams.add(raw_name)
+        log.unmapped_teams.add(cleaned)
         return None
     return code
 
@@ -128,8 +160,8 @@ def convert_vis_matches_xml(
         if not raw_date:
             log.skipped_matches.append(f"No={match_no}: sem DateTimeLocal")
             continue
-        if pts_a is None or pts_b is None:
-            log.skipped_matches.append(f"No={match_no}: sem placar (partida futura?)")
+        if pts_a is None or pts_b is None or not str(pts_a).strip().isdigit() or not str(pts_b).strip().isdigit():
+            log.skipped_matches.append(f"No={match_no}: sem placar valido ('{pts_a}' x '{pts_b}')")
             continue
 
         code_a = normalize_and_map_team(raw_a, log)

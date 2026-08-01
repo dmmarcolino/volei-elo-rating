@@ -1,12 +1,10 @@
 """
 build_site.py
 
-Le partidas.csv + historico_ratings.csv (ja gerados pelo orquestrador) e
-gera uma pagina HTML estatica com os resultados, agrupados por torneio,
-com a variacao de rating de cada selecao em cada partida.
-
-O arquivo gerado fica em docs/index.html -- essa e a pasta que o GitHub
-Pages vai publicar quando ativarmos isso mais pra frente.
+Gera o site completo, com varias paginas:
+  docs/index.html               -> ranking atual de todas as selecoes
+  docs/anos/{ano}.html          -> todos os resultados daquele ano
+  docs/selecoes/{codigo}.html   -> historico completo de uma selecao (desde 2013)
 
 Uso:
     python build_site.py
@@ -21,7 +19,9 @@ from datetime import datetime
 
 PARTIDAS_CSV = "../data/partidas.csv"
 HISTORICO_CSV = "../data/historico_ratings.csv"
-OUTPUT_PATH = "../docs/index.html"
+RATINGS_ATUAIS_CSV = "../data/ratings_atuais.csv"
+NOMES_CSV = "../data/nomes_paises.csv"
+DOCS_DIR = "../docs"
 
 MESES_PT = {
     1: "jan", 2: "fev", 3: "mar", 4: "abr", 5: "mai", 6: "jun",
@@ -35,8 +35,6 @@ def load_partidas(path: str) -> list[dict]:
 
 
 def load_rating_deltas(path: str) -> dict[tuple, tuple[float, float]]:
-    """Indexa o historico por (data, evento, time, adversario) ->
-    (rating_before, rating_after), para consulta rapida ao montar as linhas."""
     index = {}
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
@@ -45,7 +43,22 @@ def load_rating_deltas(path: str) -> dict[tuple, tuple[float, float]]:
     return index
 
 
+def load_ratings_atuais(path: str) -> dict[str, float]:
+    with open(path, encoding="utf-8") as f:
+        return {row["codigo"]: float(row["rating_atual"]) for row in csv.DictReader(f)}
+
+
+def load_nomes(path: str) -> dict[str, str]:
+    with open(path, encoding="utf-8") as f:
+        return {row["codigo"]: row["nome_pt"] for row in csv.DictReader(f)}
+
+
 def format_date_pt(iso_date: str) -> str:
+    d = datetime.strptime(iso_date, "%Y-%m-%d").date()
+    return f"{d.day:02d} {MESES_PT[d.month]} {d.year}"
+
+
+def format_date_curta_pt(iso_date: str) -> str:
     d = datetime.strptime(iso_date, "%Y-%m-%d").date()
     return f"{d.day:02d} {MESES_PT[d.month]}"
 
@@ -57,12 +70,48 @@ def delta_html(delta: float) -> str:
     return f'<span class="delta {cls}">{arrow} {sign}{delta:.1f}</span>'
 
 
-def build_html(partidas: list[dict], rating_index: dict) -> str:
-    # Agrupa por evento, preservando a ordem de primeira aparicao (cronologica,
-    # ja que partidas.csv ja vem ordenado assim).
+def nome_completo(codigo: str, nomes: dict[str, str]) -> str:
+    return nomes.get(codigo, codigo)
+
+
+def build_nav(prefixo: str, anos: list[int]) -> str:
+    links_anos = "".join(f'<a href="{prefixo}anos/{ano}.html">{ano}</a>' for ano in anos)
+    return f"""<nav>
+      <a href="{prefixo}index.html" class="nav-home">Elo Vôlei</a>
+      <div class="nav-anos">{links_anos}</div>
+    </nav>"""
+
+
+def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], anos: list[int]) -> str:
+    ranking = sorted(ratings_atuais.items(), key=lambda kv: kv[1], reverse=True)
+    linhas = []
+    for pos, (codigo, rating) in enumerate(ranking, start=1):
+        linhas.append(f"""
+        <a class="rank-row" href="selecoes/{codigo}.html">
+          <span class="rank-pos">{pos}</span>
+          <span class="rank-nome">{nome_completo(codigo, nomes)}</span>
+          <span class="rank-codigo">{codigo}</span>
+          <span class="rank-rating">{rating:.0f}</span>
+        </a>""")
+
+    return PAGE_TEMPLATE.format(
+        titulo="Ranking atual",
+        nav=build_nav("", anos),
+        conteudo=f"""
+        <section>
+          <h1>Ranking atual</h1>
+          <p class="subtitulo">Clique numa seleção para ver o histórico completo desde 2013</p>
+          <div class="ranking">{''.join(linhas)}</div>
+        </section>""",
+        css_prefix="",
+    )
+
+
+def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
+                    nomes: dict[str, str], ratings_atuais: dict[str, float], anos: list[int]) -> str:
     eventos: dict[str, list[dict]] = defaultdict(list)
     ordem_eventos: list[str] = []
-    for p in partidas:
+    for p in partidas_do_ano:
         evento = p["event"]
         if evento not in eventos:
             ordem_eventos.append(evento)
@@ -78,17 +127,23 @@ def build_html(partidas: list[dict], rating_index: dict) -> str:
             rating_b = rating_index.get(key_b)
             delta_a = delta_html(rating_a[1] - rating_a[0]) if rating_a else ""
             delta_b = delta_html(rating_b[1] - rating_b[0]) if rating_b else ""
+            rating_atual_a = ratings_atuais.get(p["team_a"])
+            rating_atual_b = ratings_atuais.get(p["team_b"])
+            rating_a_str = f'<span class="team-rating">{rating_atual_a:.0f}</span>' if rating_atual_a is not None else ""
+            rating_b_str = f'<span class="team-rating">{rating_atual_b:.0f}</span>' if rating_atual_b is not None else ""
 
             linhas.append(f"""
             <div class="match-row">
-              <div class="match-date">{format_date_pt(p['match_date'])}</div>
-              <div class="match-team team-a">
-                <span class="team-code">{p['team_a']}</span>{delta_a}
-              </div>
+              <div class="match-date">{format_date_curta_pt(p['match_date'])}</div>
+              <a class="match-team team-a" href="../selecoes/{p['team_a']}.html">
+                <span class="team-nome">{nome_completo(p['team_a'], nomes)}</span>
+                {rating_a_str}{delta_a}
+              </a>
               <div class="scoreboard">{p['sets_a']}&ndash;{p['sets_b']}</div>
-              <div class="match-team team-b">
-                <span class="team-code">{p['team_b']}</span>{delta_b}
-              </div>
+              <a class="match-team team-b" href="../selecoes/{p['team_b']}.html">
+                {delta_b}{rating_b_str}
+                <span class="team-nome">{nome_completo(p['team_b'], nomes)}</span>
+              </a>
             </div>""")
 
         secoes_html.append(f"""
@@ -97,163 +152,326 @@ def build_html(partidas: list[dict], rating_index: dict) -> str:
           <div class="matches">{''.join(linhas)}</div>
         </section>""")
 
-    return HTML_TEMPLATE.format(secoes="".join(secoes_html))
+    return PAGE_TEMPLATE.format(
+        titulo=f"Resultados {ano}",
+        nav=build_nav("../", anos),
+        conteudo=f"<h1>Temporada {ano}</h1>{''.join(secoes_html)}",
+        css_prefix="../",
+    )
 
 
-HTML_TEMPLATE = """<!DOCTYPE html>
+def build_selecao_html(codigo: str, nome: str, rating_atual: float | None,
+                        partidas_da_selecao: list[dict], rating_index: dict,
+                        nomes: dict[str, str], ratings_atuais: dict[str, float], anos: list[int]) -> str:
+    linhas = []
+    for p in partidas_da_selecao:
+        sou_a = p["team_a"] == codigo
+        adversario = p["team_b"] if sou_a else p["team_a"]
+        meus_sets = p["sets_a"] if sou_a else p["sets_b"]
+        sets_adv = p["sets_b"] if sou_a else p["sets_a"]
+        key = (p["match_date"], p["event"], codigo, adversario)
+        rating = rating_index.get(key)
+        delta = delta_html(rating[1] - rating[0]) if rating else ""
+        rating_apos = f"{rating[1]:.1f}" if rating else "?"
+        rating_adv = ratings_atuais.get(adversario)
+        rating_adv_str = f'<span class="adv-rating">{rating_adv:.0f}</span>' if rating_adv is not None else ""
+
+        linhas.append(f"""
+        <div class="hist-row">
+          <div class="hist-date">{format_date_pt(p['match_date'])}</div>
+          <div class="hist-event">{p['event']}</div>
+          <a class="hist-adv" href="{adversario}.html">{nome_completo(adversario, nomes)} {rating_adv_str}</a>
+          <div class="scoreboard">{meus_sets}&ndash;{sets_adv}</div>
+          <div class="hist-rating">{rating_apos} {delta}</div>
+        </div>""")
+
+    rating_str = f"{rating_atual:.1f}" if rating_atual is not None else "?"
+    corpo_lista = "".join(linhas) if linhas else '<p class="vazio">Nenhuma partida registrada ainda.</p>'
+
+    return PAGE_TEMPLATE.format(
+        titulo=f"{nome} ({codigo})",
+        nav=build_nav("../", anos),
+        conteudo=f"""
+        <h1>{nome} <span class="codigo-grande">{codigo}</span></h1>
+        <p class="rating-atual-label">Rating atual</p>
+        <p class="rating-atual-valor">{rating_str}</p>
+        <h2>Histórico de partidas</h2>
+        <div class="historico">{corpo_lista}</div>""",
+        css_prefix="../",
+    )
+
+
+PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elo Vôlei &mdash; Resultados</title>
+<title>{titulo} &mdash; Elo Vôlei</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  :root {{
-    --bg: #F7F7F4;
-    --ink: #14181F;
-    --ink-soft: #5A6270;
-    --gold: #C98A00;
-    --gold-bg: #FBEFD2;
-    --blue: #1C4E80;
-    --card: #FFFFFF;
-    --border: #E4E2DA;
-    --pos: #1F7A45;
-    --pos-bg: #E3F3E9;
-    --neg: #A5342A;
-    --neg-bg: #FBE7E4;
-    --board: #14181F;
-    --board-text: #F2B705;
-  }}
-  * {{ box-sizing: border-box; }}
-  body {{
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-  }}
-  header {{
-    padding: 2.5rem 1.5rem 1.5rem;
-    max-width: 720px;
-    margin: 0 auto;
-    border-bottom: 3px solid var(--gold);
-  }}
-  header h1 {{
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    margin: 0;
-  }}
-  header p {{
-    color: var(--ink-soft);
-    margin: 0.25rem 0 0;
-    font-size: 0.95rem;
-  }}
-  main {{
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 1.5rem;
-  }}
-  .tournament {{
-    margin-bottom: 2.5rem;
-  }}
-  .tournament h2 {{
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
-    color: var(--blue);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.4rem;
-    margin: 0 0 0.75rem;
-  }}
-  .match-row {{
-    display: grid;
-    grid-template-columns: 3.2rem 1fr auto 1fr;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.6rem 0.9rem;
-    margin-bottom: 0.5rem;
-  }}
-  .match-date {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-  }}
-  .match-team {{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    font-size: 0.95rem;
-  }}
-  .team-a {{ justify-content: flex-end; text-align: right; }}
-  .team-b {{ justify-content: flex-start; text-align: left; }}
-  .team-code {{
-    font-weight: 500;
-  }}
-  .scoreboard {{
-    background: var(--board);
-    color: var(--board-text);
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 1.1rem;
-    font-variant-numeric: tabular-nums;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    min-width: 3.4rem;
-    text-align: center;
-  }}
-  .delta {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
-    white-space: nowrap;
-  }}
-  .delta-pos {{ color: var(--pos); background: var(--pos-bg); }}
-  .delta-neg {{ color: var(--neg); background: var(--neg-bg); }}
-  @media (max-width: 560px) {{
-    .match-row {{ grid-template-columns: 2.6rem 1fr auto 1fr; gap: 0.4rem; padding: 0.5rem 0.6rem; }}
-    .match-team {{ font-size: 0.85rem; }}
-    .scoreboard {{ font-size: 0.95rem; min-width: 2.8rem; }}
-  }}
-</style>
+<link rel="stylesheet" href="{css_prefix}style.css">
 </head>
 <body>
-<header>
-  <h1>Elo Vôlei</h1>
-  <p>Rating histórico das seleções masculinas &mdash; resultados desde 2013</p>
-</header>
+{nav}
 <main>
-{secoes}
+{conteudo}
 </main>
 </body>
 </html>
+"""
+
+STYLE_CSS = """
+:root {
+  --bg: #F7F7F4;
+  --ink: #14181F;
+  --ink-soft: #5A6270;
+  --gold: #C98A00;
+  --gold-bg: #FBEFD2;
+  --blue: #1C4E80;
+  --card: #FFFFFF;
+  --border: #E4E2DA;
+  --pos: #1F7A45;
+  --pos-bg: #E3F3E9;
+  --neg: #A5342A;
+  --neg-bg: #FBE7E4;
+  --board: #14181F;
+  --board-text: #F2B705;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 3px solid var(--gold);
+}
+.nav-home {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.nav-anos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+.nav-anos a {
+  color: var(--ink-soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+.nav-anos a:hover { background: var(--gold-bg); color: var(--gold); }
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0.5rem 0 0.25rem;
+}
+.codigo-grande {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink-soft);
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+.subtitulo { color: var(--ink-soft); margin: 0 0 1.5rem; }
+h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 1.5rem 0 0.75rem;
+}
+.tournament { margin-bottom: 1.5rem; }
+.match-row {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto 1fr;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.match-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.match-team {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-weight: 500;
+  font-size: 0.88rem;
+}
+.team-a { justify-content: flex-end; text-align: right; }
+.team-b { justify-content: flex-start; text-align: left; }
+.match-team:hover .team-nome { color: var(--blue); }
+.team-rating {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 0.3rem;
+}
+.scoreboard {
+  background: var(--board);
+  color: var(--board-text);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  min-width: 3.4rem;
+  text-align: center;
+}
+.delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.delta-pos { color: var(--pos); background: var(--pos-bg); }
+.delta-neg { color: var(--neg); background: var(--neg-bg); }
+.ranking { display: flex; flex-direction: column; gap: 0.3rem; }
+.rank-row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 3.5rem 5rem;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+}
+.rank-row:hover { border-color: var(--gold); }
+.rank-pos { color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+.rank-nome { font-weight: 500; }
+.rank-codigo { color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+.rank-rating {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.rating-atual-label { color: var(--ink-soft); margin: 0.5rem 0 0; font-size: 0.85rem; text-transform: uppercase; }
+.rating-atual-valor {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin: 0 0 1rem;
+}
+.historico { display: flex; flex-direction: column; gap: 0.4rem; }
+.hist-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 8rem auto 6rem;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+}
+.hist-date { font-family: 'JetBrains Mono', monospace; color: var(--ink-soft); font-size: 0.75rem; }
+.hist-event { color: var(--ink-soft); font-size: 0.78rem; }
+.hist-adv { font-weight: 500; }
+.hist-adv:hover { color: var(--blue); }
+.adv-rating {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+}
+.hist-rating { font-family: 'JetBrains Mono', monospace; text-align: right; }
+.vazio { color: var(--ink-soft); font-style: italic; }
+@media (max-width: 640px) {
+  .match-row { grid-template-columns: 2.6rem 1fr auto 1fr; gap: 0.4rem; padding: 0.5rem 0.6rem; }
+  .match-team { font-size: 0.85rem; }
+  .rank-row { grid-template-columns: 2rem 1fr 3rem; }
+  .rank-codigo { display: none; }
+  .hist-row { grid-template-columns: 1fr; text-align: left; gap: 0.15rem; }
+}
 """
 
 
 def main():
     partidas = load_partidas(PARTIDAS_CSV)
     rating_index = load_rating_deltas(HISTORICO_CSV)
+    ratings_atuais = load_ratings_atuais(RATINGS_ATUAIS_CSV)
+    nomes = load_nomes(NOMES_CSV)
 
-    html = build_html(partidas, rating_index)
+    anos = sorted({int(p["season"]) for p in partidas})
 
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(html)
+    os.makedirs(DOCS_DIR, exist_ok=True)
+    os.makedirs(f"{DOCS_DIR}/anos", exist_ok=True)
+    os.makedirs(f"{DOCS_DIR}/selecoes", exist_ok=True)
 
-    print(f"Site gerado: {OUTPUT_PATH}")
-    print(f"  {len(partidas)} partidas, {len(set(p['event'] for p in partidas))} torneios")
+    with open(f"{DOCS_DIR}/style.css", "w", encoding="utf-8") as f:
+        f.write(STYLE_CSS)
+
+    with open(f"{DOCS_DIR}/index.html", "w", encoding="utf-8") as f:
+        f.write(build_index_html(ratings_atuais, nomes, anos))
+
+    partidas_por_ano: dict[int, list[dict]] = defaultdict(list)
+    for p in partidas:
+        partidas_por_ano[int(p["season"])].append(p)
+
+    for ano in anos:
+        with open(f"{DOCS_DIR}/anos/{ano}.html", "w", encoding="utf-8") as f:
+            f.write(build_ano_html(ano, partidas_por_ano[ano], rating_index, nomes, ratings_atuais, anos))
+
+    partidas_por_selecao: dict[str, list[dict]] = defaultdict(list)
+    for p in partidas:
+        partidas_por_selecao[p["team_a"]].append(p)
+        partidas_por_selecao[p["team_b"]].append(p)
+
+    todos_os_codigos = set(ratings_atuais.keys()) | set(partidas_por_selecao.keys())
+    for codigo in todos_os_codigos:
+        partidas_desc = sorted(partidas_por_selecao.get(codigo, []),
+                                key=lambda p: p["match_date"], reverse=True)
+        with open(f"{DOCS_DIR}/selecoes/{codigo}.html", "w", encoding="utf-8") as f:
+            f.write(build_selecao_html(
+                codigo, nome_completo(codigo, nomes), ratings_atuais.get(codigo),
+                partidas_desc, rating_index, nomes, ratings_atuais, anos))
+
+    print(f"Site gerado em {DOCS_DIR}/")
+    print(f"  1 pagina inicial (ranking)")
+    print(f"  {len(anos)} paginas de ano ({anos[0]}-{anos[-1]})")
+    print(f"  {len(todos_os_codigos)} paginas de selecao")
 
 
 if __name__ == "__main__":
