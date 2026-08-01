@@ -20,14 +20,13 @@ from elo_engine import Match
 from vis_converter import COUNTRY_NAME_TO_CODE, ConversionLog, normalize_and_map_team
 
 
-def find_match_table(tables: list[pd.DataFrame]) -> pd.DataFrame | None:
-    """Identifica, entre todas as tabelas de uma pagina, qual e a de
-    resultados de partidas -- heuristica: tem colunas 'Score' e 'Set 1'."""
-    for tabela in tables:
-        cols = [str(c) for c in tabela.columns]
-        if "Score" in cols and "Set 1" in cols:
-            return tabela
-    return None
+def find_match_tables(tables: list[pd.DataFrame]) -> list[pd.DataFrame]:
+    """Identifica TODAS as tabelas de resultados de partidas numa pagina --
+    heuristica: tem colunas 'Score' e 'Set 1'. Torneios com fase de grupos
+    costumam ter uma tabela de partidas POR GRUPO, entao pegar so a
+    primeira perderia a maioria dos jogos silenciosamente."""
+    return [t for t in tables
+            if "Score" in [str(c) for c in t.columns] and "Set 1" in [str(c) for c in t.columns]]
 
 
 # Aceita en-dash (–, usado pela Wikipedia), hifen normal (-) e til (~) por seguranca.

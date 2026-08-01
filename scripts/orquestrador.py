@@ -24,7 +24,7 @@ import pandas as pd
 
 from elo_engine import EloEngine, Match, DEFAULT_CONFIG
 from vis_converter import convert_vis_matches_xml, ConversionLog
-from wikipedia_converter import convert_wikipedia_table_to_matches, find_match_table
+from wikipedia_converter import convert_wikipedia_table_to_matches, find_match_tables
 
 
 # ---------------------------------------------------------------------------
@@ -160,15 +160,19 @@ def main():
         print(f"[3/5] Wikipedia: {event_name} (\"{page_title}\")...")
         html = fetch_wikipedia_page_html(page_title)
         tabelas = pd.read_html(StringIO(html))
-        tabela_partidas = find_match_table(tabelas)
-        if tabela_partidas is None:
+        tabelas_de_partidas = find_match_tables(tabelas)
+        if not tabelas_de_partidas:
             print(f"        ATENCAO -- nenhuma tabela de partidas reconhecida "
                   f"nesta pagina (formato pode ser diferente do esperado)")
             continue
-        partidas = convert_wikipedia_table_to_matches(
-            tabela_partidas, season=SEASON, event_name=event_name, log=log)
-        print(f"        {len(partidas)} partidas convertidas")
-        todas_as_partidas.extend(partidas)
+        total_pagina = 0
+        for tabela_partidas in tabelas_de_partidas:
+            partidas = convert_wikipedia_table_to_matches(
+                tabela_partidas, season=SEASON, event_name=event_name, log=log)
+            todas_as_partidas.extend(partidas)
+            total_pagina += len(partidas)
+        print(f"        {total_pagina} partidas convertidas "
+              f"({len(tabelas_de_partidas)} tabela(s) de resultados encontrada(s))")
 
     print()
     if log.unmapped_teams:
