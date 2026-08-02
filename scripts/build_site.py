@@ -107,6 +107,71 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
     )
 
 
+def compute_standings(partidas_da_fase: list[dict]) -> list[dict]:
+    """Calcula vitorias, sets pro/contra e set average para cada selecao
+    dentro de uma fase. So faz sentido chamar isso para fases com mais de
+    2 selecoes (grupo/turno unico) -- uma fase de 2 times e so uma
+    partida de mata-mata, sem necessidade de tabela."""
+    stats: dict[str, dict] = {}
+    for p in partidas_da_fase:
+        sets_a, sets_b = int(p["sets_a"]), int(p["sets_b"])
+        for team, sfor, sagainst in ((p["team_a"], sets_a, sets_b), (p["team_b"], sets_b, sets_a)):
+            s = stats.setdefault(team, {"vitorias": 0, "derrotas": 0, "sets_pro": 0, "sets_contra": 0})
+            s["sets_pro"] += sfor
+            s["sets_contra"] += sagainst
+            s["vitorias" if sfor > sagainst else "derrotas"] += 1
+    linhas = []
+    for team, s in stats.items():
+        set_avg = s["sets_pro"] / s["sets_contra"] if s["sets_contra"] > 0 else float(s["sets_pro"])
+        linhas.append({"codigo": team, "set_avg": set_avg, **s})
+    linhas.sort(key=lambda l: (-l["vitorias"], -l["set_avg"]))
+    return linhas
+
+
+def build_standings_html(standings: list[dict], nomes: dict[str, str]) -> str:
+    linhas = []
+    for pos, s in enumerate(standings, start=1):
+        linhas.append(f"""
+        <div class="standings-row">
+          <span class="standings-pos">{pos}</span>
+          <a class="standings-nome" href="../selecoes/{s['codigo']}.html">{nome_completo(s['codigo'], nomes)}</a>
+          <span class="standings-v">{s['vitorias']}V</span>
+          <span class="standings-d">{s['derrotas']}D</span>
+          <span class="standings-avg">{s['sets_pro']}-{s['sets_contra']} ({s['set_avg']:.2f})</span>
+        </div>""")
+    return f'<div class="standings">{"".join(linhas)}</div>'
+
+
+def build_match_row_html(p: dict, evento: str, rating_index: dict,
+                          nomes: dict[str, str], ratings_atuais: dict[str, float]) -> str:
+    key_a = (p["match_date"], evento, p["team_a"], p["team_b"])
+    key_b = (p["match_date"], evento, p["team_b"], p["team_a"])
+    rating_a = rating_index.get(key_a)
+    rating_b = rating_index.get(key_b)
+    delta_a = delta_html(rating_a[1] - rating_a[0]) if rating_a else ""
+    delta_b = delta_html(rating_b[1] - rating_b[0]) if rating_b else ""
+    rating_atual_a = ratings_atuais.get(p["team_a"])
+    rating_atual_b = ratings_atuais.get(p["team_b"])
+    rating_a_str = f'<span class="team-rating">{rating_atual_a:.0f}</span>' if rating_atual_a is not None else ""
+    rating_b_str = f'<span class="team-rating">{rating_atual_b:.0f}</span>' if rating_atual_b is not None else ""
+
+    return f"""
+    <div class="match-row">
+      <div class="match-date">{format_date_curta_pt(p['match_date'])}</div>
+      {delta_a}
+      <a class="match-team team-a" href="../selecoes/{p['team_a']}.html">
+        <span class="team-nome">{nome_completo(p['team_a'], nomes)}</span>
+        {rating_a_str}
+      </a>
+      <div class="scoreboard">{p['sets_a']}&ndash;{p['sets_b']}</div>
+      <a class="match-team team-b" href="../selecoes/{p['team_b']}.html">
+        {rating_b_str}
+        <span class="team-nome">{nome_completo(p['team_b'], nomes)}</span>
+      </a>
+      {delta_b}
+    </div>"""
+
+
 def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
                     nomes: dict[str, str], ratings_atuais: dict[str, float], anos: list[int]) -> str:
     eventos: dict[str, list[dict]] = defaultdict(list)
@@ -119,39 +184,41 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
 
     secoes_html = []
     for evento in ordem_eventos:
-        linhas = []
+        # Agrupa por fase, preservando a ordem em que cada fase apareceu
+        # pela primeira vez (a lista ja vem cronologica).
+        fases: dict[str, list[dict]] = defaultdict(list)
+        ordem_fases: list[str] = []
         for p in eventos[evento]:
-            key_a = (p["match_date"], evento, p["team_a"], p["team_b"])
-            key_b = (p["match_date"], evento, p["team_b"], p["team_a"])
-            rating_a = rating_index.get(key_a)
-            rating_b = rating_index.get(key_b)
-            delta_a = delta_html(rating_a[1] - rating_a[0]) if rating_a else ""
-            delta_b = delta_html(rating_b[1] - rating_b[0]) if rating_b else ""
-            rating_atual_a = ratings_atuais.get(p["team_a"])
-            rating_atual_b = ratings_atuais.get(p["team_b"])
-            rating_a_str = f'<span class="team-rating">{rating_atual_a:.0f}</span>' if rating_atual_a is not None else ""
-            rating_b_str = f'<span class="team-rating">{rating_atual_b:.0f}</span>' if rating_atual_b is not None else ""
+            fase = p.get("fase") or "Resultados"
+            if fase not in fases:
+                ordem_fases.append(fase)
+            fases[fase].append(p)
 
-            linhas.append(f"""
-            <div class="match-row">
-              <div class="match-date">{format_date_curta_pt(p['match_date'])}</div>
-              {delta_a}
-              <a class="match-team team-a" href="../selecoes/{p['team_a']}.html">
-                <span class="team-nome">{nome_completo(p['team_a'], nomes)}</span>
-                {rating_a_str}
-              </a>
-              <div class="scoreboard">{p['sets_a']}&ndash;{p['sets_b']}</div>
-              <a class="match-team team-b" href="../selecoes/{p['team_b']}.html">
-                {rating_b_str}
-                <span class="team-nome">{nome_completo(p['team_b'], nomes)}</span>
-              </a>
-              {delta_b}
+        blocos_fase = []
+        for fase in ordem_fases:
+            partidas_fase = fases[fase]
+            times_da_fase = {p["team_a"] for p in partidas_fase} | {p["team_b"] for p in partidas_fase}
+
+            tabela_html = ""
+            if len(times_da_fase) > 2:
+                standings = compute_standings(partidas_fase)
+                tabela_html = build_standings_html(standings, nomes)
+
+            linhas = "".join(build_match_row_html(p, evento, rating_index, nomes, ratings_atuais)
+                              for p in partidas_fase)
+
+            titulo_fase = f'<h3 class="fase-titulo">{fase}</h3>' if fase != "Resultados" else ""
+            blocos_fase.append(f"""
+            <div class="fase-bloco">
+              {titulo_fase}
+              {tabela_html}
+              <div class="matches">{linhas}</div>
             </div>""")
 
         secoes_html.append(f"""
         <section class="tournament">
           <h2>{evento}</h2>
-          <div class="matches">{''.join(linhas)}</div>
+          {''.join(blocos_fase)}
         </section>""")
 
     return PAGE_TEMPLATE.format(
@@ -313,6 +380,45 @@ h2 {
   margin: 1.5rem 0 0.75rem;
 }
 .tournament { margin-bottom: 1.5rem; }
+.fase-bloco { margin-bottom: 1.25rem; }
+.fase-titulo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  margin: 0.75rem 0 0.5rem;
+}
+.standings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.6rem;
+}
+.standings-row {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 2.2rem 2.2rem auto;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold-bg);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+}
+.standings-pos { color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; }
+.standings-nome { font-weight: 500; }
+.standings-nome:hover { color: var(--blue); }
+.standings-v, .standings-d {
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center;
+}
+.standings-avg {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink-soft);
+  text-align: right;
+  font-size: 0.72rem;
+}
 .match-row {
   display: grid;
   grid-template-columns: 3.2rem auto 1fr auto 1fr auto;
@@ -436,6 +542,8 @@ h2 {
   .rank-row { grid-template-columns: 2rem 1fr 3rem; }
   .rank-codigo { display: none; }
   .hist-row { grid-template-columns: 1fr; text-align: left; gap: 0.15rem; }
+  .standings-row { grid-template-columns: 1.3rem 1fr 2rem 2rem; font-size: 0.72rem; }
+  .standings-avg { display: none; }
 }
 """
 

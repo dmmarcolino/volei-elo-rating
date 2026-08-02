@@ -205,6 +205,7 @@ def convert_vis_matches_xml(
             sets_b=sets_b,
             event=event_name,
             is_final=is_final_pool(pool_name),
+            fase=pool_name.strip(),
         ))
 
     return matches

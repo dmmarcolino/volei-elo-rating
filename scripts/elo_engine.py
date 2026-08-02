@@ -96,6 +96,7 @@ class Match:
     sets_b: int                # sets vencidos pela equipe B
     event: str                  # nome do torneio (para auditoria/log)
     is_final: bool = False       # excluido da contagem de partidas p/ fator K
+    fase: str = ""                # ex: "Pool A", "Semifinal" -- para tabelas de classificacao
 
     def winner(self) -> str:
         if self.sets_a > self.sets_b:

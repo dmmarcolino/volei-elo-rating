@@ -28,7 +28,7 @@ import xml.etree.ElementTree as ET
 
 from elo_engine import EloEngine, Match, DEFAULT_CONFIG
 from vis_converter import convert_vis_matches_xml, ConversionLog
-from wikipedia_converter import convert_wikipedia_table_to_matches, find_match_tables
+from wikipedia_converter import convert_wikipedia_table_to_matches, find_match_tables_with_phases
 
 VIS_BASE_URL = "https://www.fivb.org/Vis2009/XmlRequest.asmx"
 WIKI_API = "https://en.wikipedia.org/w/api.php"
@@ -262,21 +262,21 @@ def main():
                     f"(pode ser que o torneio nao tenha ocorrido nesse ano por mudanca de calendario)")
                 continue
             try:
-                tabelas = pd.read_html(StringIO(html))
+                tabelas_com_fase = find_match_tables_with_phases(html)
             except Exception as e:
                 paginas_wiki_sem_tabela.append(f"{event_name}: \"{titulo_usado}\" -- ERRO ao ler tabelas: {e}")
                 continue
-            tabelas_de_partidas = find_match_tables(tabelas)
-            if not tabelas_de_partidas:
-                paginas_wiki_sem_tabela.append(f"{event_name}: \"{page_title}\"")
+            if not tabelas_com_fase:
+                paginas_wiki_sem_tabela.append(f"{event_name}: \"{titulo_usado}\"")
                 continue
             total_pagina = 0
-            for tabela in tabelas_de_partidas:
-                partidas = convert_wikipedia_table_to_matches(tabela, season=ano, event_name=event_name, log=log)
+            for fase, tabela in tabelas_com_fase:
+                partidas = convert_wikipedia_table_to_matches(
+                    tabela, season=ano, event_name=event_name, log=log, fase=fase)
                 todas_as_partidas.extend(partidas)
                 total_pagina += len(partidas)
             print(f"  Wikipedia: {event_name} -- {total_pagina} partidas "
-                  f"({len(tabelas_de_partidas)} tabela(s))")
+                  f"({len(tabelas_com_fase)} tabela(s))")
 
     # Ordem cronologica GLOBAL antes de processar.
     todas_as_partidas.sort(key=lambda m: m.match_date)
@@ -285,10 +285,10 @@ def main():
     os.makedirs(os.path.dirname(PARTIDAS_CSV), exist_ok=True)
     with open(PARTIDAS_CSV, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["match_date", "season", "team_a", "team_b", "sets_a", "sets_b", "event", "is_final"])
+        writer.writerow(["match_date", "season", "team_a", "team_b", "sets_a", "sets_b", "event", "is_final", "fase"])
         for m in todas_as_partidas:
             writer.writerow([m.match_date.isoformat(), m.season, m.team_a, m.team_b,
-                              m.sets_a, m.sets_b, m.event, m.is_final])
+                              m.sets_a, m.sets_b, m.event, m.is_final, m.fase])
 
     with open(RATINGS_ATUAIS_CSV, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)

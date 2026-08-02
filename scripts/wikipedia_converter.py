@@ -15,9 +15,11 @@ import re
 from datetime import date, datetime
 
 import pandas as pd
+from bs4 import BeautifulSoup
+from io import StringIO
 
 from elo_engine import Match
-from vis_converter import COUNTRY_NAME_TO_CODE, ConversionLog, normalize_and_map_team
+from vis_converter import COUNTRY_NAME_TO_CODE, ConversionLog, normalize_and_map_team, is_final_pool
 
 
 def find_match_tables(tables: list[pd.DataFrame]) -> list[pd.DataFrame]:
@@ -27,6 +29,54 @@ def find_match_tables(tables: list[pd.DataFrame]) -> list[pd.DataFrame]:
     primeira perderia a maioria dos jogos silenciosamente."""
     return [t for t in tables
             if "Score" in [str(c) for c in t.columns] and "Set 1" in [str(c) for c in t.columns]]
+
+
+# Marcadores de nota de rodape/edicao que a Wikipedia as vezes deixa
+# junto do texto do cabecalho (ex: 'Pool A[edit]').
+_HEADING_CLEANUP = re.compile(r"\[.*?\]")
+
+
+def _is_match_table_html(table_tag) -> bool:
+    """Mesma heuristica de find_match_tables, mas direto na tag do BeautifulSoup
+    (sem precisar re-parsear com pandas so pra checar as colunas)."""
+    header_cells = [th.get_text(strip=True) for th in table_tag.find_all("th")]
+    return "Score" in header_cells and "Set 1" in header_cells
+
+
+def _nearest_preceding_heading(table_tag) -> str:
+    """Sobe pelos irmaos anteriores (e, se preciso, pelos pais) ate achar
+    o cabecalho (h2/h3/h4) mais proximo antes da tabela -- essa e a "fase"
+    da tabela (ex: 'Pool A', 'Semifinals'). Se nao achar nada, devolve
+    string vazia (quem chama decide o rotulo generico)."""
+    node = table_tag
+    while node is not None:
+        sibling = node.find_previous_sibling()
+        while sibling is not None:
+            if sibling.name in ("h2", "h3", "h4", "h5"):
+                texto = sibling.get_text(strip=True)
+                return _HEADING_CLEANUP.sub("", texto).strip()
+            sibling = sibling.find_previous_sibling()
+        node = node.parent
+    return ""
+
+
+def find_match_tables_with_phases(html: str) -> list[tuple[str, pd.DataFrame]]:
+    """Versao com rotulo de fase: devolve lista de (fase, tabela) para
+    cada tabela de resultados de partidas na pagina. A fase e o texto do
+    cabecalho (h2/h3/h4) mais proximo ANTES da tabela na pagina."""
+    soup = BeautifulSoup(html, "html.parser")
+    resultado = []
+    for table_tag in soup.find_all("table"):
+        if not _is_match_table_html(table_tag):
+            continue
+        fase = _nearest_preceding_heading(table_tag)
+        try:
+            dfs = pd.read_html(StringIO(str(table_tag)))
+        except Exception:
+            continue
+        if dfs:
+            resultado.append((fase, dfs[0]))
+    return resultado
 
 
 # Aceita en-dash (–, usado pela Wikipedia), hifen normal (-) e til (~) por seguranca.
@@ -65,6 +115,7 @@ def convert_wikipedia_table_to_matches(
     season: int,
     event_name: str,
     log: ConversionLog | None = None,
+    fase: str = "",
 ) -> list[Match]:
     if log is None:
         log = ConversionLog()
@@ -112,7 +163,8 @@ def convert_wikipedia_table_to_matches(
         matches.append(Match(
             match_date=match_date, season=season, team_a=code_a, team_b=code_b,
             sets_a=sets_a, sets_b=sets_b, event=event_name,
-            is_final=False,  # Wikipedia nem sempre marca fase -- ver nota no README
+            is_final=is_final_pool(fase),
+            fase=fase,
         ))
 
     return matches
