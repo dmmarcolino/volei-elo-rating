@@ -1,0 +1,47 @@
+name: Atualizar resultados e site
+
+on:
+  schedule:
+    # Toda segunda-feira as 09:00 UTC (06:00 horario de Brasilia).
+    # Ajuste o cron se quiser outra frequencia -- ver crontab.guru
+    - cron: '0 9 * * 1'
+  workflow_dispatch: {}   # permite rodar manualmente pelo botao "Run workflow" no GitHub
+
+# Necessario para o robo poder commitar e dar push de volta no repositorio.
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: pip install requests pandas lxml html5lib beautifulsoup4
+
+      - name: Rodar coleta e calculo de rating (2013-2026)
+        working-directory: scripts
+        run: python orquestrador_multi_ano.py
+
+      - name: Gerar o site
+        working-directory: scripts
+        run: python build_site.py
+
+      - name: Commitar e enviar mudancas (se houver)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nada mudou desde a ultima execucao -- nao ha o que commitar."
+          else
+            git commit -m "Atualizacao automatica de resultados e site ($(date -u +'%Y-%m-%d'))"
+            git push
+          fi
