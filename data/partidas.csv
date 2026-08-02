@@ -576,6 +576,109 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2014-08-16,2014,MEX,VEN,1,3,Copa Pan-Americana 2014,False,
 2014-08-16,2014,ARG,PUR,3,2,Copa Pan-Americana 2014,False,
 2014-08-16,2014,CUB,USA,3,0,Copa Pan-Americana 2014,False,
+2014-08-30,2014,POL,SRB,3,0,Campeonato Mundial 2014,False,
+2014-08-31,2014,VEN,ARG,0,3,Campeonato Mundial 2014,False,
+2014-08-31,2014,CMR,AUS,0,3,Campeonato Mundial 2014,False,
+2014-08-31,2014,ITA,IRI,1,3,Campeonato Mundial 2014,False,
+2014-08-31,2014,BEL,USA,2,3,Campeonato Mundial 2014,False,
+2014-08-31,2014,PUR,FRA,0,3,Campeonato Mundial 2014,False,
+2014-09-01,2014,BRA,GER,3,0,Campeonato Mundial 2014,False,
+2014-09-01,2014,FIN,CUB,3,2,Campeonato Mundial 2014,False,
+2014-09-01,2014,KOR,TUN,3,1,Campeonato Mundial 2014,False,
+2014-09-01,2014,RUS,CAN,3,0,Campeonato Mundial 2014,False,
+2014-09-01,2014,MEX,BUL,0,3,Campeonato Mundial 2014,False,
+2014-09-01,2014,CHN,EGY,3,1,Campeonato Mundial 2014,False,
+2014-09-02,2014,ARG,SRB,1,3,Campeonato Mundial 2014,False,
+2014-09-02,2014,VEN,CMR,3,1,Campeonato Mundial 2014,False,
+2014-09-02,2014,AUS,POL,0,3,Campeonato Mundial 2014,False,
+2014-09-02,2014,USA,IRI,2,3,Campeonato Mundial 2014,False,
+2014-09-02,2014,BEL,PUR,3,0,Campeonato Mundial 2014,False,
+2014-09-02,2014,FRA,ITA,2,3,Campeonato Mundial 2014,False,
+2014-09-03,2014,CUB,GER,0,3,Campeonato Mundial 2014,False,
+2014-09-03,2014,FIN,KOR,3,0,Campeonato Mundial 2014,False,
+2014-09-03,2014,TUN,BRA,0,3,Campeonato Mundial 2014,False,
+2014-09-03,2014,BUL,CAN,2,3,Campeonato Mundial 2014,False,
+2014-09-03,2014,MEX,CHN,1,3,Campeonato Mundial 2014,False,
+2014-09-03,2014,EGY,RUS,0,3,Campeonato Mundial 2014,False,
+2014-09-04,2014,CMR,ARG,0,3,Campeonato Mundial 2014,False,
+2014-09-04,2014,SRB,AUS,3,1,Campeonato Mundial 2014,False,
+2014-09-04,2014,POL,VEN,3,0,Campeonato Mundial 2014,False,
+2014-09-04,2014,PUR,USA,0,3,Campeonato Mundial 2014,False,
+2014-09-04,2014,IRI,FRA,1,3,Campeonato Mundial 2014,False,
+2014-09-04,2014,ITA,BEL,3,1,Campeonato Mundial 2014,False,
+2014-09-05,2014,KOR,CUB,1,3,Campeonato Mundial 2014,False,
+2014-09-05,2014,GER,TUN,3,1,Campeonato Mundial 2014,False,
+2014-09-05,2014,BRA,FIN,3,0,Campeonato Mundial 2014,False,
+2014-09-05,2014,CHN,BUL,0,3,Campeonato Mundial 2014,False,
+2014-09-05,2014,CAN,EGY,3,0,Campeonato Mundial 2014,False,
+2014-09-05,2014,RUS,MEX,3,1,Campeonato Mundial 2014,False,
+2014-09-06,2014,ARG,AUS,3,0,Campeonato Mundial 2014,False,
+2014-09-06,2014,VEN,SRB,0,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,CMR,POL,1,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,CUB,TUN,3,2,Campeonato Mundial 2014,False,
+2014-09-06,2014,FIN,GER,1,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,KOR,BRA,2,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,BUL,EGY,3,2,Campeonato Mundial 2014,False,
+2014-09-06,2014,MEX,CAN,0,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,CHN,RUS,0,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,USA,FRA,1,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,BEL,IRI,1,3,Campeonato Mundial 2014,False,
+2014-09-06,2014,PUR,ITA,3,1,Campeonato Mundial 2014,False,
+2014-09-07,2014,AUS,VEN,3,2,Campeonato Mundial 2014,False,
+2014-09-07,2014,POL,ARG,3,0,Campeonato Mundial 2014,False,
+2014-09-07,2014,SRB,CMR,3,1,Campeonato Mundial 2014,False,
+2014-09-07,2014,TUN,FIN,0,3,Campeonato Mundial 2014,False,
+2014-09-07,2014,GER,KOR,3,0,Campeonato Mundial 2014,False,
+2014-09-07,2014,BRA,CUB,3,1,Campeonato Mundial 2014,False,
+2014-09-07,2014,EGY,MEX,2,3,Campeonato Mundial 2014,False,
+2014-09-07,2014,CAN,CHN,3,0,Campeonato Mundial 2014,False,
+2014-09-07,2014,RUS,BUL,3,2,Campeonato Mundial 2014,False,
+2014-09-07,2014,FRA,BEL,3,2,Campeonato Mundial 2014,False,
+2014-09-07,2014,IRI,PUR,3,0,Campeonato Mundial 2014,False,
+2014-09-07,2014,ITA,USA,1,3,Campeonato Mundial 2014,False,
+2014-09-10,2014,ARG,FRA,1,3,Campeonato Mundial 2014,False,
+2014-09-10,2014,SRB,ITA,3,0,Campeonato Mundial 2014,False,
+2014-09-10,2014,POL,USA,1,3,Campeonato Mundial 2014,False,
+2014-09-10,2014,AUS,IRI,1,3,Campeonato Mundial 2014,False,
+2014-09-10,2014,BRA,BUL,3,0,Campeonato Mundial 2014,False,
+2014-09-10,2014,FIN,RUS,0,3,Campeonato Mundial 2014,False,
+2014-09-10,2014,GER,CHN,3,0,Campeonato Mundial 2014,False,
+2014-09-10,2014,CUB,CAN,2,3,Campeonato Mundial 2014,False,
+2014-09-11,2014,ARG,IRI,0,3,Campeonato Mundial 2014,False,
+2014-09-11,2014,SRB,USA,1,3,Campeonato Mundial 2014,False,
+2014-09-11,2014,POL,ITA,3,1,Campeonato Mundial 2014,False,
+2014-09-11,2014,AUS,FRA,1,3,Campeonato Mundial 2014,False,
+2014-09-11,2014,BRA,CHN,3,0,Campeonato Mundial 2014,False,
+2014-09-11,2014,FIN,CAN,0,3,Campeonato Mundial 2014,False,
+2014-09-11,2014,GER,BUL,3,1,Campeonato Mundial 2014,False,
+2014-09-11,2014,CUB,RUS,1,3,Campeonato Mundial 2014,False,
+2014-09-13,2014,ARG,ITA,3,1,Campeonato Mundial 2014,False,
+2014-09-13,2014,SRB,FRA,1,3,Campeonato Mundial 2014,False,
+2014-09-13,2014,POL,IRI,3,2,Campeonato Mundial 2014,False,
+2014-09-13,2014,AUS,USA,0,3,Campeonato Mundial 2014,False,
+2014-09-13,2014,BRA,CAN,3,0,Campeonato Mundial 2014,False,
+2014-09-13,2014,FIN,CHN,2,3,Campeonato Mundial 2014,False,
+2014-09-13,2014,GER,RUS,0,3,Campeonato Mundial 2014,False,
+2014-09-13,2014,CUB,BUL,3,0,Campeonato Mundial 2014,False,
+2014-09-14,2014,ARG,USA,3,2,Campeonato Mundial 2014,False,
+2014-09-14,2014,SRB,IRI,1,3,Campeonato Mundial 2014,False,
+2014-09-14,2014,POL,FRA,3,2,Campeonato Mundial 2014,False,
+2014-09-14,2014,AUS,ITA,1,3,Campeonato Mundial 2014,False,
+2014-09-14,2014,BRA,RUS,3,1,Campeonato Mundial 2014,False,
+2014-09-14,2014,FIN,BUL,3,0,Campeonato Mundial 2014,False,
+2014-09-14,2014,GER,CAN,3,0,Campeonato Mundial 2014,False,
+2014-09-14,2014,CUB,CHN,2,3,Campeonato Mundial 2014,False,
+2014-09-16,2014,FRA,GER,3,0,Campeonato Mundial 2014,False,
+2014-09-16,2014,POL,BRA,3,2,Campeonato Mundial 2014,False,
+2014-09-17,2014,GER,IRI,3,0,Campeonato Mundial 2014,False,
+2014-09-17,2014,BRA,RUS,3,0,Campeonato Mundial 2014,False,
+2014-09-18,2014,FRA,IRI,3,2,Campeonato Mundial 2014,False,
+2014-09-18,2014,POL,RUS,3,2,Campeonato Mundial 2014,False,
+2014-09-20,2014,IRI,RUS,0,3,Campeonato Mundial 2014,False,
+2014-09-20,2014,FRA,BRA,2,3,Campeonato Mundial 2014,False,
+2014-09-20,2014,GER,POL,1,3,Campeonato Mundial 2014,False,
+2014-09-21,2014,FRA,GER,0,3,Campeonato Mundial 2014,False,
+2014-09-21,2014,BRA,POL,1,3,Campeonato Mundial 2014,False,
 2015-05-16,2015,CAN,CUB,3,0,Liga Mundial 2015,False,
 2015-05-16,2015,POR,NED,1,3,Liga Mundial 2015,False,
 2015-05-17,2015,CAN,CUB,3,0,Liga Mundial 2015,False,
@@ -1198,6 +1301,44 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2016-07-16,2016,FRA,BRA,1,3,Liga Mundial 2016,False,
 2016-07-17,2016,ITA,FRA,0,3,Liga Mundial 2016,False,
 2016-07-17,2016,SRB,BRA,3,0,Liga Mundial 2016,False,
+2016-08-07,2016,ITA,FRA,3,0,Jogos Olimpicos 2016,False,Pool A
+2016-08-07,2016,BRA,MEX,3,1,Jogos Olimpicos 2016,False,Pool A
+2016-08-07,2016,POL,EGY,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-07,2016,USA,CAN,0,3,Jogos Olimpicos 2016,False,Pool A
+2016-08-07,2016,RUS,CUB,3,1,Jogos Olimpicos 2016,False,Pool B
+2016-08-07,2016,ARG,IRI,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-09,2016,RUS,ARG,1,3,Jogos Olimpicos 2016,False,Pool B
+2016-08-09,2016,FRA,MEX,3,0,Jogos Olimpicos 2016,False,Pool A
+2016-08-09,2016,ITA,USA,3,1,Jogos Olimpicos 2016,False,Pool A
+2016-08-09,2016,POL,IRI,3,2,Jogos Olimpicos 2016,False,Pool B
+2016-08-09,2016,CUB,EGY,0,3,Jogos Olimpicos 2016,False,Pool B
+2016-08-09,2016,BRA,CAN,3,1,Jogos Olimpicos 2016,False,Pool A
+2016-08-11,2016,IRI,CUB,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-11,2016,RUS,EGY,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-11,2016,POL,ARG,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-11,2016,CAN,FRA,0,3,Jogos Olimpicos 2016,False,Pool A
+2016-08-11,2016,ITA,MEX,3,0,Jogos Olimpicos 2016,False,Pool A
+2016-08-11,2016,BRA,USA,1,3,Jogos Olimpicos 2016,False,Pool A
+2016-08-13,2016,IRI,EGY,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-13,2016,ARG,CUB,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-13,2016,POL,RUS,2,3,Jogos Olimpicos 2016,False,Pool B
+2016-08-13,2016,USA,FRA,3,1,Jogos Olimpicos 2016,False,Pool A
+2016-08-13,2016,CAN,MEX,3,0,Jogos Olimpicos 2016,False,Pool A
+2016-08-13,2016,BRA,ITA,1,3,Jogos Olimpicos 2016,False,Pool A
+2016-08-15,2016,ARG,EGY,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-15,2016,USA,MEX,3,0,Jogos Olimpicos 2016,False,Pool A
+2016-08-15,2016,RUS,IRI,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-15,2016,POL,CUB,3,0,Jogos Olimpicos 2016,False,Pool B
+2016-08-15,2016,ITA,CAN,1,3,Jogos Olimpicos 2016,False,Pool A
+2016-08-15,2016,BRA,FRA,3,1,Jogos Olimpicos 2016,False,Pool A
+2016-08-17,2016,ITA,IRI,3,0,Jogos Olimpicos 2016,False,Quarterfinals
+2016-08-17,2016,USA,POL,3,0,Jogos Olimpicos 2016,False,Quarterfinals
+2016-08-17,2016,CAN,RUS,0,3,Jogos Olimpicos 2016,False,Quarterfinals
+2016-08-17,2016,BRA,ARG,3,1,Jogos Olimpicos 2016,False,Quarterfinals
+2016-08-19,2016,ITA,USA,3,2,Jogos Olimpicos 2016,False,Semifinals
+2016-08-19,2016,RUS,BRA,0,3,Jogos Olimpicos 2016,False,Semifinals
+2016-08-21,2016,USA,RUS,3,2,Jogos Olimpicos 2016,False,Bronze Medal Match
+2016-08-21,2016,ITA,BRA,0,3,Jogos Olimpicos 2016,False,Gold Medal Match
 2017-06-02,2017,BRA,POL,2,3,Liga Mundial 2017,False,Pool A1
 2017-06-02,2017,ITA,IRI,3,0,Liga Mundial 2017,False,Pool A1
 2017-06-02,2017,BEL,CAN,2,3,Liga Mundial 2017,False,Pool B1
@@ -1759,6 +1900,100 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2018-09-02,2018,MEX,CAN,3,1,Copa Pan-Americana 2018,False,
 2018-09-02,2018,CUB,PUR,3,1,Copa Pan-Americana 2018,False,
 2018-09-02,2018,ARG,BRA,3,2,Copa Pan-Americana 2018,False,
+2018-09-09,2018,BUL,FIN,3,0,Campeonato Mundial 2018,False,Pool D
+2018-09-09,2018,ITA,JPN,3,0,Campeonato Mundial 2018,False,Pool A
+2018-09-12,2018,FRA,CHN,3,0,Campeonato Mundial 2018,False,Pool B
+2018-09-12,2018,CMR,TUN,3,0,Campeonato Mundial 2018,False,Pool C
+2018-09-12,2018,NED,CAN,0,3,Campeonato Mundial 2018,False,Pool B
+2018-09-12,2018,IRI,PUR,3,0,Campeonato Mundial 2018,False,Pool D
+2018-09-12,2018,DOM,SLO,1,3,Campeonato Mundial 2018,False,Pool A
+2018-09-12,2018,AUS,RUS,0,3,Campeonato Mundial 2018,False,Pool C
+2018-09-12,2018,BRA,EGY,3,0,Campeonato Mundial 2018,False,Pool B
+2018-09-12,2018,CUB,POL,1,3,Campeonato Mundial 2018,False,Pool D
+2018-09-12,2018,BEL,ARG,3,1,Campeonato Mundial 2018,False,Pool A
+2018-09-12,2018,USA,SRB,3,2,Campeonato Mundial 2018,False,Pool C
+2018-09-13,2018,EGY,CAN,0,3,Campeonato Mundial 2018,False,Pool B
+2018-09-13,2018,PUR,POL,0,3,Campeonato Mundial 2018,False,Pool D
+2018-09-13,2018,DOM,JPN,0,3,Campeonato Mundial 2018,False,Pool A
+2018-09-13,2018,AUS,USA,2,3,Campeonato Mundial 2018,False,Pool C
+2018-09-13,2018,BRA,FRA,3,2,Campeonato Mundial 2018,False,Pool B
+2018-09-13,2018,IRI,BUL,3,1,Campeonato Mundial 2018,False,Pool D
+2018-09-13,2018,ITA,BEL,3,0,Campeonato Mundial 2018,False,Pool A
+2018-09-13,2018,CMR,SRB,0,3,Campeonato Mundial 2018,False,Pool C
+2018-09-14,2018,CHN,NED,1,3,Campeonato Mundial 2018,False,Pool B
+2018-09-14,2018,FIN,CUB,3,1,Campeonato Mundial 2018,False,Pool D
+2018-09-14,2018,JPN,SLO,1,3,Campeonato Mundial 2018,False,Pool A
+2018-09-14,2018,AUS,CMR,3,1,Campeonato Mundial 2018,False,Pool C
+2018-09-14,2018,FRA,EGY,3,0,Campeonato Mundial 2018,False,Pool B
+2018-09-14,2018,BUL,PUR,3,0,Campeonato Mundial 2018,False,Pool D
+2018-09-14,2018,ARG,DOM,3,0,Campeonato Mundial 2018,False,Pool A
+2018-09-14,2018,RUS,TUN,3,0,Campeonato Mundial 2018,False,Pool C
+2018-09-15,2018,CAN,CHN,3,1,Campeonato Mundial 2018,False,Pool B
+2018-09-15,2018,CUB,IRI,1,3,Campeonato Mundial 2018,False,Pool D
+2018-09-15,2018,BEL,SLO,2,3,Campeonato Mundial 2018,False,Pool A
+2018-09-15,2018,SRB,TUN,3,1,Campeonato Mundial 2018,False,Pool C
+2018-09-15,2018,NED,BRA,3,1,Campeonato Mundial 2018,False,Pool B
+2018-09-15,2018,POL,FIN,3,1,Campeonato Mundial 2018,False,Pool D
+2018-09-15,2018,ITA,ARG,3,1,Campeonato Mundial 2018,False,Pool A
+2018-09-15,2018,USA,RUS,3,1,Campeonato Mundial 2018,False,Pool C
+2018-09-16,2018,CHN,EGY,1,3,Campeonato Mundial 2018,False,Pool B
+2018-09-16,2018,PUR,FIN,2,3,Campeonato Mundial 2018,False,Pool D
+2018-09-16,2018,JPN,BEL,1,3,Campeonato Mundial 2018,False,Pool A
+2018-09-16,2018,CMR,USA,0,3,Campeonato Mundial 2018,False,Pool C
+2018-09-16,2018,NED,FRA,3,2,Campeonato Mundial 2018,False,Pool B
+2018-09-16,2018,CUB,BUL,0,3,Campeonato Mundial 2018,False,Pool D
+2018-09-16,2018,DOM,ITA,0,3,Campeonato Mundial 2018,False,Pool A
+2018-09-16,2018,SRB,AUS,3,1,Campeonato Mundial 2018,False,Pool C
+2018-09-17,2018,EGY,NED,1,3,Campeonato Mundial 2018,False,Pool B
+2018-09-17,2018,CUB,PUR,3,1,Campeonato Mundial 2018,False,Pool D
+2018-09-17,2018,BEL,DOM,3,0,Campeonato Mundial 2018,False,Pool A
+2018-09-17,2018,RUS,CMR,3,0,Campeonato Mundial 2018,False,Pool C
+2018-09-17,2018,BRA,CAN,3,1,Campeonato Mundial 2018,False,Pool B
+2018-09-17,2018,IRI,POL,0,3,Campeonato Mundial 2018,False,Pool D
+2018-09-17,2018,ARG,SLO,3,2,Campeonato Mundial 2018,False,Pool A
+2018-09-17,2018,AUS,TUN,3,1,Campeonato Mundial 2018,False,Pool C
+2018-09-18,2018,CHN,BRA,0,3,Campeonato Mundial 2018,False,Pool B
+2018-09-18,2018,FIN,IRI,2,3,Campeonato Mundial 2018,False,Pool D
+2018-09-18,2018,JPN,ARG,3,2,Campeonato Mundial 2018,False,Pool A
+2018-09-18,2018,USA,TUN,3,0,Campeonato Mundial 2018,False,Pool C
+2018-09-18,2018,CAN,FRA,1,3,Campeonato Mundial 2018,False,Pool B
+2018-09-18,2018,BUL,POL,1,3,Campeonato Mundial 2018,False,Pool D
+2018-09-18,2018,ITA,SLO,3,1,Campeonato Mundial 2018,False,Pool A
+2018-09-18,2018,SRB,RUS,3,2,Campeonato Mundial 2018,False,Pool C
+2018-09-21,2018,USA,CAN,3,1,Campeonato Mundial 2018,False,Pool G
+2018-09-21,2018,SRB,FRA,3,2,Campeonato Mundial 2018,False,Pool H
+2018-09-21,2018,NED,RUS,0,3,Campeonato Mundial 2018,False,Pool E
+2018-09-21,2018,BRA,AUS,3,0,Campeonato Mundial 2018,False,Pool F
+2018-09-21,2018,BUL,IRI,3,0,Campeonato Mundial 2018,False,Pool G
+2018-09-21,2018,POL,ARG,2,3,Campeonato Mundial 2018,False,Pool H
+2018-09-21,2018,ITA,FIN,3,0,Campeonato Mundial 2018,False,Pool E
+2018-09-21,2018,BEL,SLO,0,3,Campeonato Mundial 2018,False,Pool F
+2018-09-22,2018,IRI,CAN,2,3,Campeonato Mundial 2018,False,Pool G
+2018-09-22,2018,SRB,ARG,3,0,Campeonato Mundial 2018,False,Pool H
+2018-09-22,2018,NED,FIN,3,1,Campeonato Mundial 2018,False,Pool E
+2018-09-22,2018,AUS,BEL,0,3,Campeonato Mundial 2018,False,Pool F
+2018-09-22,2018,BUL,USA,0,3,Campeonato Mundial 2018,False,Pool G
+2018-09-22,2018,POL,FRA,1,3,Campeonato Mundial 2018,False,Pool H
+2018-09-22,2018,RUS,ITA,3,2,Campeonato Mundial 2018,False,Pool E
+2018-09-22,2018,SLO,BRA,0,3,Campeonato Mundial 2018,False,Pool F
+2018-09-23,2018,USA,IRI,3,0,Campeonato Mundial 2018,False,Pool G
+2018-09-23,2018,FRA,ARG,3,1,Campeonato Mundial 2018,False,Pool H
+2018-09-23,2018,RUS,FIN,3,0,Campeonato Mundial 2018,False,Pool E
+2018-09-23,2018,SLO,AUS,2,3,Campeonato Mundial 2018,False,Pool F
+2018-09-23,2018,BUL,CAN,2,3,Campeonato Mundial 2018,False,Pool G
+2018-09-23,2018,POL,SRB,3,0,Campeonato Mundial 2018,False,Pool H
+2018-09-23,2018,ITA,NED,3,1,Campeonato Mundial 2018,False,Pool E
+2018-09-23,2018,BEL,BRA,2,3,Campeonato Mundial 2018,False,Pool F
+2018-09-26,2018,BRA,RUS,3,2,Campeonato Mundial 2018,False,Pool I
+2018-09-26,2018,ITA,SRB,0,3,Campeonato Mundial 2018,False,Pool J
+2018-09-27,2018,USA,RUS,3,0,Campeonato Mundial 2018,False,Pool I
+2018-09-27,2018,POL,SRB,3,0,Campeonato Mundial 2018,False,Pool J
+2018-09-28,2018,BRA,USA,3,0,Campeonato Mundial 2018,False,Pool I
+2018-09-28,2018,ITA,POL,3,2,Campeonato Mundial 2018,False,Pool J
+2018-09-29,2018,BRA,SRB,3,0,Campeonato Mundial 2018,False,Semifinals
+2018-09-29,2018,POL,USA,3,2,Campeonato Mundial 2018,False,Semifinals
+2018-09-30,2018,SRB,USA,1,3,Campeonato Mundial 2018,False,Final 3-4
+2018-09-30,2018,BRA,POL,0,3,Campeonato Mundial 2018,False,Final 1-2
 2019-05-25,2019,NED,CRO,3,2,Liga Europeia 2019,False,
 2019-05-25,2019,ESP,EST,3,1,Liga Europeia 2019,False,
 2019-05-25,2019,FIN,UKR,1,3,Liga Europeia 2019,False,
@@ -2379,6 +2614,44 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2021-06-27,2021,FRA,SLO,3,0,Nations League 2021,False,Final 3-4
 2021-06-27,2021,BRA,POL,3,1,Nations League 2021,False,Final 1-2
 2021-07-14,2021,SRI,UZB,3,0,Campeonato Asiatico 2021,False,
+2021-07-24,2021,ITA,CAN,3,2,Jogos Olimpicos 2021,False,Pool A
+2021-07-24,2021,BRA,TUN,3,0,Jogos Olimpicos 2021,False,Pool B
+2021-07-24,2021,RUS,ARG,3,1,Jogos Olimpicos 2021,False,Pool B
+2021-07-24,2021,JPN,VEN,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-07-24,2021,POL,IRI,2,3,Jogos Olimpicos 2021,False,Pool A
+2021-07-24,2021,USA,FRA,3,0,Jogos Olimpicos 2021,False,Pool B
+2021-07-26,2021,IRI,VEN,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-07-26,2021,USA,RUS,1,3,Jogos Olimpicos 2021,False,Pool B
+2021-07-26,2021,POL,ITA,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-07-26,2021,FRA,TUN,3,0,Jogos Olimpicos 2021,False,Pool B
+2021-07-26,2021,JPN,CAN,3,1,Jogos Olimpicos 2021,False,Pool A
+2021-07-26,2021,BRA,ARG,3,2,Jogos Olimpicos 2021,False,Pool B
+2021-07-28,2021,CAN,IRI,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-07-28,2021,USA,TUN,3,1,Jogos Olimpicos 2021,False,Pool B
+2021-07-28,2021,ARG,FRA,3,2,Jogos Olimpicos 2021,False,Pool B
+2021-07-28,2021,POL,VEN,3,1,Jogos Olimpicos 2021,False,Pool A
+2021-07-28,2021,JPN,ITA,1,3,Jogos Olimpicos 2021,False,Pool A
+2021-07-28,2021,BRA,RUS,0,3,Jogos Olimpicos 2021,False,Pool B
+2021-07-30,2021,CAN,VEN,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-07-30,2021,BRA,USA,3,1,Jogos Olimpicos 2021,False,Pool B
+2021-07-30,2021,JPN,POL,0,3,Jogos Olimpicos 2021,False,Pool A
+2021-07-30,2021,ARG,TUN,3,2,Jogos Olimpicos 2021,False,Pool B
+2021-07-30,2021,ITA,IRI,3,1,Jogos Olimpicos 2021,False,Pool A
+2021-07-30,2021,RUS,FRA,1,3,Jogos Olimpicos 2021,False,Pool B
+2021-08-01,2021,POL,CAN,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-08-01,2021,BRA,FRA,3,2,Jogos Olimpicos 2021,False,Pool B
+2021-08-01,2021,RUS,TUN,3,0,Jogos Olimpicos 2021,False,Pool B
+2021-08-01,2021,ITA,VEN,3,0,Jogos Olimpicos 2021,False,Pool A
+2021-08-01,2021,JPN,IRI,3,2,Jogos Olimpicos 2021,False,Pool A
+2021-08-01,2021,USA,ARG,0,3,Jogos Olimpicos 2021,False,Pool B
+2021-08-03,2021,POL,FRA,2,3,Jogos Olimpicos 2021,False,Quarterfinals
+2021-08-03,2021,ITA,ARG,2,3,Jogos Olimpicos 2021,False,Quarterfinals
+2021-08-03,2021,JPN,BRA,0,3,Jogos Olimpicos 2021,False,Quarterfinals
+2021-08-03,2021,CAN,RUS,0,3,Jogos Olimpicos 2021,False,Quarterfinals
+2021-08-05,2021,FRA,ARG,3,0,Jogos Olimpicos 2021,False,Semifinals
+2021-08-05,2021,BRA,RUS,1,3,Jogos Olimpicos 2021,False,Semifinals
+2021-08-07,2021,ARG,BRA,3,2,Jogos Olimpicos 2021,False,Bronze Medal Match
+2021-08-07,2021,FRA,RUS,3,2,Jogos Olimpicos 2021,False,Gold Medal Match
 2021-08-18,2021,USA,GUA,3,2,Campeonato NORCECA 2021,False,Pool B
 2021-08-18,2021,CAN,PUR,0,3,Campeonato NORCECA 2021,False,Pool A
 2021-08-18,2021,CUB,DOM,3,1,Campeonato NORCECA 2021,False,Pool B
@@ -2755,6 +3028,58 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2022-08-14,2022,PUR,MEX,3,1,Copa Pan-Americana 2022,False,
 2022-08-14,2022,CHI,USA,1,3,Copa Pan-Americana 2022,False,
 2022-08-14,2022,CUB,CAN,3,0,Copa Pan-Americana 2022,False,
+2022-08-26,2022,BRA,CUB,3,2,Campeonato Mundial 2022,False,Pool B
+2022-08-26,2022,JPN,QAT,3,0,Campeonato Mundial 2022,False,Pool B
+2022-08-26,2022,FRA,GER,3,0,Campeonato Mundial 2022,False,Pool D
+2022-08-26,2022,USA,MEX,3,0,Campeonato Mundial 2022,False,Pool C
+2022-08-26,2022,POL,BUL,3,0,Campeonato Mundial 2022,False,Pool C
+2022-08-26,2022,SLO,CMR,3,0,Campeonato Mundial 2022,False,Pool D
+2022-08-27,2022,TUR,CHN,3,0,Campeonato Mundial 2022,False,Pool E
+2022-08-27,2022,NED,EGY,3,0,Campeonato Mundial 2022,False,Pool F
+2022-08-27,2022,ARG,IRI,2,3,Campeonato Mundial 2022,False,Pool F
+2022-08-27,2022,TUN,PUR,3,0,Campeonato Mundial 2022,False,Pool A
+2022-08-27,2022,UKR,SRB,0,3,Campeonato Mundial 2022,False,Pool A
+2022-08-27,2022,ITA,CAN,3,0,Campeonato Mundial 2022,False,Pool E
+2022-08-28,2022,CUB,QAT,3,1,Campeonato Mundial 2022,False,Pool B
+2022-08-28,2022,BRA,JPN,3,0,Campeonato Mundial 2022,False,Pool B
+2022-08-28,2022,GER,CMR,3,0,Campeonato Mundial 2022,False,Pool D
+2022-08-28,2022,USA,BUL,3,0,Campeonato Mundial 2022,False,Pool C
+2022-08-28,2022,POL,MEX,3,0,Campeonato Mundial 2022,False,Pool C
+2022-08-28,2022,FRA,SLO,3,2,Campeonato Mundial 2022,False,Pool D
+2022-08-29,2022,CAN,CHN,3,0,Campeonato Mundial 2022,False,Pool E
+2022-08-29,2022,ARG,NED,2,3,Campeonato Mundial 2022,False,Pool F
+2022-08-29,2022,IRI,EGY,3,1,Campeonato Mundial 2022,False,Pool F
+2022-08-29,2022,SRB,PUR,3,0,Campeonato Mundial 2022,False,Pool A
+2022-08-29,2022,UKR,TUN,3,0,Campeonato Mundial 2022,False,Pool A
+2022-08-29,2022,ITA,TUR,3,0,Campeonato Mundial 2022,False,Pool E
+2022-08-30,2022,BRA,QAT,3,0,Campeonato Mundial 2022,False,Pool B
+2022-08-30,2022,JPN,CUB,3,1,Campeonato Mundial 2022,False,Pool B
+2022-08-30,2022,FRA,CMR,3,0,Campeonato Mundial 2022,False,Pool D
+2022-08-30,2022,MEX,BUL,3,2,Campeonato Mundial 2022,False,Pool C
+2022-08-30,2022,POL,USA,3,1,Campeonato Mundial 2022,False,Pool C
+2022-08-30,2022,SLO,GER,3,0,Campeonato Mundial 2022,False,Pool D
+2022-08-31,2022,ARG,EGY,3,2,Campeonato Mundial 2022,False,Pool F
+2022-08-31,2022,CAN,TUR,0,3,Campeonato Mundial 2022,False,Pool E
+2022-08-31,2022,IRI,NED,1,3,Campeonato Mundial 2022,False,Pool F
+2022-08-31,2022,SRB,TUN,3,0,Campeonato Mundial 2022,False,Pool A
+2022-08-31,2022,UKR,PUR,3,1,Campeonato Mundial 2022,False,Pool A
+2022-08-31,2022,ITA,CHN,3,0,Campeonato Mundial 2022,False,Pool E
+2022-09-03,2022,SLO,GER,3,1,Campeonato Mundial 2022,False,Round of 16
+2022-09-03,2022,ITA,CUB,3,1,Campeonato Mundial 2022,False,Round of 16
+2022-09-04,2022,USA,TUR,3,2,Campeonato Mundial 2022,False,Round of 16
+2022-09-04,2022,POL,TUN,3,0,Campeonato Mundial 2022,False,Round of 16
+2022-09-05,2022,NED,UKR,0,3,Campeonato Mundial 2022,False,Round of 16
+2022-09-05,2022,FRA,JPN,3,2,Campeonato Mundial 2022,False,Round of 16
+2022-09-06,2022,SRB,ARG,0,3,Campeonato Mundial 2022,False,Round of 16
+2022-09-06,2022,BRA,IRI,3,0,Campeonato Mundial 2022,False,Round of 16
+2022-09-07,2022,ITA,FRA,3,2,Campeonato Mundial 2022,False,Quarterfinals
+2022-09-07,2022,SLO,UKR,3,1,Campeonato Mundial 2022,False,Quarterfinals
+2022-09-08,2022,ARG,BRA,1,3,Campeonato Mundial 2022,False,Quarterfinals
+2022-09-08,2022,POL,USA,3,2,Campeonato Mundial 2022,False,Quarterfinals
+2022-09-10,2022,POL,BRA,3,2,Campeonato Mundial 2022,False,Semifinals
+2022-09-10,2022,ITA,SLO,3,0,Campeonato Mundial 2022,False,Semifinals
+2022-09-11,2022,BRA,SLO,3,1,Campeonato Mundial 2022,False,Final 3-4
+2022-09-11,2022,POL,ITA,1,3,Campeonato Mundial 2022,False,Final 1-2
 2023-03-13,2023,USA,BIZ,3,0,Campeonato NORCECA 2023,False,Pool A
 2023-03-13,2023,CRC,MEX,0,3,Campeonato NORCECA 2023,False,Pool A
 2023-03-13,2023,PUR,NCA,3,1,Campeonato NORCECA 2023,False,Pool B
@@ -3364,6 +3689,32 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2024-07-21,2024,COL,DOM,0,3,Copa Pan-Americana 2024,False,
 2024-07-21,2024,CUB,PUR,1,3,Copa Pan-Americana 2024,False,
 2024-07-21,2024,USA,CAN,1,3,Copa Pan-Americana 2024,False,
+2024-07-27,2024,JPN,GER,2,3,Jogos Olimpicos 2024,False,Pool C
+2024-07-27,2024,ITA,BRA,3,1,Jogos Olimpicos 2024,False,Pool B
+2024-07-27,2024,POL,EGY,3,0,Jogos Olimpicos 2024,False,Pool B
+2024-07-27,2024,USA,ARG,3,0,Jogos Olimpicos 2024,False,Pool C
+2024-07-28,2024,FRA,SRB,3,2,Jogos Olimpicos 2024,False,Pool A
+2024-07-28,2024,SLO,CAN,3,1,Jogos Olimpicos 2024,False,Pool A
+2024-07-30,2024,ITA,EGY,3,0,Jogos Olimpicos 2024,False,Pool B
+2024-07-30,2024,USA,GER,3,2,Jogos Olimpicos 2024,False,Pool C
+2024-07-30,2024,SLO,SRB,3,0,Jogos Olimpicos 2024,False,Pool A
+2024-07-30,2024,FRA,CAN,3,0,Jogos Olimpicos 2024,False,Pool A
+2024-07-31,2024,POL,BRA,3,2,Jogos Olimpicos 2024,False,Pool B
+2024-07-31,2024,JPN,ARG,3,1,Jogos Olimpicos 2024,False,Pool C
+2024-08-02,2024,ARG,GER,0,3,Jogos Olimpicos 2024,False,Pool C
+2024-08-02,2024,BRA,EGY,3,0,Jogos Olimpicos 2024,False,Pool B
+2024-08-02,2024,FRA,SLO,2,3,Jogos Olimpicos 2024,False,Pool A
+2024-08-02,2024,JPN,USA,1,3,Jogos Olimpicos 2024,False,Pool C
+2024-08-03,2024,POL,ITA,1,3,Jogos Olimpicos 2024,False,Pool B
+2024-08-03,2024,CAN,SRB,2,3,Jogos Olimpicos 2024,False,Pool A
+2024-08-05,2024,FRA,GER,3,2,Jogos Olimpicos 2024,False,Quarterfinals
+2024-08-05,2024,USA,BRA,3,1,Jogos Olimpicos 2024,False,Quarterfinals
+2024-08-05,2024,SLO,POL,1,3,Jogos Olimpicos 2024,False,Quarterfinals
+2024-08-05,2024,ITA,JPN,3,2,Jogos Olimpicos 2024,False,Quarterfinals
+2024-08-07,2024,ITA,FRA,0,3,Jogos Olimpicos 2024,False,Semifinals
+2024-08-07,2024,POL,USA,3,2,Jogos Olimpicos 2024,False,Semifinals
+2024-08-09,2024,ITA,USA,0,3,Jogos Olimpicos 2024,False,Bronze Medal Match
+2024-08-10,2024,FRA,POL,3,0,Jogos Olimpicos 2024,False,Gold Medal Match
 2025-06-06,2025,CRO,ISR,1,3,Liga Europeia 2025,False,
 2025-06-06,2025,FIN,SVK,3,0,Liga Europeia 2025,False,
 2025-06-06,2025,ESP,GRE,1,3,Liga Europeia 2025,False,
@@ -3595,6 +3946,70 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2025-08-31,2025,CHI,USA,3,0,Copa Pan-Americana 2025,False,
 2025-08-31,2025,COL,CAN,0,3,Copa Pan-Americana 2025,False,
 2025-08-31,2025,VEN,MEX,3,1,Copa Pan-Americana 2025,False,
+2025-09-12,2025,PHI,TUN,0,3,Campeonato Mundial 2025,False,Pool A
+2025-09-13,2025,USA,COL,3,0,Campeonato Mundial 2025,False,Pool D
+2025-09-13,2025,CAN,LBA,3,1,Campeonato Mundial 2025,False,Pool G
+2025-09-13,2025,CUB,POR,1,3,Campeonato Mundial 2025,False,Pool D
+2025-09-13,2025,JPN,TUR,0,3,Campeonato Mundial 2025,False,Pool G
+2025-09-13,2025,GER,BUL,0,3,Campeonato Mundial 2025,False,Pool E
+2025-09-13,2025,NED,QAT,3,1,Campeonato Mundial 2025,False,Pool B
+2025-09-13,2025,SLO,CHI,3,0,Campeonato Mundial 2025,False,Pool E
+2025-09-13,2025,POL,ROU,3,0,Campeonato Mundial 2025,False,Pool B
+2025-09-14,2025,ARG,FIN,3,2,Campeonato Mundial 2025,False,Pool C
+2025-09-14,2025,IRI,EGY,1,3,Campeonato Mundial 2025,False,Pool A
+2025-09-14,2025,UKR,BEL,0,3,Campeonato Mundial 2025,False,Pool F
+2025-09-14,2025,SRB,CZE,0,3,Campeonato Mundial 2025,False,Pool H
+2025-09-14,2025,FRA,KOR,3,0,Campeonato Mundial 2025,False,Pool C
+2025-09-14,2025,BRA,CHN,3,1,Campeonato Mundial 2025,False,Pool H
+2025-09-14,2025,ITA,ALG,3,0,Campeonato Mundial 2025,False,Pool F
+2025-09-15,2025,CUB,COL,3,0,Campeonato Mundial 2025,False,Pool D
+2025-09-15,2025,TUR,LBA,3,1,Campeonato Mundial 2025,False,Pool G
+2025-09-15,2025,GER,CHI,3,0,Campeonato Mundial 2025,False,Pool E
+2025-09-15,2025,JPN,CAN,0,3,Campeonato Mundial 2025,False,Pool G
+2025-09-15,2025,SLO,BUL,2,3,Campeonato Mundial 2025,False,Pool E
+2025-09-15,2025,NED,ROU,3,0,Campeonato Mundial 2025,False,Pool B
+2025-09-15,2025,USA,POR,3,0,Campeonato Mundial 2025,False,Pool D
+2025-09-15,2025,POL,QAT,3,0,Campeonato Mundial 2025,False,Pool B
+2025-09-16,2025,BRA,CZE,3,0,Campeonato Mundial 2025,False,Pool H
+2025-09-16,2025,ARG,KOR,3,1,Campeonato Mundial 2025,False,Pool C
+2025-09-16,2025,IRI,TUN,3,1,Campeonato Mundial 2025,False,Pool A
+2025-09-16,2025,UKR,ALG,3,0,Campeonato Mundial 2025,False,Pool F
+2025-09-16,2025,PHI,EGY,3,1,Campeonato Mundial 2025,False,Pool A
+2025-09-16,2025,FRA,FIN,2,3,Campeonato Mundial 2025,False,Pool C
+2025-09-16,2025,SRB,CHN,3,0,Campeonato Mundial 2025,False,Pool H
+2025-09-16,2025,ITA,BEL,2,3,Campeonato Mundial 2025,False,Pool F
+2025-09-17,2025,POR,COL,3,2,Campeonato Mundial 2025,False,Pool D
+2025-09-17,2025,QAT,ROU,3,1,Campeonato Mundial 2025,False,Pool B
+2025-09-17,2025,BUL,CHI,3,0,Campeonato Mundial 2025,False,Pool E
+2025-09-17,2025,CAN,TUR,0,3,Campeonato Mundial 2025,False,Pool G
+2025-09-17,2025,USA,CUB,3,1,Campeonato Mundial 2025,False,Pool D
+2025-09-17,2025,POL,NED,3,1,Campeonato Mundial 2025,False,Pool B
+2025-09-17,2025,SLO,GER,3,1,Campeonato Mundial 2025,False,Pool E
+2025-09-17,2025,JPN,LBA,3,0,Campeonato Mundial 2025,False,Pool G
+2025-09-18,2025,BRA,SRB,0,3,Campeonato Mundial 2025,False,Pool H
+2025-09-18,2025,FIN,KOR,3,1,Campeonato Mundial 2025,False,Pool C
+2025-09-18,2025,EGY,TUN,0,3,Campeonato Mundial 2025,False,Pool A
+2025-09-18,2025,BEL,ALG,3,0,Campeonato Mundial 2025,False,Pool F
+2025-09-18,2025,PHI,IRI,2,3,Campeonato Mundial 2025,False,Pool A
+2025-09-18,2025,FRA,ARG,2,3,Campeonato Mundial 2025,False,Pool C
+2025-09-18,2025,CZE,CHN,3,0,Campeonato Mundial 2025,False,Pool H
+2025-09-18,2025,ITA,UKR,3,0,Campeonato Mundial 2025,False,Pool F
+2025-09-20,2025,POL,CAN,3,1,Campeonato Mundial 2025,False,Round of 16
+2025-09-20,2025,TUR,NED,3,1,Campeonato Mundial 2025,False,Round of 16
+2025-09-21,2025,ARG,ITA,0,3,Campeonato Mundial 2025,False,Round of 16
+2025-09-21,2025,BEL,FIN,3,0,Campeonato Mundial 2025,False,Round of 16
+2025-09-22,2025,USA,SLO,3,1,Campeonato Mundial 2025,False,Round of 16
+2025-09-22,2025,BUL,POR,3,0,Campeonato Mundial 2025,False,Round of 16
+2025-09-23,2025,TUN,CZE,0,3,Campeonato Mundial 2025,False,Round of 16
+2025-09-23,2025,SRB,IRI,2,3,Campeonato Mundial 2025,False,Round of 16
+2025-09-24,2025,POL,TUR,3,0,Campeonato Mundial 2025,False,Quarter-finals
+2025-09-24,2025,ITA,BEL,3,0,Campeonato Mundial 2025,False,Quarter-finals
+2025-09-25,2025,CZE,IRI,3,1,Campeonato Mundial 2025,False,Quarter-finals
+2025-09-25,2025,USA,BUL,2,3,Campeonato Mundial 2025,False,Quarter-finals
+2025-09-27,2025,CZE,BUL,1,3,Campeonato Mundial 2025,False,Semi-finals
+2025-09-27,2025,POL,ITA,0,3,Campeonato Mundial 2025,False,Semi-finals
+2025-09-28,2025,CZE,POL,1,3,Campeonato Mundial 2025,False,Final 3-4
+2025-09-28,2025,BUL,ITA,1,3,Campeonato Mundial 2025,False,Final 1-2
 2026-05-26,2026,PUR,USA,0,3,Campeonato NORCECA 2026,False,Pool A
 2026-05-26,2026,VEN,CRC,3,0,Campeonato NORCECA 2026,False,Pool C
 2026-05-26,2026,HON,CAN,0,3,Campeonato NORCECA 2026,False,Pool B

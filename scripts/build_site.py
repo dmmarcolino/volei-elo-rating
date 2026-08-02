@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import csv
 import os
+import re
 from collections import defaultdict
 from datetime import datetime
 
@@ -107,6 +108,57 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
     )
 
 
+# Fases de mata-mata conhecidas -- NUNCA mostram tabela de classificacao,
+# so a(s) partida(s) em si. A ordem no dicionario e a ordem de exibicao.
+FASES_MATA_MATA = {
+    "quarterfinal": 10, "quarterfinals": 10, "quartas": 10, "quarters": 10,
+    "semifinal": 20, "semifinals": 20, "semifinais": 20,
+    "3rd place": 30, "third place": 30, "bronze": 30, "terceiro lugar": 30,
+    "5th place": 25, "7th place": 24,
+    "final": 40, "finals": 40,
+}
+
+
+def is_fase_mata_mata(fase: str) -> bool:
+    f = fase.lower().strip()
+    return any(chave in f for chave in FASES_MATA_MATA)
+
+
+def fase_sort_key(fase: str):
+    """Ordena fases de grupo alfabetica/numericamente, e fases de
+    mata-mata pela ordem logica correta (quartas -> semi -> final),
+    nao alfabetica (que colocaria 'Final' antes de 'Quarterfinals')."""
+    f = fase.lower().strip()
+    for chave, ordem in FASES_MATA_MATA.items():
+        if chave in f:
+            return (2, ordem, fase)
+    if "pool" in f or "group" in f or "grupo" in f:
+        m = re.search(r"(\d+)", fase)
+        if m:
+            return (0, int(m.group(1)), fase)
+        return (0, 0, fase)
+    return (1, 0, fase)  # fases nao reconhecidas: mantem ordem original
+
+
+# Eventos onde a classificacao POR POOL nao importa de verdade -- so a
+# classificacao geral combinando todos os pools. Ex: Nations League, onde
+# os grupos so servem pra organizar o calendario, nao pra classificar.
+EVENTOS_SO_CLASSIFICACAO_GERAL = ("nations league", "liga mundial", "world league")
+
+
+def grupo_e_consistente(partidas_da_fase: list[dict]) -> bool:
+    """Verifica se todas as selecoes da fase jogaram o MESMO numero de
+    partidas -- sinal de um grupo/turno unico limpo. Se nao bater, e sinal
+    de que duas fases distintas foram misturadas sob o mesmo rotulo (ex:
+    fase de grupos + Final Four juntas) -- nesse caso e mais seguro NAO
+    mostrar tabela do que mostrar uma classificacao enganosa."""
+    contagem: dict[str, int] = defaultdict(int)
+    for p in partidas_da_fase:
+        contagem[p["team_a"]] += 1
+        contagem[p["team_b"]] += 1
+    return len(set(contagem.values())) <= 1
+
+
 def compute_standings(partidas_da_fase: list[dict]) -> list[dict]:
     """Calcula vitorias, sets pro/contra e set average para cada selecao
     dentro de uma fase. So faz sentido chamar isso para fases com mais de
@@ -150,10 +202,11 @@ def build_match_row_html(p: dict, evento: str, rating_index: dict,
     rating_b = rating_index.get(key_b)
     delta_a = delta_html(rating_a[1] - rating_a[0]) if rating_a else ""
     delta_b = delta_html(rating_b[1] - rating_b[0]) if rating_b else ""
-    rating_atual_a = ratings_atuais.get(p["team_a"])
-    rating_atual_b = ratings_atuais.get(p["team_b"])
-    rating_a_str = f'<span class="team-rating">{rating_atual_a:.0f}</span>' if rating_atual_a is not None else ""
-    rating_b_str = f'<span class="team-rating">{rating_atual_b:.0f}</span>' if rating_atual_b is not None else ""
+    # Rating de CADA SELECAO NO MOMENTO DA PARTIDA (antes dela acontecer),
+    # nao o rating atual -- senao um jogo de 2013 mostraria o rating de
+    # 2026, o que nao faz sentido nenhum.
+    rating_a_str = f'<span class="team-rating">{rating_a[0]:.0f}</span>' if rating_a else ""
+    rating_b_str = f'<span class="team-rating">{rating_b[0]:.0f}</span>' if rating_b else ""
 
     return f"""
     <div class="match-row">
@@ -184,23 +237,39 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
 
     secoes_html = []
     for evento in ordem_eventos:
-        # Agrupa por fase, preservando a ordem em que cada fase apareceu
-        # pela primeira vez (a lista ja vem cronologica).
+        # Agrupa por fase.
         fases: dict[str, list[dict]] = defaultdict(list)
-        ordem_fases: list[str] = []
         for p in eventos[evento]:
             fase = p.get("fase") or "Resultados"
-            if fase not in fases:
-                ordem_fases.append(fase)
             fases[fase].append(p)
 
+        # Ordena as fases: grupos em ordem alfabetica/numerica, depois
+        # mata-mata na ordem logica correta (nao alfabetica).
+        ordem_fases = sorted(fases.keys(), key=fase_sort_key)
+
+        e_evento_so_classificacao_geral = any(
+            chave in evento.lower() for chave in EVENTOS_SO_CLASSIFICACAO_GERAL
+        )
+
         blocos_fase = []
+        partidas_fase_de_grupo: list[dict] = []  # para a classificacao geral, se for o caso
+
         for fase in ordem_fases:
             partidas_fase = fases[fase]
             times_da_fase = {p["team_a"] for p in partidas_fase} | {p["team_b"] for p in partidas_fase}
+            eh_mata_mata = is_fase_mata_mata(fase)
+
+            if not eh_mata_mata:
+                partidas_fase_de_grupo.extend(partidas_fase)
 
             tabela_html = ""
-            if len(times_da_fase) > 2:
+            mostra_tabela_por_fase = (
+                not eh_mata_mata
+                and not e_evento_so_classificacao_geral
+                and len(times_da_fase) > 2
+                and grupo_e_consistente(partidas_fase)
+            )
+            if mostra_tabela_por_fase:
                 standings = compute_standings(partidas_fase)
                 tabela_html = build_standings_html(standings, nomes)
 
@@ -215,10 +284,23 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
               <div class="matches">{linhas}</div>
             </div>""")
 
+        # Para eventos tipo Nations League: a classificacao por pool nao
+        # importa, so a geral -- combinando todas as fases de grupo (nao
+        # mata-mata) num placar so, no final.
+        classificacao_geral_html = ""
+        if e_evento_so_classificacao_geral and partidas_fase_de_grupo and grupo_e_consistente(partidas_fase_de_grupo):
+            standings_geral = compute_standings(partidas_fase_de_grupo)
+            classificacao_geral_html = f"""
+            <div class="fase-bloco">
+              <h3 class="fase-titulo">Classificação Geral</h3>
+              {build_standings_html(standings_geral, nomes)}
+            </div>"""
+
         secoes_html.append(f"""
         <section class="tournament">
           <h2>{evento}</h2>
           {''.join(blocos_fase)}
+          {classificacao_geral_html}
         </section>""")
 
     return PAGE_TEMPLATE.format(

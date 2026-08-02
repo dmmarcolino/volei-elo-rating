@@ -70,6 +70,15 @@ def palavras_chave_vis(ano: int) -> list[tuple[str, str]]:
     kw.append(("NORCECA", f"Campeonato NORCECA {ano}"))
     kw.append(("European League", f"Liga Europeia {ano}"))
     kw.append(("Pan-American Cup", f"Copa Pan-Americana {ano}"))
+    # Jogos Olimpicos: buscamos em 2016, 2020 E 2021 porque a Toquio 2020
+    # foi adiada para 2021 -- nao temos certeza sob qual "Season" o VIS
+    # catalogou, entao tentamos os dois anos (busca extra e inofensiva
+    # se nao encontrar nada).
+    if ano in (2016, 2020, 2021, 2024, 2028):
+        kw.append(("Olympic", f"Jogos Olimpicos {ano}"))
+    # Campeonato Mundial: quadrienal ate 2022, bienal a partir de 2025.
+    if ano in (2014, 2018, 2022, 2025, 2027):
+        kw.append(("World Championship", f"Campeonato Mundial {ano}"))
     return kw
 
 
@@ -109,6 +118,8 @@ def paginas_wikipedia_anuais(ano: int) -> list[tuple[list[str], str]]:
     ]
     if ano in (2014, 2015, 2016):
         paginas.append(([f"{ano} FIVB Volleyball World League"], f"Liga Mundial {ano}"))
+    if ano == 2014:
+        paginas.append((["2014 FIVB Men's Volleyball World Championship"], f"Campeonato Mundial {ano}"))
     return paginas
 
 
@@ -245,6 +256,8 @@ def main():
                 continue
             if "Liga Mundial" in event_name and ("World League" in cobertos_pelo_vis
                                                   or "Nations League" in cobertos_pelo_vis):
+                continue
+            if "Campeonato Mundial" in event_name and "World Championship" in cobertos_pelo_vis:
                 continue
             html = None
             titulo_usado = None

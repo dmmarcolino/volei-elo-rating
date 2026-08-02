@@ -92,6 +92,15 @@ COUNTRY_NAME_TO_CODE: dict[str, str] = {
     # sozinho -- aceitamos as duas formas apontando pro mesmo codigo.
     "antigua and barbuda": "ANT", "cyprus": "CYP", "faroe islands": "FAI",
     "macedonia": "MKD", "north macedonia": "MKD",
+
+    # ROC ("Russian Olympic Committee") foi o nome sob o qual a selecao da
+    # RUSSIA competiu nas Olimpiadas de Toquio (disputada em 2021), por
+    # causa da punicao da WADA/COI -- e o mesmo time nacional, so mudou
+    # de nome por sancao administrativa, entao mapeamos para RUS mesmo.
+    "roc": "RUS",
+    # Nome curto moderno da Chequia, cada vez mais usado em fontes oficiais.
+    "czechia": "CZE",
+    "philippines": "PHI",
 }
 
 
