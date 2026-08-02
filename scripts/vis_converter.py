@@ -186,6 +186,15 @@ def convert_vis_matches_xml(
                 f"No={match_no}: placar empatado ({sets_a}x{sets_b}), pulado"
             )
             continue
+        if max(sets_a, sets_b) != 3:
+            # Partida ainda em andamento (capturada pelo VIS no meio do
+            # jogo) -- no volei uma partida so termina quando um lado
+            # chega a 3 sets. Um placar tipo "1-0" NAO e resultado final.
+            log.skipped_matches.append(
+                f"No={match_no}: partida em andamento, ainda sem resultado final "
+                f"({sets_a}x{sets_b})"
+            )
+            continue
 
         matches.append(Match(
             match_date=parse_vis_datetime(raw_date),

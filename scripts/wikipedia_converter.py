@@ -95,6 +95,11 @@ def convert_wikipedia_table_to_matches(
         if sets_a == sets_b:
             log.skipped_matches.append(f"linha {row_idx}: placar empatado, pulado")
             continue
+        if max(sets_a, sets_b) != 3:
+            log.skipped_matches.append(
+                f"linha {row_idx}: partida em andamento ou placar incompleto ({sets_a}x{sets_b})"
+            )
+            continue
 
         code_a = normalize_and_map_team(str(raw_a), log)
         code_b = normalize_and_map_team(str(raw_b), log)
