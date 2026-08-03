@@ -49,7 +49,10 @@ TORNEIOS_2013_CONFIRMADOS: list[tuple[int, str]] = [
     (616, "Liga Mundial 2013"),
     (618, "Grand Champions Cup 2013"),
     (541, "Liga Europeia 2013"),
-    (375, "Copa Pan-Americana 2013"),
+    # Copa Pan-Americana EXCLUIDA de proposito -- times principais costumam
+    # mandar equipe alternativa, o que distorce o rating (Daniel identificou
+    # isso apos analisar os resultados: EUA/Brasil/Argentina perdendo para
+    # Chile/Mexico de um jeito que nao reflete forca real).
 ]
 
 # Palavras-chave para busca automatica no VIS, por categoria -- ajustadas
@@ -69,7 +72,7 @@ def palavras_chave_vis(ano: int) -> list[tuple[str, str]]:
         kw.append(("Grand Champions Cup", f"Grand Champions Cup {ano}"))
     kw.append(("NORCECA", f"Campeonato NORCECA {ano}"))
     kw.append(("European League", f"Liga Europeia {ano}"))
-    kw.append(("Pan-American Cup", f"Copa Pan-Americana {ano}"))
+    # Copa Pan-Americana EXCLUIDA de proposito (ver nota no topo do arquivo).
     # Jogos Olimpicos: buscamos em 2016, 2020 E 2021 porque a Toquio 2020
     # foi adiada para 2021 -- nao temos certeza sob qual "Season" o VIS
     # catalogou, entao tentamos os dois anos (busca extra e inofensiva
@@ -114,7 +117,7 @@ def paginas_wikipedia_anuais(ano: int) -> list[tuple[list[str], str]]:
     como fonte alternativa -- sem duplicar quando o VIS ja funcionou."""
     paginas = [
         ([f"{ano} Men's European Volleyball League"], f"Liga Europeia {ano}"),
-        ([f"{ano} Men's Pan-American Volleyball Cup"], f"Copa Pan-Americana {ano}"),
+        # Copa Pan-Americana EXCLUIDA de proposito -- ver nota no topo do arquivo.
     ]
     if ano in (2014, 2015, 2016):
         paginas.append(([f"{ano} FIVB Volleyball World League"], f"Liga Mundial {ano}"))
@@ -247,12 +250,10 @@ def main():
 
         paginas_a_buscar = paginas_wikipedia_continentais(ano) + paginas_wikipedia_anuais(ano)
         for candidate_titles, event_name in paginas_a_buscar:
-            # Pula Liga Europeia / Copa Pan-Americana / Liga Mundial se o
-            # VIS ja trouxe essa mesma competicao nesta temporada -- evita
-            # contar a mesma partida duas vezes.
+            # Pula Liga Europeia / Liga Mundial se o VIS ja trouxe essa
+            # mesma competicao nesta temporada -- evita contar a mesma
+            # partida duas vezes.
             if "Liga Europeia" in event_name and "European League" in cobertos_pelo_vis:
-                continue
-            if "Copa Pan-Americana" in event_name and "Pan-American Cup" in cobertos_pelo_vis:
                 continue
             if "Liga Mundial" in event_name and ("World League" in cobertos_pelo_vis
                                                   or "Nations League" in cobertos_pelo_vis):

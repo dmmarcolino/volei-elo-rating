@@ -80,7 +80,6 @@ def build_nav(prefixo: str, anos: list[int]) -> str:
     links_anos = "".join(f'<a href="{prefixo}anos/{ano}.html">{ano}</a>' for ano in anos)
     return f"""<nav>
       <a href="{prefixo}index.html" class="nav-home">Elo Vôlei</a>
-      <a href="{prefixo}continentes.html" class="nav-continentes">Continentes</a>
       <div class="nav-anos">{links_anos}</div>
     </nav>"""
 
@@ -138,13 +137,13 @@ def build_ranking_ano_html(ano: int, ranking: list[tuple[str, float]],
         </a>""")
 
     return PAGE_TEMPLATE.format(
-        titulo=f"Ranking no fim de {ano}",
+        titulo=f"Ranking Final {ano}",
         nav=build_nav("../", anos),
         conteudo=f"""
-        <h1>Ranking no fim de {ano}</h1>
-        <p class="subtitulo">
-          <a href="../anos/{ano}.html">Ver os resultados de {ano}</a>
-        </p>
+        <div class="page-header-row">
+          <h1>Ranking Final {ano}</h1>
+          <a class="page-header-link" href="../anos/{ano}.html">Resultados {ano}</a>
+        </div>
         <div class="ranking">{''.join(linhas)}</div>""",
         css_prefix="../",
     )
@@ -188,7 +187,8 @@ def build_continentes_html(ratings_atuais: dict[str, float], confederacoes: dict
     )
 
 
-def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], anos: list[int]) -> str:
+def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], anos: list[int],
+                      ultima_atualizacao: str) -> str:
     ranking = sorted(ratings_atuais.items(), key=lambda kv: kv[1], reverse=True)
     linhas = []
     for pos, (codigo, rating) in enumerate(ranking, start=1):
@@ -205,8 +205,12 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
         nav=build_nav("", anos),
         conteudo=f"""
         <section>
-          <h1>Ranking atual</h1>
+          <div class="page-header-row">
+            <h1>Ranking atual</h1>
+            <a class="page-header-link" href="continentes.html">Ranking por continente</a>
+          </div>
           <p class="subtitulo">Clique numa seleção para ver o histórico completo desde 2013</p>
+          <p class="ultima-atualizacao">Última atualização: {ultima_atualizacao}</p>
           <div class="ranking">{''.join(linhas)}</div>
         </section>""",
         css_prefix="",
@@ -215,36 +219,64 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
 
 # Fases de mata-mata conhecidas -- NUNCA mostram tabela de classificacao,
 # so a(s) partida(s) em si. A ordem no dicionario e a ordem de exibicao.
-FASES_MATA_MATA = {
-    "round of 16": 5, "oitavas": 5,
-    "quarterfinal": 10, "quarterfinals": 10, "quartas": 10, "quarters": 10,
-    "semifinal": 20, "semifinals": 20, "semifinais": 20,
-    "7th place": 31, "7th-8th": 31,
-    "5th place": 32, "5th-6th": 32,
-    "3rd place": 33, "third place": 33, "bronze": 33, "terceiro lugar": 33,
-    "final": 40, "finals": 40,
-}
+# Fases de mata-mata: classificacao unificada. Antes disso usava um
+# dicionario de substrings simples, mas isso quebrava com variacoes de
+# espaco (ex: "Quarter Final" com espaco nao batia com "quarterfinal"
+# junto, e "final" sozinho capturava tudo por engano, incluindo quartas
+# e semifinais). Agora cada categoria e checada de forma tolerante a
+# espaco/hifen, e fases de "colocacao" (7th place, Final 1-2 etc.) tem
+# o numero da colocacao extraido para ordenar corretamente.
+def classify_fase(fase: str) -> tuple[str, int]:
+    """Devolve (categoria, rank). categoria e uma de:
+    'grupo', 'r16', 'quartas', 'semi', 'final', 'desconhecida'.
+    rank so importa pra 'final': 1 = disputa do 1o lugar (mostrada por
+    ultimo), 3 = disputa do 3o lugar, etc."""
+    f = fase.lower().strip()
+
+    if "round of 16" in f or "oitavas" in f or "1/8" in f:
+        return ("r16", 0)
+    if "quarter" in f and "final" in f or "quartas" in f or "1/4" in f:
+        return ("quartas", 0)
+    if ("semi" in f and "final" in f) or "semifinais" in f or "1/2" in f:
+        return ("semi", 0)
+
+    # Fases de "colocacao"/final -- tenta extrair o numero.
+    m = re.search(r"(\d+)\s*[-–]\s*(\d+)", f)  # ex: "Final 1-2", "Places 5-6"
+    if m:
+        return ("final", min(int(m.group(1)), int(m.group(2))))
+    m = re.search(r"(\d+)(?:st|nd|rd|th)\s*place", f)  # ex: "7th place"
+    if m:
+        return ("final", int(m.group(1)))
+    if "bronze" in f or "third place" in f or "3rd place" in f or "terceiro lugar" in f:
+        return ("final", 3)
+    if "final" in f:
+        return ("final", 1)
+
+    if "pool" in f or "group" in f or "grupo" in f:
+        return ("grupo", 0)
+    return ("desconhecida", 0)
+
+
+_ORDEM_CATEGORIA = {"grupo": 0, "desconhecida": 1, "r16": 2, "quartas": 3, "semi": 4, "final": 5}
 
 
 def is_fase_mata_mata(fase: str) -> bool:
-    f = fase.lower().strip()
-    return any(chave in f for chave in FASES_MATA_MATA)
+    categoria, _ = classify_fase(fase)
+    return categoria in ("r16", "quartas", "semi", "final")
 
 
 def fase_sort_key(fase: str):
-    """Ordena fases de grupo alfabetica/numericamente, e fases de
-    mata-mata pela ordem logica correta (quartas -> semi -> final),
-    nao alfabetica (que colocaria 'Final' antes de 'Quarterfinals')."""
-    f = fase.lower().strip()
-    for chave, ordem in FASES_MATA_MATA.items():
-        if chave in f:
-            return (2, ordem, fase)
-    if "pool" in f or "group" in f or "grupo" in f:
+    """Ordena: grupos (alfabetico/numerico) -> desconhecidas -> R16 ->
+    quartas -> semis -> finais (da colocacao mais alta/menos importante
+    ate a final que disputa o 1o lugar, que fica sempre por ultimo)."""
+    categoria, rank = classify_fase(fase)
+    ordem = _ORDEM_CATEGORIA[categoria]
+    if categoria == "grupo":
         m = re.search(r"(\d+)", fase)
-        if m:
-            return (0, int(m.group(1)), fase)
-        return (0, 0, fase)
-    return (1, 0, fase)  # fases nao reconhecidas: mantem ordem original
+        return (ordem, int(m.group(1)) if m else 0, fase)
+    if categoria == "final":
+        return (ordem, -rank, fase)  # rank maior (7-8) primeiro, rank 1 (final) por ultimo
+    return (ordem, 0, fase)
 
 
 # Eventos onde a classificacao POR POOL nao importa de verdade -- so a
@@ -422,8 +454,11 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
     return PAGE_TEMPLATE.format(
         titulo=f"Resultados {ano}",
         nav=build_nav("../", anos),
-        conteudo=f"""<h1>Temporada {ano}</h1>
-        <p class="subtitulo"><a href="../rankings/{ano}.html">Ver o ranking no fim de {ano}</a></p>
+        conteudo=f"""
+        <div class="page-header-row">
+          <h1>Temporada {ano}</h1>
+          <a class="page-header-link" href="../rankings/{ano}.html">Ranking Final {ano}</a>
+        </div>
         {''.join(secoes_html)}""",
         css_prefix="../",
     )
@@ -575,7 +610,30 @@ h1 {
   font-size: 1.2rem;
   margin-left: 0.5rem;
 }
+.page-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.25rem;
+}
+.page-header-row h1 { margin: 0; }
+.page-header-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--blue);
+  white-space: nowrap;
+}
 .subtitulo { color: var(--ink-soft); margin: 0 0 1.5rem; }
+.ultima-atualizacao {
+  color: var(--ink-soft);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  margin: -1rem 0 1.5rem;
+}
 h2 {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
@@ -775,7 +833,8 @@ def main():
         f.write(STYLE_CSS)
 
     with open(f"{DOCS_DIR}/index.html", "w", encoding="utf-8") as f:
-        f.write(build_index_html(ratings_atuais, nomes, anos))
+        ultima_atualizacao = datetime.now().strftime("%d/%m/%Y %H:%M")
+        f.write(build_index_html(ratings_atuais, nomes, anos, ultima_atualizacao))
 
     with open(f"{DOCS_DIR}/continentes.html", "w", encoding="utf-8") as f:
         f.write(build_continentes_html(ratings_atuais, confederacoes, nomes, anos))
