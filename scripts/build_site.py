@@ -909,6 +909,12 @@ def main():
     with open(f"{DOCS_DIR}/robots.txt", "w", encoding="utf-8") as f:
         f.write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}sitemap.xml\n")
 
+    # Desativa o processamento Jekyll do GitHub Pages -- sem isso, arquivos
+    # como sitemap.xml podem ser alterados de formas sutis que quebram
+    # parsers estritos (ex: Google Search Console), mesmo continuando a
+    # abrir normalmente num navegador comum.
+    open(f"{DOCS_DIR}/.nojekyll", "w").close()
+
     print(f"Site gerado em {DOCS_DIR}/")
     print(f"  1 pagina inicial (ranking)")
     print(f"  {len(anos)} paginas de ano ({anos[0]}-{anos[-1]})")
