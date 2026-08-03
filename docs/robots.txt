@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dmmarcolino.github.io/volei-elo-rating/sitemap.xml

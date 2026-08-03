@@ -24,6 +24,7 @@ RATINGS_ATUAIS_CSV = "../data/ratings_atuais.csv"
 NOMES_CSV = "../data/nomes_paises.csv"
 SEED_CSV = "../data/seed_ratings_2011.csv"
 DOCS_DIR = "../docs"
+BASE_URL = "https://dmmarcolino.github.io/volei-elo-rating/"
 
 MESES_PT = {
     1: "jan", 2: "fev", 3: "mar", 4: "abr", 5: "mai", 6: "jun",
@@ -98,6 +99,7 @@ def load_seed_ratings(path: str) -> dict[str, float]:
 # (nao tinham rating em 2011, entao nao aparecem no seed_ratings_2011.csv).
 CONFEDERACAO_EXTRA = {
     "BDI": "Africa", "CHA": "Africa", "CGO": "Africa", "NIG": "Africa",
+    "TAN": "Africa", "GAM": "Africa", "MLI": "Africa",
     "GUY": "America", "MTQ": "America",
     "IRQ": "Asia",
     "KOS": "Europa", "SUI": "Europa",
@@ -138,6 +140,9 @@ def build_ranking_ano_html(ano: int, ranking: list[tuple[str, float]],
 
     return PAGE_TEMPLATE.format(
         titulo=f"Ranking Final {ano}",
+        descricao=f"Como terminou o ranking Elo de todas as seleções masculinas de vôlei "
+                   f"no fim de {ano}, do 1º ao último colocado.",
+        url_completa=f"{BASE_URL}rankings/{ano}.html",
         nav=build_nav("../", anos),
         conteudo=f"""
         <div class="page-header-row">
@@ -181,6 +186,9 @@ def build_continentes_html(ratings_atuais: dict[str, float], confederacoes: dict
 
     return PAGE_TEMPLATE.format(
         titulo="Ranking por continente",
+        descricao="Ranking Elo atual das seleções masculinas de vôlei, organizado "
+                   "por confederação: África, Ásia, América e Europa.",
+        url_completa=f"{BASE_URL}continentes.html",
         nav=build_nav("", anos),
         conteudo=f"<h1>Ranking por continente</h1>{''.join(secoes)}",
         css_prefix="",
@@ -202,6 +210,9 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
 
     return PAGE_TEMPLATE.format(
         titulo="Ranking atual",
+        descricao="Ranking Elo das seleções masculinas de vôlei, com histórico de "
+                   "resultados internacionais desde 2013 e evolução do rating de cada país.",
+        url_completa=BASE_URL,
         nav=build_nav("", anos),
         conteudo=f"""
         <section>
@@ -453,6 +464,10 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
 
     return PAGE_TEMPLATE.format(
         titulo=f"Resultados {ano}",
+        descricao=f"Todos os resultados de vôlei masculino internacional em {ano}: "
+                   f"Liga das Nações, campeonatos continentais e outros torneios, "
+                   f"com a variação de rating Elo de cada seleção.",
+        url_completa=f"{BASE_URL}anos/{ano}.html",
         nav=build_nav("../", anos),
         conteudo=f"""
         <div class="page-header-row">
@@ -497,6 +512,9 @@ def build_selecao_html(codigo: str, nome: str, rating_atual: float | None,
 
     return PAGE_TEMPLATE.format(
         titulo=f"{nome} ({codigo})",
+        descricao=f"Histórico completo de resultados e evolução do rating Elo da "
+                   f"seleção masculina de vôlei de {nome} desde 2013. Rating atual: {rating_str}.",
+        url_completa=f"{BASE_URL}selecoes/{codigo}.html",
         nav=build_nav("../", anos),
         conteudo=f"""
         <h1>{nome} <span class="codigo-grande">{codigo}</span></h1>
@@ -514,6 +532,15 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{titulo} &mdash; Elo Vôlei</title>
+<meta name="description" content="{descricao}">
+<link rel="canonical" href="{url_completa}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{titulo} &mdash; Elo Vôlei">
+<meta property="og:description" content="{descricao}">
+<meta property="og:url" content="{url_completa}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{titulo} &mdash; Elo Vôlei">
+<meta name="twitter:description" content="{descricao}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{css_prefix}style.css">
@@ -865,10 +892,27 @@ def main():
                 codigo, nome_completo(codigo, nomes), ratings_atuais.get(codigo),
                 partidas_desc, rating_index, nomes, ratings_atuais, anos))
 
+    todas_urls = [BASE_URL, f"{BASE_URL}continentes.html"]
+    for ano in anos:
+        todas_urls.append(f"{BASE_URL}anos/{ano}.html")
+        todas_urls.append(f"{BASE_URL}rankings/{ano}.html")
+    for codigo in sorted(todos_os_codigos):
+        todas_urls.append(f"{BASE_URL}selecoes/{codigo}.html")
+
+    urls_xml = "\n".join(f"  <url><loc>{url}</loc></url>" for url in todas_urls)
+    with open(f"{DOCS_DIR}/sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n'
+                 f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                 f'{urls_xml}\n</urlset>\n')
+
+    with open(f"{DOCS_DIR}/robots.txt", "w", encoding="utf-8") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}sitemap.xml\n")
+
     print(f"Site gerado em {DOCS_DIR}/")
     print(f"  1 pagina inicial (ranking)")
     print(f"  {len(anos)} paginas de ano ({anos[0]}-{anos[-1]})")
     print(f"  {len(todos_os_codigos)} paginas de selecao")
+    print(f"  sitemap.xml com {len(todas_urls)} URLs, robots.txt")
 
 
 if __name__ == "__main__":
