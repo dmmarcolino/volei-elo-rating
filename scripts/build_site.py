@@ -22,6 +22,7 @@ PARTIDAS_CSV = "../data/partidas.csv"
 HISTORICO_CSV = "../data/historico_ratings.csv"
 RATINGS_ATUAIS_CSV = "../data/ratings_atuais.csv"
 NOMES_CSV = "../data/nomes_paises.csv"
+SEED_CSV = "../data/seed_ratings_2011.csv"
 DOCS_DIR = "../docs"
 
 MESES_PT = {
@@ -79,8 +80,112 @@ def build_nav(prefixo: str, anos: list[int]) -> str:
     links_anos = "".join(f'<a href="{prefixo}anos/{ano}.html">{ano}</a>' for ano in anos)
     return f"""<nav>
       <a href="{prefixo}index.html" class="nav-home">Elo Vôlei</a>
+      <a href="{prefixo}continentes.html" class="nav-continentes">Continentes</a>
       <div class="nav-anos">{links_anos}</div>
     </nav>"""
+
+
+def load_historico_rows(path: str) -> list[dict]:
+    with open(path, encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def load_seed_ratings(path: str) -> dict[str, float]:
+    with open(path, encoding="utf-8") as f:
+        return {row["codigo"]: float(row["rating_2011"]) for row in csv.DictReader(f)}
+
+
+# Confederacao dos 9 paises que entraram depois do seed original de 2011
+# (nao tinham rating em 2011, entao nao aparecem no seed_ratings_2011.csv).
+CONFEDERACAO_EXTRA = {
+    "BDI": "Africa", "CHA": "Africa", "CGO": "Africa", "NIG": "Africa",
+    "GUY": "America", "MTQ": "America",
+    "IRQ": "Asia",
+    "KOS": "Europa", "SUI": "Europa",
+}
+
+
+def load_confederacoes(seed_path: str) -> dict[str, str]:
+    confederacoes = dict(CONFEDERACAO_EXTRA)
+    with open(seed_path, encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            confederacoes[row["codigo"]] = row["confederacao"]
+    return confederacoes
+
+
+def compute_ranking_at(historico_rows: list[dict], seed_ratings: dict[str, float],
+                        cutoff_date: str) -> list[tuple[str, float]]:
+    """Reconstroi o ranking como estava no fim de um ano especifico,
+    percorrendo o historico cronologico (ja vem ordenado por data)."""
+    atual = dict(seed_ratings)
+    for row in historico_rows:
+        if row["match_date"] > cutoff_date:
+            break
+        atual[row["team"]] = float(row["rating_after"])
+    return sorted(atual.items(), key=lambda kv: kv[1], reverse=True)
+
+
+def build_ranking_ano_html(ano: int, ranking: list[tuple[str, float]],
+                            nomes: dict[str, str], anos: list[int]) -> str:
+    linhas = []
+    for pos, (codigo, rating) in enumerate(ranking, start=1):
+        linhas.append(f"""
+        <a class="rank-row" href="../selecoes/{codigo}.html">
+          <span class="rank-pos">{pos}</span>
+          <span class="rank-nome">{nome_completo(codigo, nomes)}</span>
+          <span class="rank-codigo">{codigo}</span>
+          <span class="rank-rating">{rating:.0f}</span>
+        </a>""")
+
+    return PAGE_TEMPLATE.format(
+        titulo=f"Ranking no fim de {ano}",
+        nav=build_nav("../", anos),
+        conteudo=f"""
+        <h1>Ranking no fim de {ano}</h1>
+        <p class="subtitulo">
+          <a href="../anos/{ano}.html">Ver os resultados de {ano}</a>
+        </p>
+        <div class="ranking">{''.join(linhas)}</div>""",
+        css_prefix="../",
+    )
+
+
+def build_continentes_html(ratings_atuais: dict[str, float], confederacoes: dict[str, str],
+                            nomes: dict[str, str], anos: list[int]) -> str:
+    por_confederacao: dict[str, list[tuple[str, float]]] = defaultdict(list)
+    for codigo, rating in ratings_atuais.items():
+        confederacao = confederacoes.get(codigo, "Outros")
+        por_confederacao[confederacao].append((codigo, rating))
+
+    NOMES_CONFEDERACAO = {
+        "Africa": "África", "Asia": "Ásia", "America": "América", "Europa": "Europa",
+    }
+
+    secoes = []
+    for confederacao in sorted(por_confederacao.keys()):
+        ranking = sorted(por_confederacao[confederacao], key=lambda kv: kv[1], reverse=True)
+        linhas = []
+        for pos, (codigo, rating) in enumerate(ranking, start=1):
+            linhas.append(f"""
+            <a class="rank-row" href="selecoes/{codigo}.html">
+              <span class="rank-pos">{pos}</span>
+              <span class="rank-nome">{nome_completo(codigo, nomes)}</span>
+              <span class="rank-codigo">{codigo}</span>
+              <span class="rank-rating">{rating:.0f}</span>
+            </a>""")
+        titulo = NOMES_CONFEDERACAO.get(confederacao, confederacao)
+        secoes.append(f"""
+        <section class="tournament">
+          <h2>{titulo}</h2>
+          <div class="ranking">{''.join(linhas)}</div>
+        </section>""")
+
+    return PAGE_TEMPLATE.format(
+        titulo="Ranking por continente",
+        nav=build_nav("", anos),
+        conteudo=f"<h1>Ranking por continente</h1>{''.join(secoes)}",
+        css_prefix="",
+    )
 
 
 def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], anos: list[int]) -> str:
@@ -111,10 +216,12 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
 # Fases de mata-mata conhecidas -- NUNCA mostram tabela de classificacao,
 # so a(s) partida(s) em si. A ordem no dicionario e a ordem de exibicao.
 FASES_MATA_MATA = {
+    "round of 16": 5, "oitavas": 5,
     "quarterfinal": 10, "quarterfinals": 10, "quartas": 10, "quarters": 10,
     "semifinal": 20, "semifinals": 20, "semifinais": 20,
-    "3rd place": 30, "third place": 30, "bronze": 30, "terceiro lugar": 30,
-    "5th place": 25, "7th place": 24,
+    "7th place": 31, "7th-8th": 31,
+    "5th place": 32, "5th-6th": 32,
+    "3rd place": 33, "third place": 33, "bronze": 33, "terceiro lugar": 33,
     "final": 40, "finals": 40,
 }
 
@@ -251,16 +358,33 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
             chave in evento.lower() for chave in EVENTOS_SO_CLASSIFICACAO_GERAL
         )
 
-        blocos_fase = []
-        partidas_fase_de_grupo: list[dict] = []  # para a classificacao geral, se for o caso
+        # Primeira passada: junta as partidas de todas as fases de grupo
+        # (nao mata-mata) para calcular a classificacao geral, se for o caso.
+        partidas_fase_de_grupo: list[dict] = [
+            p for fase in ordem_fases if not is_fase_mata_mata(fase) for p in fases[fase]
+        ]
+        classificacao_geral_html = ""
+        if e_evento_so_classificacao_geral and partidas_fase_de_grupo and grupo_e_consistente(partidas_fase_de_grupo):
+            standings_geral = compute_standings(partidas_fase_de_grupo)
+            classificacao_geral_html = f"""
+            <div class="fase-bloco">
+              <h3 class="fase-titulo">Classificação Geral</h3>
+              {build_standings_html(standings_geral, nomes)}
+            </div>"""
 
+        # Segunda passada: monta os blocos na ordem, inserindo a
+        # classificacao geral logo APOS a ultima fase de grupo e ANTES da
+        # primeira fase de mata-mata (nao no fim de tudo).
+        blocos_fase = []
+        geral_ja_inserida = False
         for fase in ordem_fases:
             partidas_fase = fases[fase]
             times_da_fase = {p["team_a"] for p in partidas_fase} | {p["team_b"] for p in partidas_fase}
             eh_mata_mata = is_fase_mata_mata(fase)
 
-            if not eh_mata_mata:
-                partidas_fase_de_grupo.extend(partidas_fase)
+            if eh_mata_mata and classificacao_geral_html and not geral_ja_inserida:
+                blocos_fase.append(classificacao_geral_html)
+                geral_ja_inserida = True
 
             tabela_html = ""
             mostra_tabela_por_fase = (
@@ -284,29 +408,23 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
               <div class="matches">{linhas}</div>
             </div>""")
 
-        # Para eventos tipo Nations League: a classificacao por pool nao
-        # importa, so a geral -- combinando todas as fases de grupo (nao
-        # mata-mata) num placar so, no final.
-        classificacao_geral_html = ""
-        if e_evento_so_classificacao_geral and partidas_fase_de_grupo and grupo_e_consistente(partidas_fase_de_grupo):
-            standings_geral = compute_standings(partidas_fase_de_grupo)
-            classificacao_geral_html = f"""
-            <div class="fase-bloco">
-              <h3 class="fase-titulo">Classificação Geral</h3>
-              {build_standings_html(standings_geral, nomes)}
-            </div>"""
+        # Se nao houve nenhuma fase de mata-mata, a classificacao geral
+        # ainda nao foi inserida -- bota no final, e o unico lugar possivel.
+        if classificacao_geral_html and not geral_ja_inserida:
+            blocos_fase.append(classificacao_geral_html)
 
         secoes_html.append(f"""
         <section class="tournament">
           <h2>{evento}</h2>
           {''.join(blocos_fase)}
-          {classificacao_geral_html}
         </section>""")
 
     return PAGE_TEMPLATE.format(
         titulo=f"Resultados {ano}",
         nav=build_nav("../", anos),
-        conteudo=f"<h1>Temporada {ano}</h1>{''.join(secoes_html)}",
+        conteudo=f"""<h1>Temporada {ano}</h1>
+        <p class="subtitulo"><a href="../rankings/{ano}.html">Ver o ranking no fim de {ano}</a></p>
+        {''.join(secoes_html)}""",
         css_prefix="../",
     )
 
@@ -424,6 +542,13 @@ nav {
   gap: 0.6rem;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
+}
+.nav-continentes {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--blue);
 }
 .nav-anos a {
   color: var(--ink-soft);
@@ -635,18 +760,25 @@ def main():
     rating_index = load_rating_deltas(HISTORICO_CSV)
     ratings_atuais = load_ratings_atuais(RATINGS_ATUAIS_CSV)
     nomes = load_nomes(NOMES_CSV)
+    historico_rows = load_historico_rows(HISTORICO_CSV)
+    seed_ratings = load_seed_ratings(SEED_CSV)
+    confederacoes = load_confederacoes(SEED_CSV)
 
     anos = sorted({int(p["season"]) for p in partidas})
 
     os.makedirs(DOCS_DIR, exist_ok=True)
     os.makedirs(f"{DOCS_DIR}/anos", exist_ok=True)
     os.makedirs(f"{DOCS_DIR}/selecoes", exist_ok=True)
+    os.makedirs(f"{DOCS_DIR}/rankings", exist_ok=True)
 
     with open(f"{DOCS_DIR}/style.css", "w", encoding="utf-8") as f:
         f.write(STYLE_CSS)
 
     with open(f"{DOCS_DIR}/index.html", "w", encoding="utf-8") as f:
         f.write(build_index_html(ratings_atuais, nomes, anos))
+
+    with open(f"{DOCS_DIR}/continentes.html", "w", encoding="utf-8") as f:
+        f.write(build_continentes_html(ratings_atuais, confederacoes, nomes, anos))
 
     partidas_por_ano: dict[int, list[dict]] = defaultdict(list)
     for p in partidas:
@@ -655,6 +787,10 @@ def main():
     for ano in anos:
         with open(f"{DOCS_DIR}/anos/{ano}.html", "w", encoding="utf-8") as f:
             f.write(build_ano_html(ano, partidas_por_ano[ano], rating_index, nomes, ratings_atuais, anos))
+
+        ranking_no_ano = compute_ranking_at(historico_rows, seed_ratings, f"{ano}-12-31")
+        with open(f"{DOCS_DIR}/rankings/{ano}.html", "w", encoding="utf-8") as f:
+            f.write(build_ranking_ano_html(ano, ranking_no_ano, nomes, anos))
 
     partidas_por_selecao: dict[str, list[dict]] = defaultdict(list)
     for p in partidas:
