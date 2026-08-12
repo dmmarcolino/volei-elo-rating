@@ -240,16 +240,23 @@ def build_index_html(ratings_atuais: dict[str, float], nomes: dict[str, str], an
 def classify_fase(fase: str) -> tuple[str, int]:
     """Devolve (categoria, rank). categoria e uma de:
     'grupo', 'r16', 'quartas', 'semi', 'final', 'desconhecida'.
-    rank so importa pra 'final': 1 = disputa do 1o lugar (mostrada por
-    ultimo), 3 = disputa do 3o lugar, etc."""
+    rank so importa pra 'final' (1 = disputa do 1o lugar) e pra 'semi'
+    (0 = semifinal principal, 1 = 'Classification X-Y' -- mesmo nivel
+    hierarquico da semifinal, mas exibida depois dela)."""
     f = fase.lower().strip()
 
     if "round of 16" in f or "oitavas" in f or "1/8" in f:
         return ("r16", 0)
-    if "quarter" in f and "final" in f or "quartas" in f or "1/4" in f:
+    if ("quarter" in f and "final" in f) or "quartas" in f or "1/4" in f:
         return ("quartas", 0)
     if ("semi" in f and "final" in f) or "semifinais" in f or "1/2" in f:
         return ("semi", 0)
+    # "Classification X-Y" (ex: "Classification 5-8") NAO e uma fase final
+    # de verdade -- e um jogo do MESMO NIVEL da semifinal, que decide quem
+    # avanca pra qual bloco de finais (confirmado nos dados reais: sempre
+    # acontece no mesmo dia que a Semifinal, nunca no dia das finais).
+    if "classification" in f or "classificação" in f or "classificacao" in f:
+        return ("semi", 1)
 
     # Fases de "colocacao"/final -- tenta extrair o numero.
     m = re.search(r"(\d+)\s*[-–]\s*(\d+)", f)  # ex: "Final 1-2", "Places 5-6"
@@ -258,6 +265,11 @@ def classify_fase(fase: str) -> tuple[str, int]:
     m = re.search(r"(\d+)(?:st|nd|rd|th)\s*place", f)  # ex: "7th place"
     if m:
         return ("final", int(m.group(1)))
+    m = re.search(r"final\s+(\d+)\b", f)  # ex: "Final 5" (numero solto, sem traco)
+    if m:
+        return ("final", int(m.group(1)))
+    if "gold" in f:  # ex: "Gold Medal Match" (Olimpiadas, sem a palavra "final")
+        return ("final", 1)
     if "bronze" in f or "third place" in f or "3rd place" in f or "terceiro lugar" in f:
         return ("final", 3)
     if "final" in f:
@@ -276,17 +288,25 @@ def is_fase_mata_mata(fase: str) -> bool:
     return categoria in ("r16", "quartas", "semi", "final")
 
 
-def fase_sort_key(fase: str):
+def fase_sort_key(fase: str, data_da_fase: str = ""):
     """Ordena: grupos (alfabetico/numerico) -> desconhecidas -> R16 ->
-    quartas -> semis -> finais (da colocacao mais alta/menos importante
-    ate a final que disputa o 1o lugar, que fica sempre por ultimo)."""
+    quartas -> semis (semifinal principal antes de 'Classification X-Y',
+    que e do mesmo nivel mas exibida depois) -> finais.
+
+    Dentro das finais, a DATA REAL manda primeiro -- respeita dependencias
+    genuinas do chaveamento (ex: 'Final 5' acontecer um dia antes de
+    'Final 6-7' porque quem perde a primeira avanca pra segunda). O
+    'rank' (numero da colocacao) so desempata finais do mesmo dia, que e
+    o caso mais comum (todas no dia final, da pior colocacao pra melhor)."""
     categoria, rank = classify_fase(fase)
     ordem = _ORDEM_CATEGORIA[categoria]
     if categoria == "grupo":
         m = re.search(r"(\d+)", fase)
         return (ordem, int(m.group(1)) if m else 0, fase)
+    if categoria == "semi":
+        return (ordem, rank, fase)
     if categoria == "final":
-        return (ordem, -rank, fase)  # rank maior (7-8) primeiro, rank 1 (final) por ultimo
+        return (ordem, data_da_fase, -rank, fase)
     return (ordem, 0, fase)
 
 
@@ -395,7 +415,8 @@ def build_ano_html(ano: int, partidas_do_ano: list[dict], rating_index: dict,
 
         # Ordena as fases: grupos em ordem alfabetica/numerica, depois
         # mata-mata na ordem logica correta (nao alfabetica).
-        ordem_fases = sorted(fases.keys(), key=fase_sort_key)
+        data_da_fase = {fase: min(p["match_date"] for p in ps) for fase, ps in fases.items()}
+        ordem_fases = sorted(fases.keys(), key=lambda f: fase_sort_key(f, data_da_fase[f]))
 
         e_evento_so_classificacao_geral = any(
             chave in evento.lower() for chave in EVENTOS_SO_CLASSIFICACAO_GERAL
