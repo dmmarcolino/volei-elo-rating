@@ -38,8 +38,17 @@ _HEADING_CLEANUP = re.compile(r"\[.*?\]")
 
 def _is_match_table_html(table_tag) -> bool:
     """Mesma heuristica de find_match_tables, mas direto na tag do BeautifulSoup
-    (sem precisar re-parsear com pandas so pra checar as colunas)."""
-    header_cells = [th.get_text(strip=True) for th in table_tag.find_all("th")]
+    (sem precisar re-parsear com pandas so pra checar as colunas).
+
+    IMPORTANTE: so conta cabecalhos que pertencem DIRETAMENTE a esta
+    tabela -- algumas paginas colocam uma tabela real aninhada dentro de
+    uma tabela-container (usada so como layout), e sem esse filtro os
+    cabecalhos da tabela de dentro seriam contados tambem para a de fora,
+    fazendo a mesma partida ser processada duas vezes."""
+    header_cells = [
+        th.get_text(strip=True) for th in table_tag.find_all("th")
+        if th.find_parent("table") is table_tag
+    ]
     return "Score" in header_cells and "Set 1" in header_cells
 
 
@@ -47,14 +56,24 @@ def _nearest_preceding_heading(table_tag) -> str:
     """Sobe pelos irmaos anteriores (e, se preciso, pelos pais) ate achar
     o cabecalho (h2/h3/h4) mais proximo antes da tabela -- essa e a "fase"
     da tabela (ex: 'Pool A', 'Semifinals'). Se nao achar nada, devolve
-    string vazia (quem chama decide o rotulo generico)."""
+    string vazia (quem chama decide o rotulo generico).
+
+    IMPORTANTE: paginas mais recentes da Wikipedia costumam envolver o
+    cabecalho numa <div class="mw-heading">, entao o "irmao anterior" da
+    tabela e essa div, nao o h2/h3/h4 em si -- por isso tambem procuramos
+    um cabecalho DENTRO de cada irmao div, nao so o proprio irmao."""
     node = table_tag
     while node is not None:
         sibling = node.find_previous_sibling()
         while sibling is not None:
-            if sibling.name in ("h2", "h3", "h4", "h5"):
+            if getattr(sibling, "name", None) in ("h2", "h3", "h4", "h5"):
                 texto = sibling.get_text(strip=True)
                 return _HEADING_CLEANUP.sub("", texto).strip()
+            if getattr(sibling, "name", None) == "div":
+                heading_dentro = sibling.find(["h2", "h3", "h4", "h5"])
+                if heading_dentro is not None:
+                    texto = heading_dentro.get_text(strip=True)
+                    return _HEADING_CLEANUP.sub("", texto).strip()
             sibling = sibling.find_previous_sibling()
         node = node.parent
     return ""

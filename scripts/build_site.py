@@ -245,7 +245,7 @@ def classify_fase(fase: str) -> tuple[str, int]:
     hierarquico da semifinal, mas exibida depois dela)."""
     f = fase.lower().strip()
 
-    if "round of 16" in f or "oitavas" in f or "1/8" in f:
+    if "round of" in f or "oitavas" in f or "1/8" in f:
         return ("r16", 0)
     if ("quarter" in f and "final" in f) or "quartas" in f or "1/4" in f:
         return ("quartas", 0)
