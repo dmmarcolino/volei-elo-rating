@@ -1282,36 +1282,64 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2017-06-09,2017,BUL,POL,3,2,Liga Mundial 2017,False,Pool E1
 2017-06-09,2017,ITA,USA,0,3,Liga Mundial 2017,False,Pool F1
 2017-06-09,2017,FRA,RUS,3,1,Liga Mundial 2017,False,Pool F1
+2017-06-09,2017,DEN,HUN,3,0,Liga Europeia 2017,False,Week 1
+2017-06-09,2017,UKR,ISR,3,0,Liga Europeia 2017,False,Week 1
 2017-06-10,2017,BEL,ARG,3,2,Liga Mundial 2017,False,Pool D1
 2017-06-10,2017,IRI,SRB,1,3,Liga Mundial 2017,False,Pool D1
 2017-06-10,2017,BRA,POL,3,1,Liga Mundial 2017,False,Pool E1
 2017-06-10,2017,CAN,BUL,3,1,Liga Mundial 2017,False,Pool E1
 2017-06-10,2017,USA,RUS,3,0,Liga Mundial 2017,False,Pool F1
 2017-06-10,2017,FRA,ITA,3,1,Liga Mundial 2017,False,Pool F1
+2017-06-10,2017,HUN,ISR,3,1,Liga Europeia 2017,False,Week 1
+2017-06-10,2017,DEN,UKR,3,0,Liga Europeia 2017,False,Week 1
 2017-06-11,2017,SRB,BEL,3,0,Liga Mundial 2017,False,Pool D1
 2017-06-11,2017,IRI,ARG,3,2,Liga Mundial 2017,False,Pool D1
 2017-06-11,2017,POL,CAN,3,1,Liga Mundial 2017,False,Pool E1
 2017-06-11,2017,BRA,BUL,1,3,Liga Mundial 2017,False,Pool E1
 2017-06-11,2017,ITA,RUS,2,3,Liga Mundial 2017,False,Pool F1
 2017-06-11,2017,FRA,USA,3,1,Liga Mundial 2017,False,Pool F1
+2017-06-11,2017,ISR,DEN,3,1,Liga Europeia 2017,False,Week 1
+2017-06-11,2017,HUN,UKR,1,3,Liga Europeia 2017,False,Week 1
 2017-06-15,2017,IRI,USA,0,3,Liga Mundial 2017,False,Pool H1
 2017-06-15,2017,POL,RUS,0,3,Liga Mundial 2017,False,Pool H1
 2017-06-16,2017,BRA,BUL,3,0,Liga Mundial 2017,False,Pool G1
 2017-06-16,2017,ARG,SRB,2,3,Liga Mundial 2017,False,Pool G1
 2017-06-16,2017,ITA,FRA,3,2,Liga Mundial 2017,False,Pool I1
 2017-06-16,2017,BEL,CAN,2,3,Liga Mundial 2017,False,Pool I1
+2017-06-16,2017,ALB,SWE,3,2,Liga Europeia 2017,False,Week 1
+2017-06-16,2017,MKD,AZE,3,0,Liga Europeia 2017,False,Week 1
+2017-06-16,2017,ISR,UKR,0,3,Liga Europeia 2017,False,Week 2
+2017-06-16,2017,HUN,DEN,0,3,Liga Europeia 2017,False,Week 2
 2017-06-17,2017,BUL,SRB,3,2,Liga Mundial 2017,False,Pool G1
 2017-06-17,2017,ARG,BRA,3,1,Liga Mundial 2017,False,Pool G1
 2017-06-17,2017,USA,RUS,2,3,Liga Mundial 2017,False,Pool H1
 2017-06-17,2017,POL,IRI,3,0,Liga Mundial 2017,False,Pool H1
 2017-06-17,2017,FRA,CAN,3,0,Liga Mundial 2017,False,Pool I1
 2017-06-17,2017,ITA,BEL,1,3,Liga Mundial 2017,False,Pool I1
+2017-06-17,2017,SWE,AZE,3,2,Liga Europeia 2017,False,Week 1
+2017-06-17,2017,ALB,MKD,0,3,Liga Europeia 2017,False,Week 1
+2017-06-17,2017,ISR,HUN,1,3,Liga Europeia 2017,False,Week 2
+2017-06-17,2017,UKR,DEN,3,1,Liga Europeia 2017,False,Week 2
 2017-06-18,2017,SRB,BRA,1,3,Liga Mundial 2017,False,Pool G1
 2017-06-18,2017,ARG,BUL,3,1,Liga Mundial 2017,False,Pool G1
 2017-06-18,2017,RUS,IRI,3,0,Liga Mundial 2017,False,Pool H1
 2017-06-18,2017,POL,USA,1,3,Liga Mundial 2017,False,Pool H1
 2017-06-18,2017,CAN,ITA,3,1,Liga Mundial 2017,False,Pool I1
 2017-06-18,2017,BEL,FRA,0,3,Liga Mundial 2017,False,Pool I1
+2017-06-18,2017,AZE,ALB,1,3,Liga Europeia 2017,False,Week 1
+2017-06-18,2017,SWE,MKD,1,3,Liga Europeia 2017,False,Week 1
+2017-06-18,2017,UKR,HUN,3,2,Liga Europeia 2017,False,Week 2
+2017-06-18,2017,DEN,ISR,3,1,Liga Europeia 2017,False,Week 2
+2017-06-23,2017,SWE,MKD,0,3,Liga Europeia 2017,False,Week 2
+2017-06-23,2017,ALB,AZE,3,0,Liga Europeia 2017,False,Week 2
+2017-06-24,2017,MKD,AZE,3,0,Liga Europeia 2017,False,Week 2
+2017-06-24,2017,SWE,ALB,3,1,Liga Europeia 2017,False,Week 2
+2017-06-25,2017,AZE,SWE,0,3,Liga Europeia 2017,False,Week 2
+2017-06-25,2017,MKD,ALB,3,2,Liga Europeia 2017,False,Week 2
+2017-07-01,2017,SWE,UKR,2,3,Liga Europeia 2017,False,Semifinals
+2017-07-01,2017,DEN,MKD,2,3,Liga Europeia 2017,False,Semifinals
+2017-07-02,2017,SWE,DEN,3,1,Liga Europeia 2017,False,Third place game
+2017-07-02,2017,UKR,MKD,3,1,Liga Europeia 2017,True,Final
 2017-07-04,2017,BRA,CAN,3,1,Liga Mundial 2017,False,Pool J1 - Final Round
 2017-07-04,2017,FRA,USA,3,2,Liga Mundial 2017,False,Pool K1 - Final Round
 2017-07-05,2017,RUS,CAN,0,3,Liga Mundial 2017,False,Pool J1 - Final Round
@@ -1322,66 +1350,6 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2017-07-07,2017,FRA,CAN,3,1,Liga Mundial 2017,False,Group 1 - Semifinals
 2017-07-08,2017,USA,CAN,1,3,Liga Mundial 2017,False,Group 1 - Final 3-4
 2017-07-08,2017,BRA,FRA,2,3,Liga Mundial 2017,False,Group 1 - Final 1-2
-2017-07-24,2017,INA,KSA,3,1,Campeonato Asiatico 2017,False,Pool A
-2017-07-24,2017,QAT,KAZ,2,3,Campeonato Asiatico 2017,False,Pool A
-2017-07-24,2017,TPE,PAK,3,0,Campeonato Asiatico 2017,False,Pool B
-2017-07-24,2017,IRI,IRQ,3,0,Campeonato Asiatico 2017,False,Pool B
-2017-07-24,2017,JPN,SRI,3,0,Campeonato Asiatico 2017,False,Pool C
-2017-07-24,2017,KOR,VIE,3,0,Campeonato Asiatico 2017,False,Pool C
-2017-07-24,2017,CHN,THA,3,0,Campeonato Asiatico 2017,False,Pool D
-2017-07-24,2017,AUS,HKG,3,0,Campeonato Asiatico 2017,False,Pool D
-2017-07-25,2017,KSA,QAT,0,3,Campeonato Asiatico 2017,False,Pool A
-2017-07-25,2017,INA,KAZ,2,3,Campeonato Asiatico 2017,False,Pool A
-2017-07-25,2017,IRQ,TPE,0,3,Campeonato Asiatico 2017,False,Pool B
-2017-07-25,2017,IRI,PAK,3,0,Campeonato Asiatico 2017,False,Pool B
-2017-07-25,2017,SRI,KOR,0,3,Campeonato Asiatico 2017,False,Pool C
-2017-07-25,2017,JPN,VIE,3,0,Campeonato Asiatico 2017,False,Pool C
-2017-07-25,2017,AUS,THA,3,2,Campeonato Asiatico 2017,False,Pool D
-2017-07-25,2017,HKG,CHN,0,3,Campeonato Asiatico 2017,False,Pool D
-2017-07-26,2017,KAZ,KSA,3,0,Campeonato Asiatico 2017,False,Pool A
-2017-07-26,2017,INA,QAT,3,2,Campeonato Asiatico 2017,False,Pool A
-2017-07-26,2017,PAK,IRQ,3,1,Campeonato Asiatico 2017,False,Pool B
-2017-07-26,2017,IRI,TPE,3,0,Campeonato Asiatico 2017,False,Pool B
-2017-07-26,2017,VIE,SRI,3,2,Campeonato Asiatico 2017,False,Pool C
-2017-07-26,2017,JPN,KOR,2,3,Campeonato Asiatico 2017,False,Pool C
-2017-07-26,2017,THA,HKG,3,1,Campeonato Asiatico 2017,False,Pool D
-2017-07-26,2017,AUS,CHN,3,0,Campeonato Asiatico 2017,False,Pool D
-2017-07-27,2017,KAZ,JPN,0,3,Campeonato Asiatico 2017,False,Pool E
-2017-07-27,2017,KOR,INA,3,1,Campeonato Asiatico 2017,False,Pool E
-2017-07-27,2017,AUS,TPE,1,3,Campeonato Asiatico 2017,False,Pool F
-2017-07-27,2017,IRI,CHN,0,3,Campeonato Asiatico 2017,False,Pool F
-2017-07-27,2017,QAT,SRI,2,3,Campeonato Asiatico 2017,False,Pool G
-2017-07-27,2017,VIE,KSA,3,1,Campeonato Asiatico 2017,False,Pool G
-2017-07-27,2017,PAK,HKG,3,2,Campeonato Asiatico 2017,False,Pool H
-2017-07-27,2017,THA,IRQ,3,1,Campeonato Asiatico 2017,False,Pool H
-2017-07-29,2017,KAZ,KOR,1,3,Campeonato Asiatico 2017,False,Pool E
-2017-07-29,2017,INA,JPN,0,3,Campeonato Asiatico 2017,False,Pool E
-2017-07-29,2017,CHN,TPE,1,3,Campeonato Asiatico 2017,False,Pool F
-2017-07-29,2017,IRI,AUS,3,1,Campeonato Asiatico 2017,False,Pool F
-2017-07-29,2017,QAT,VIE,3,1,Campeonato Asiatico 2017,False,Pool G
-2017-07-29,2017,KSA,SRI,3,1,Campeonato Asiatico 2017,False,Pool G
-2017-07-29,2017,PAK,THA,0,3,Campeonato Asiatico 2017,False,Pool H
-2017-07-29,2017,IRQ,HKG,3,1,Campeonato Asiatico 2017,False,Pool H
-2017-07-30,2017,SRI,HKG,3,0,Campeonato Asiatico 2017,False,13th–16th semifinals
-2017-07-30,2017,IRQ,KSA,3,0,Campeonato Asiatico 2017,False,13th–16th semifinals
-2017-07-30,2017,QAT,PAK,3,2,Campeonato Asiatico 2017,False,9th–12th semifinals
-2017-07-30,2017,THA,VIE,2,3,Campeonato Asiatico 2017,False,9th–12th semifinals
-2017-07-30,2017,TPE,KAZ,0,3,Campeonato Asiatico 2017,False,Quarterfinals
-2017-07-30,2017,JPN,AUS,3,0,Campeonato Asiatico 2017,False,Quarterfinals
-2017-07-30,2017,KOR,CHN,3,0,Campeonato Asiatico 2017,False,Quarterfinals
-2017-07-30,2017,IRI,INA,2,3,Campeonato Asiatico 2017,False,Quarterfinals
-2017-07-31,2017,HKG,KSA,0,3,Campeonato Asiatico 2017,False,15th place match
-2017-07-31,2017,SRI,IRQ,1,3,Campeonato Asiatico 2017,False,13th place match
-2017-07-31,2017,PAK,THA,1,3,Campeonato Asiatico 2017,False,11th place match
-2017-07-31,2017,QAT,VIE,3,1,Campeonato Asiatico 2017,False,9th place match
-2017-07-31,2017,CHN,TPE,3,0,Campeonato Asiatico 2017,False,5th–8th semifinals
-2017-07-31,2017,IRI,AUS,3,2,Campeonato Asiatico 2017,False,5th–8th semifinals
-2017-07-31,2017,KOR,KAZ,2,3,Campeonato Asiatico 2017,False,Semifinals
-2017-07-31,2017,INA,JPN,0,3,Campeonato Asiatico 2017,False,Semifinals
-2017-08-01,2017,TPE,AUS,3,2,Campeonato Asiatico 2017,False,7th place match
-2017-08-01,2017,CHN,IRI,1,3,Campeonato Asiatico 2017,False,5th place match
-2017-08-01,2017,KOR,INA,3,0,Campeonato Asiatico 2017,False,3rd place match
-2017-08-01,2017,KAZ,JPN,1,3,Campeonato Asiatico 2017,True,Final
 2017-08-07,2017,COL,VEN,1,3,Campeonato Sul-Americano 2017,False,Pool A
 2017-08-07,2017,BRA,PAR,3,0,Campeonato Sul-Americano 2017,False,Pool A
 2017-08-07,2017,ARG,URU,3,0,Campeonato Sul-Americano 2017,False,Pool B
@@ -3080,9 +3048,17 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2023-08-26,2023,PAK,BRN,3,1,Campeonato Asiatico 2023,False,7th place match
 2023-08-26,2023,CHN,QAT,0,3,Campeonato Asiatico 2023,False,3rd place match
 2023-08-26,2023,IRI,JPN,0,3,Campeonato Asiatico 2023,True,Final
+2023-08-26,2023,ARG,COL,3,0,Campeonato Sul-Americano 2023,False,Round robin
+2023-08-26,2023,BRA,PER,3,0,Campeonato Sul-Americano 2023,False,Round robin
+2023-08-27,2023,PER,COL,1,3,Campeonato Sul-Americano 2023,False,Round robin
+2023-08-27,2023,BRA,CHI,3,0,Campeonato Sul-Americano 2023,False,Round robin
 2023-08-28,2023,BEL,ITA,0,3,Campeonato Europeu 2023,False,Pool A
+2023-08-28,2023,CHI,ARG,0,3,Campeonato Sul-Americano 2023,False,Round robin
+2023-08-28,2023,COL,BRA,0,3,Campeonato Sul-Americano 2023,False,Round robin
 2023-08-29,2023,ESP,BUL,3,1,Campeonato Europeu 2023,False,Pool B
 2023-08-29,2023,GRE,ISR,2,3,Campeonato Europeu 2023,False,Pool D
+2023-08-29,2023,PER,ARG,1,3,Campeonato Sul-Americano 2023,False,Round robin
+2023-08-29,2023,COL,CHI,3,2,Campeonato Sul-Americano 2023,False,Round robin
 2023-08-30,2023,GER,EST,3,0,Campeonato Europeu 2023,False,Pool A
 2023-08-30,2023,SUI,SRB,0,3,Campeonato Europeu 2023,False,Pool A
 2023-08-30,2023,SLO,UKR,3,1,Campeonato Europeu 2023,False,Pool B
@@ -3090,6 +3066,8 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2023-08-30,2023,MKD,DEN,3,1,Campeonato Europeu 2023,False,Pool C
 2023-08-30,2023,TUR,FRA,0,3,Campeonato Europeu 2023,False,Pool D
 2023-08-30,2023,ROU,POR,0,3,Campeonato Europeu 2023,False,Pool D
+2023-08-30,2023,CHI,PER,3,1,Campeonato Sul-Americano 2023,False,Round robin
+2023-08-30,2023,BRA,ARG,0,3,Campeonato Sul-Americano 2023,False,Round robin
 2023-08-31,2023,SRB,BEL,3,1,Campeonato Europeu 2023,False,Pool A
 2023-08-31,2023,EST,ITA,0,3,Campeonato Europeu 2023,False,Pool A
 2023-08-31,2023,UKR,CRO,2,3,Campeonato Europeu 2023,False,Pool B
