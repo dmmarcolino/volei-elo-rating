@@ -883,79 +883,19 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2015-07-30,2015,MAR,ALG,3,1,Campeonato Africano 2015,False,Bronze medal match
 2015-07-30,2015,EGY,TUN,3,0,Campeonato Africano 2015,True,Final
 2015-07-30,2015,GRE,BLR,3,0,Liga Europeia 2015,False,Leg 4
-2015-07-31,2015,TPE,KAZ,3,1,Campeonato Asiatico 2015,False,Pool A
-2015-07-31,2015,KUW,IRI,0,3,Campeonato Asiatico 2015,False,Pool A
-2015-07-31,2015,IND,TKM,3,0,Campeonato Asiatico 2015,False,Pool B
-2015-07-31,2015,QAT,AUS,3,1,Campeonato Asiatico 2015,False,Pool B
-2015-07-31,2015,OMA,KOR,0,3,Campeonato Asiatico 2015,False,Pool C
-2015-07-31,2015,PAK,THA,2,3,Campeonato Asiatico 2015,False,Pool C
-2015-07-31,2015,CHN,SRI,3,0,Campeonato Asiatico 2015,False,Pool D
-2015-07-31,2015,JPN,BRN,3,0,Campeonato Asiatico 2015,False,Pool D
 2015-07-31,2015,ISR,POL,2,3,Liga Europeia 2015,False,Leg 5
 2015-07-31,2015,EST,DEN,3,0,Liga Europeia 2015,False,Leg 5
 2015-07-31,2015,TUR,CRO,3,2,Liga Europeia 2015,False,Leg 4
 2015-07-31,2015,ROU,SLO,0,3,Liga Europeia 2015,False,Leg 4
 2015-07-31,2015,GRE,BLR,0,3,Liga Europeia 2015,False,Leg 4
-2015-08-01,2015,TPE,KUW,3,0,Campeonato Asiatico 2015,False,Pool A
-2015-08-01,2015,KAZ,IRI,0,3,Campeonato Asiatico 2015,False,Pool A
-2015-08-01,2015,TKM,AUS,0,3,Campeonato Asiatico 2015,False,Pool B
-2015-08-01,2015,IND,QAT,0,3,Campeonato Asiatico 2015,False,Pool B
-2015-08-01,2015,OMA,PAK,0,3,Campeonato Asiatico 2015,False,Pool C
-2015-08-01,2015,KOR,THA,3,2,Campeonato Asiatico 2015,False,Pool C
-2015-08-01,2015,CHN,JPN,3,1,Campeonato Asiatico 2015,False,Pool D
-2015-08-01,2015,SRI,BRN,0,3,Campeonato Asiatico 2015,False,Pool D
 2015-08-01,2015,ISR,POL,0,3,Liga Europeia 2015,False,Leg 5
 2015-08-01,2015,EST,DEN,3,1,Liga Europeia 2015,False,Leg 5
 2015-08-01,2015,MKD,AUT,3,0,Liga Europeia 2015,False,Leg 5
 2015-08-01,2015,ROU,SLO,0,3,Liga Europeia 2015,False,Leg 4
 2015-08-01,2015,TUR,CRO,3,0,Liga Europeia 2015,False,Leg 4
-2015-08-02,2015,KAZ,KUW,3,0,Campeonato Asiatico 2015,False,Pool A
-2015-08-02,2015,IRI,TPE,3,0,Campeonato Asiatico 2015,False,Pool A
-2015-08-02,2015,TKM,QAT,1,3,Campeonato Asiatico 2015,False,Pool B
-2015-08-02,2015,AUS,IND,3,0,Campeonato Asiatico 2015,False,Pool B
-2015-08-02,2015,KOR,PAK,3,0,Campeonato Asiatico 2015,False,Pool C
-2015-08-02,2015,THA,OMA,3,2,Campeonato Asiatico 2015,False,Pool C
-2015-08-02,2015,BRN,CHN,0,3,Campeonato Asiatico 2015,False,Pool D
-2015-08-02,2015,SRI,JPN,1,3,Campeonato Asiatico 2015,False,Pool D
 2015-08-02,2015,MKD,AUT,3,0,Liga Europeia 2015,False,Leg 5
-2015-08-03,2015,KOR,TPE,3,0,Campeonato Asiatico 2015,False,Pool E
-2015-08-03,2015,IRI,THA,3,0,Campeonato Asiatico 2015,False,Pool E
-2015-08-03,2015,QAT,JPN,3,2,Campeonato Asiatico 2015,False,Pool F
-2015-08-03,2015,CHN,AUS,3,0,Campeonato Asiatico 2015,False,Pool F
-2015-08-03,2015,KAZ,OMA,3,1,Campeonato Asiatico 2015,False,Pool G
-2015-08-03,2015,PAK,KUW,3,2,Campeonato Asiatico 2015,False,Pool G
-2015-08-03,2015,IND,SRI,3,0,Campeonato Asiatico 2015,False,Pool H
-2015-08-03,2015,BRN,TKM,3,0,Campeonato Asiatico 2015,False,Pool H
-2015-08-04,2015,TPE,THA,3,0,Campeonato Asiatico 2015,False,Pool E
-2015-08-04,2015,IRI,KOR,1,3,Campeonato Asiatico 2015,False,Pool E
-2015-08-04,2015,AUS,JPN,3,1,Campeonato Asiatico 2015,False,Pool F
-2015-08-04,2015,QAT,CHN,2,3,Campeonato Asiatico 2015,False,Pool F
-2015-08-04,2015,KUW,OMA,3,1,Campeonato Asiatico 2015,False,Pool G
-2015-08-04,2015,KAZ,PAK,3,2,Campeonato Asiatico 2015,False,Pool G
-2015-08-04,2015,TKM,SRI,1,3,Campeonato Asiatico 2015,False,Pool H
-2015-08-04,2015,IND,BRN,2,3,Campeonato Asiatico 2015,False,Pool H
-2015-08-06,2015,KUW,TKM,3,1,Campeonato Asiatico 2015,False,13th–16th semifinals
-2015-08-06,2015,SRI,OMA,3,1,Campeonato Asiatico 2015,False,13th–16th semifinals
-2015-08-06,2015,KAZ,IND,3,1,Campeonato Asiatico 2015,False,9th–12th semifinals
-2015-08-06,2015,BRN,PAK,2,3,Campeonato Asiatico 2015,False,9th–12th semifinals
-2015-08-06,2015,KOR,JPN,2,3,Campeonato Asiatico 2015,False,Quarterfinals
-2015-08-06,2015,CHN,THA,3,0,Campeonato Asiatico 2015,False,Quarterfinals
-2015-08-06,2015,QAT,TPE,3,1,Campeonato Asiatico 2015,False,Quarterfinals
-2015-08-06,2015,IRI,AUS,3,1,Campeonato Asiatico 2015,False,Quarterfinals
-2015-08-07,2015,TKM,OMA,2,3,Campeonato Asiatico 2015,False,15th place match
-2015-08-07,2015,KUW,SRI,0,3,Campeonato Asiatico 2015,False,13th place match
-2015-08-07,2015,IND,BRN,3,2,Campeonato Asiatico 2015,False,11th place match
-2015-08-07,2015,KAZ,PAK,3,0,Campeonato Asiatico 2015,False,9th place match
-2015-08-07,2015,THA,AUS,0,3,Campeonato Asiatico 2015,False,5th–8th semifinals
-2015-08-07,2015,KOR,TPE,1,3,Campeonato Asiatico 2015,False,5th–8th semifinals
-2015-08-07,2015,JPN,QAT,3,1,Campeonato Asiatico 2015,False,Semifinals
-2015-08-07,2015,CHN,IRI,2,3,Campeonato Asiatico 2015,False,Semifinals
 2015-08-07,2015,EST,ISR,3,0,Liga Europeia 2015,False,Leg 6
 2015-08-07,2015,POL,MKD,2,3,Liga Europeia 2015,False,Leg 6
-2015-08-08,2015,THA,KOR,0,3,Campeonato Asiatico 2015,False,7th place match
-2015-08-08,2015,AUS,TPE,3,1,Campeonato Asiatico 2015,False,5th place match
-2015-08-08,2015,CHN,QAT,3,2,Campeonato Asiatico 2015,False,3rd place match
-2015-08-08,2015,IRI,JPN,1,3,Campeonato Asiatico 2015,True,Final
 2015-08-08,2015,DEN,AUT,3,2,Liga Europeia 2015,False,Leg 6
 2015-08-08,2015,EST,ISR,3,1,Liga Europeia 2015,False,Leg 6
 2015-08-08,2015,POL,MKD,1,3,Liga Europeia 2015,False,Leg 6
@@ -1350,6 +1290,66 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2017-07-07,2017,FRA,CAN,3,1,Liga Mundial 2017,False,Group 1 - Semifinals
 2017-07-08,2017,USA,CAN,1,3,Liga Mundial 2017,False,Group 1 - Final 3-4
 2017-07-08,2017,BRA,FRA,2,3,Liga Mundial 2017,False,Group 1 - Final 1-2
+2017-07-24,2017,INA,KSA,3,1,Campeonato Asiatico 2017,False,Pool A
+2017-07-24,2017,QAT,KAZ,2,3,Campeonato Asiatico 2017,False,Pool A
+2017-07-24,2017,TPE,PAK,3,0,Campeonato Asiatico 2017,False,Pool B
+2017-07-24,2017,IRI,IRQ,3,0,Campeonato Asiatico 2017,False,Pool B
+2017-07-24,2017,JPN,SRI,3,0,Campeonato Asiatico 2017,False,Pool C
+2017-07-24,2017,KOR,VIE,3,0,Campeonato Asiatico 2017,False,Pool C
+2017-07-24,2017,CHN,THA,3,0,Campeonato Asiatico 2017,False,Pool D
+2017-07-24,2017,AUS,HKG,3,0,Campeonato Asiatico 2017,False,Pool D
+2017-07-25,2017,KSA,QAT,0,3,Campeonato Asiatico 2017,False,Pool A
+2017-07-25,2017,INA,KAZ,2,3,Campeonato Asiatico 2017,False,Pool A
+2017-07-25,2017,IRQ,TPE,0,3,Campeonato Asiatico 2017,False,Pool B
+2017-07-25,2017,IRI,PAK,3,0,Campeonato Asiatico 2017,False,Pool B
+2017-07-25,2017,SRI,KOR,0,3,Campeonato Asiatico 2017,False,Pool C
+2017-07-25,2017,JPN,VIE,3,0,Campeonato Asiatico 2017,False,Pool C
+2017-07-25,2017,AUS,THA,3,2,Campeonato Asiatico 2017,False,Pool D
+2017-07-25,2017,HKG,CHN,0,3,Campeonato Asiatico 2017,False,Pool D
+2017-07-26,2017,KAZ,KSA,3,0,Campeonato Asiatico 2017,False,Pool A
+2017-07-26,2017,INA,QAT,3,2,Campeonato Asiatico 2017,False,Pool A
+2017-07-26,2017,PAK,IRQ,3,1,Campeonato Asiatico 2017,False,Pool B
+2017-07-26,2017,IRI,TPE,3,0,Campeonato Asiatico 2017,False,Pool B
+2017-07-26,2017,VIE,SRI,3,2,Campeonato Asiatico 2017,False,Pool C
+2017-07-26,2017,JPN,KOR,2,3,Campeonato Asiatico 2017,False,Pool C
+2017-07-26,2017,THA,HKG,3,1,Campeonato Asiatico 2017,False,Pool D
+2017-07-26,2017,AUS,CHN,3,0,Campeonato Asiatico 2017,False,Pool D
+2017-07-27,2017,KAZ,JPN,0,3,Campeonato Asiatico 2017,False,Pool E
+2017-07-27,2017,KOR,INA,3,1,Campeonato Asiatico 2017,False,Pool E
+2017-07-27,2017,AUS,TPE,1,3,Campeonato Asiatico 2017,False,Pool F
+2017-07-27,2017,IRI,CHN,0,3,Campeonato Asiatico 2017,False,Pool F
+2017-07-27,2017,QAT,SRI,2,3,Campeonato Asiatico 2017,False,Pool G
+2017-07-27,2017,VIE,KSA,3,1,Campeonato Asiatico 2017,False,Pool G
+2017-07-27,2017,PAK,HKG,3,2,Campeonato Asiatico 2017,False,Pool H
+2017-07-27,2017,THA,IRQ,3,1,Campeonato Asiatico 2017,False,Pool H
+2017-07-29,2017,KAZ,KOR,1,3,Campeonato Asiatico 2017,False,Pool E
+2017-07-29,2017,INA,JPN,0,3,Campeonato Asiatico 2017,False,Pool E
+2017-07-29,2017,CHN,TPE,1,3,Campeonato Asiatico 2017,False,Pool F
+2017-07-29,2017,IRI,AUS,3,1,Campeonato Asiatico 2017,False,Pool F
+2017-07-29,2017,QAT,VIE,3,1,Campeonato Asiatico 2017,False,Pool G
+2017-07-29,2017,KSA,SRI,3,1,Campeonato Asiatico 2017,False,Pool G
+2017-07-29,2017,PAK,THA,0,3,Campeonato Asiatico 2017,False,Pool H
+2017-07-29,2017,IRQ,HKG,3,1,Campeonato Asiatico 2017,False,Pool H
+2017-07-30,2017,SRI,HKG,3,0,Campeonato Asiatico 2017,False,13th–16th semifinals
+2017-07-30,2017,IRQ,KSA,3,0,Campeonato Asiatico 2017,False,13th–16th semifinals
+2017-07-30,2017,QAT,PAK,3,2,Campeonato Asiatico 2017,False,9th–12th semifinals
+2017-07-30,2017,THA,VIE,2,3,Campeonato Asiatico 2017,False,9th–12th semifinals
+2017-07-30,2017,TPE,KAZ,0,3,Campeonato Asiatico 2017,False,Quarterfinals
+2017-07-30,2017,JPN,AUS,3,0,Campeonato Asiatico 2017,False,Quarterfinals
+2017-07-30,2017,KOR,CHN,3,0,Campeonato Asiatico 2017,False,Quarterfinals
+2017-07-30,2017,IRI,INA,2,3,Campeonato Asiatico 2017,False,Quarterfinals
+2017-07-31,2017,HKG,KSA,0,3,Campeonato Asiatico 2017,False,15th place match
+2017-07-31,2017,SRI,IRQ,1,3,Campeonato Asiatico 2017,False,13th place match
+2017-07-31,2017,PAK,THA,1,3,Campeonato Asiatico 2017,False,11th place match
+2017-07-31,2017,QAT,VIE,3,1,Campeonato Asiatico 2017,False,9th place match
+2017-07-31,2017,CHN,TPE,3,0,Campeonato Asiatico 2017,False,5th–8th semifinals
+2017-07-31,2017,IRI,AUS,3,2,Campeonato Asiatico 2017,False,5th–8th semifinals
+2017-07-31,2017,KOR,KAZ,2,3,Campeonato Asiatico 2017,False,Semifinals
+2017-07-31,2017,INA,JPN,0,3,Campeonato Asiatico 2017,False,Semifinals
+2017-08-01,2017,TPE,AUS,3,2,Campeonato Asiatico 2017,False,7th place match
+2017-08-01,2017,CHN,IRI,1,3,Campeonato Asiatico 2017,False,5th place match
+2017-08-01,2017,KOR,INA,3,0,Campeonato Asiatico 2017,False,3rd place match
+2017-08-01,2017,KAZ,JPN,1,3,Campeonato Asiatico 2017,True,Final
 2017-08-07,2017,COL,VEN,1,3,Campeonato Sul-Americano 2017,False,Pool A
 2017-08-07,2017,BRA,PAR,3,0,Campeonato Sul-Americano 2017,False,Pool A
 2017-08-07,2017,ARG,URU,3,0,Campeonato Sul-Americano 2017,False,Pool B
