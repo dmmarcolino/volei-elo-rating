@@ -883,19 +883,79 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2015-07-30,2015,MAR,ALG,3,1,Campeonato Africano 2015,False,Bronze medal match
 2015-07-30,2015,EGY,TUN,3,0,Campeonato Africano 2015,True,Final
 2015-07-30,2015,GRE,BLR,3,0,Liga Europeia 2015,False,Leg 4
+2015-07-31,2015,TPE,KAZ,3,1,Campeonato Asiatico 2015,False,Pool A
+2015-07-31,2015,KUW,IRI,0,3,Campeonato Asiatico 2015,False,Pool A
+2015-07-31,2015,IND,TKM,3,0,Campeonato Asiatico 2015,False,Pool B
+2015-07-31,2015,QAT,AUS,3,1,Campeonato Asiatico 2015,False,Pool B
+2015-07-31,2015,OMA,KOR,0,3,Campeonato Asiatico 2015,False,Pool C
+2015-07-31,2015,PAK,THA,2,3,Campeonato Asiatico 2015,False,Pool C
+2015-07-31,2015,CHN,SRI,3,0,Campeonato Asiatico 2015,False,Pool D
+2015-07-31,2015,JPN,BRN,3,0,Campeonato Asiatico 2015,False,Pool D
 2015-07-31,2015,ISR,POL,2,3,Liga Europeia 2015,False,Leg 5
 2015-07-31,2015,EST,DEN,3,0,Liga Europeia 2015,False,Leg 5
 2015-07-31,2015,TUR,CRO,3,2,Liga Europeia 2015,False,Leg 4
 2015-07-31,2015,ROU,SLO,0,3,Liga Europeia 2015,False,Leg 4
 2015-07-31,2015,GRE,BLR,0,3,Liga Europeia 2015,False,Leg 4
+2015-08-01,2015,TPE,KUW,3,0,Campeonato Asiatico 2015,False,Pool A
+2015-08-01,2015,KAZ,IRI,0,3,Campeonato Asiatico 2015,False,Pool A
+2015-08-01,2015,TKM,AUS,0,3,Campeonato Asiatico 2015,False,Pool B
+2015-08-01,2015,IND,QAT,0,3,Campeonato Asiatico 2015,False,Pool B
+2015-08-01,2015,OMA,PAK,0,3,Campeonato Asiatico 2015,False,Pool C
+2015-08-01,2015,KOR,THA,3,2,Campeonato Asiatico 2015,False,Pool C
+2015-08-01,2015,CHN,JPN,3,1,Campeonato Asiatico 2015,False,Pool D
+2015-08-01,2015,SRI,BRN,0,3,Campeonato Asiatico 2015,False,Pool D
 2015-08-01,2015,ISR,POL,0,3,Liga Europeia 2015,False,Leg 5
 2015-08-01,2015,EST,DEN,3,1,Liga Europeia 2015,False,Leg 5
 2015-08-01,2015,MKD,AUT,3,0,Liga Europeia 2015,False,Leg 5
 2015-08-01,2015,ROU,SLO,0,3,Liga Europeia 2015,False,Leg 4
 2015-08-01,2015,TUR,CRO,3,0,Liga Europeia 2015,False,Leg 4
+2015-08-02,2015,KAZ,KUW,3,0,Campeonato Asiatico 2015,False,Pool A
+2015-08-02,2015,IRI,TPE,3,0,Campeonato Asiatico 2015,False,Pool A
+2015-08-02,2015,TKM,QAT,1,3,Campeonato Asiatico 2015,False,Pool B
+2015-08-02,2015,AUS,IND,3,0,Campeonato Asiatico 2015,False,Pool B
+2015-08-02,2015,KOR,PAK,3,0,Campeonato Asiatico 2015,False,Pool C
+2015-08-02,2015,THA,OMA,3,2,Campeonato Asiatico 2015,False,Pool C
+2015-08-02,2015,BRN,CHN,0,3,Campeonato Asiatico 2015,False,Pool D
+2015-08-02,2015,SRI,JPN,1,3,Campeonato Asiatico 2015,False,Pool D
 2015-08-02,2015,MKD,AUT,3,0,Liga Europeia 2015,False,Leg 5
+2015-08-03,2015,KOR,TPE,3,0,Campeonato Asiatico 2015,False,Pool E
+2015-08-03,2015,IRI,THA,3,0,Campeonato Asiatico 2015,False,Pool E
+2015-08-03,2015,QAT,JPN,3,2,Campeonato Asiatico 2015,False,Pool F
+2015-08-03,2015,CHN,AUS,3,0,Campeonato Asiatico 2015,False,Pool F
+2015-08-03,2015,KAZ,OMA,3,1,Campeonato Asiatico 2015,False,Pool G
+2015-08-03,2015,PAK,KUW,3,2,Campeonato Asiatico 2015,False,Pool G
+2015-08-03,2015,IND,SRI,3,0,Campeonato Asiatico 2015,False,Pool H
+2015-08-03,2015,BRN,TKM,3,0,Campeonato Asiatico 2015,False,Pool H
+2015-08-04,2015,TPE,THA,3,0,Campeonato Asiatico 2015,False,Pool E
+2015-08-04,2015,IRI,KOR,1,3,Campeonato Asiatico 2015,False,Pool E
+2015-08-04,2015,AUS,JPN,3,1,Campeonato Asiatico 2015,False,Pool F
+2015-08-04,2015,QAT,CHN,2,3,Campeonato Asiatico 2015,False,Pool F
+2015-08-04,2015,KUW,OMA,3,1,Campeonato Asiatico 2015,False,Pool G
+2015-08-04,2015,KAZ,PAK,3,2,Campeonato Asiatico 2015,False,Pool G
+2015-08-04,2015,TKM,SRI,1,3,Campeonato Asiatico 2015,False,Pool H
+2015-08-04,2015,IND,BRN,2,3,Campeonato Asiatico 2015,False,Pool H
+2015-08-06,2015,KUW,TKM,3,1,Campeonato Asiatico 2015,False,13th–16th semifinals
+2015-08-06,2015,SRI,OMA,3,1,Campeonato Asiatico 2015,False,13th–16th semifinals
+2015-08-06,2015,KAZ,IND,3,1,Campeonato Asiatico 2015,False,9th–12th semifinals
+2015-08-06,2015,BRN,PAK,2,3,Campeonato Asiatico 2015,False,9th–12th semifinals
+2015-08-06,2015,KOR,JPN,2,3,Campeonato Asiatico 2015,False,Quarterfinals
+2015-08-06,2015,CHN,THA,3,0,Campeonato Asiatico 2015,False,Quarterfinals
+2015-08-06,2015,QAT,TPE,3,1,Campeonato Asiatico 2015,False,Quarterfinals
+2015-08-06,2015,IRI,AUS,3,1,Campeonato Asiatico 2015,False,Quarterfinals
+2015-08-07,2015,TKM,OMA,2,3,Campeonato Asiatico 2015,False,15th place match
+2015-08-07,2015,KUW,SRI,0,3,Campeonato Asiatico 2015,False,13th place match
+2015-08-07,2015,IND,BRN,3,2,Campeonato Asiatico 2015,False,11th place match
+2015-08-07,2015,KAZ,PAK,3,0,Campeonato Asiatico 2015,False,9th place match
+2015-08-07,2015,THA,AUS,0,3,Campeonato Asiatico 2015,False,5th–8th semifinals
+2015-08-07,2015,KOR,TPE,1,3,Campeonato Asiatico 2015,False,5th–8th semifinals
+2015-08-07,2015,JPN,QAT,3,1,Campeonato Asiatico 2015,False,Semifinals
+2015-08-07,2015,CHN,IRI,2,3,Campeonato Asiatico 2015,False,Semifinals
 2015-08-07,2015,EST,ISR,3,0,Liga Europeia 2015,False,Leg 6
 2015-08-07,2015,POL,MKD,2,3,Liga Europeia 2015,False,Leg 6
+2015-08-08,2015,THA,KOR,0,3,Campeonato Asiatico 2015,False,7th place match
+2015-08-08,2015,AUS,TPE,3,1,Campeonato Asiatico 2015,False,5th place match
+2015-08-08,2015,CHN,QAT,3,2,Campeonato Asiatico 2015,False,3rd place match
+2015-08-08,2015,IRI,JPN,1,3,Campeonato Asiatico 2015,True,Final
 2015-08-08,2015,DEN,AUT,3,2,Liga Europeia 2015,False,Leg 6
 2015-08-08,2015,EST,ISR,3,1,Liga Europeia 2015,False,Leg 6
 2015-08-08,2015,POL,MKD,1,3,Liga Europeia 2015,False,Leg 6
@@ -2395,7 +2455,6 @@ match_date,season,team_a,team_b,sets_a,sets_b,event,is_final,fase
 2021-07-24,2021,BRA,TUN,3,0,Jogos Olimpicos 2021,False,Pool B
 2021-07-24,2021,RUS,ARG,3,1,Jogos Olimpicos 2021,False,Pool B
 2021-07-24,2021,JPN,VEN,3,0,Jogos Olimpicos 2021,False,Pool A
-2021-07-24,2021,POL,IRI,2,3,Jogos Olimpicos 2021,False,Pool A
 2021-07-24,2021,USA,FRA,3,0,Jogos Olimpicos 2021,False,Pool B
 2021-07-26,2021,IRI,VEN,3,0,Jogos Olimpicos 2021,False,Pool A
 2021-07-26,2021,USA,RUS,1,3,Jogos Olimpicos 2021,False,Pool B
